@@ -1,0 +1,74 @@
+# GeoRoute AI: Mandi (HP) → New Delhi Railway Routing Configuration
+# Source: Mandi, Himachal Pradesh (31.7084, 76.9322)
+# Destination: New Delhi Railway Station (28.6428, 77.2191)
+# All coordinates are in WGS84 (EPSG:4326)
+
+region:
+  name: "mandi_to_new_delhi"
+  description: "Railway routing corridor from Mandi HP to New Delhi - ~470km corridor"
+  bbox:
+    # Bounding box that encompasses both Mandi and New Delhi with margin
+    min_lon: 76.50
+    min_lat: 28.30
+    max_lon: 77.50
+    max_lat: 32.00
+
+temporal:
+  start_date: "2025-04-01"
+  end_date: "2025-06-30"
+
+stac:
+  api_url: "https://planetarycomputer.microsoft.com/api/stac/v1"
+  use_planetary_computer: true
+
+  optical:
+    collection: "sentinel-2-l2a"
+    max_cloud_cover_percent: 15.0
+    target_resolution_meters: 10.0
+    bands: ["B04", "B03", "B02", "B08"]
+
+  elevation:
+    collection: "cop-dem-glo-30"
+    asset_name: "data"
+
+vector:
+  layers:
+    railways:
+      tags:
+        railway: true
+      description: "Existing railway tracks and infrastructure"
+    highways:
+      tags:
+        highway: ["trunk", "primary", "secondary"]
+      description: "Major roads as routing alternatives"
+    railway_stations:
+      tags:
+        railway: "station"
+      description: "Railway stations along the corridor"
+    tunnels:
+      tags:
+        tunnel: true
+      description: "Tunnel infrastructure in the mountain corridor"
+    bridges:
+      tags:
+        bridge: true
+      description: "Bridge infrastructure across rivers and valleys"
+    protected_areas:
+      tags:
+        boundary: "protected_area"
+        leisure: "nature_reserve"
+      description: "Protected zones to avoid or route carefully through"
+  timeout_seconds: 120
+  max_retries: 3
+
+processing:
+  dem_resampling_method: "bilinear"
+  target_pixel_size_meters: 30.0  # 30m for large corridor coverage
+
+export:
+  output_dir: "./data/processed/mandi_delhi"
+  vector_format: "geojson"
+  cog:
+    block_size: 256
+    compression: "deflate"
+    overview_levels: [2, 4, 8, 16]

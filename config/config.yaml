@@ -1,0 +1,66 @@
+# GeoRoute AI: Part 1 - Ingestion & Preprocessing Configuration
+# All coordinates are in WGS84 (EPSG:4326)
+
+region:
+  name: "rural_test_region_10x10km"
+  description: "10km x 10km area for rural infrastructure routing"
+  bbox:
+    min_lon: 11.4000
+    min_lat: 48.1000
+    max_lon: 11.5350
+    max_lat: 48.1900
+
+temporal:
+  start_date: "2025-06-01"
+  end_date: "2025-09-20"
+
+stac:
+  # Default to Microsoft Planetary Computer (free, performant)
+  api_url: "https://planetarycomputer.microsoft.com/api/stac/v1"
+  use_planetary_computer: true
+
+  optical:
+    collection: "sentinel-2-l2a"
+    max_cloud_cover_percent: 5.0
+    target_resolution_meters: 10.0
+    # Optical bands: Red (B04), Green (B03), Blue (B02), NIR (B08)
+    bands: ["B04", "B03", "B02", "B08"]
+
+  elevation:
+    # Copernicus 30m Global DEM (cop-dem-glo-30)
+    collection: "cop-dem-glo-30"
+    asset_name: "data"
+
+vector:
+  # OpenStreetMap feature queries via OSMnx
+  layers:
+    highways:
+      tags:
+        highway: true
+      description: "Existing roads, tracks, and paths for low-cost routing"
+    buildings:
+      tags:
+        building: true
+      description: "Building footprints to avoid as physical obstacles"
+    environmental_zones:
+      tags:
+        boundary: "protected_area"
+        leisure: "nature_reserve"
+      description: "Protected and natural areas to avoid for environmental compliance"
+
+  timeout_seconds: 60
+  max_retries: 3
+
+processing:
+  # Interpolation method for DEM resampling (bilinear, cubic, lanczos)
+  dem_resampling_method: "bilinear"
+  # Target grid pixel size in projected UTM coordinates (meters)
+  target_pixel_size_meters: 10.0
+
+export:
+  output_dir: "./data/processed"
+  vector_format: "geojson"
+  cog:
+    block_size: 256
+    compression: "deflate"
+    overview_levels: [2, 4, 8, 16]
