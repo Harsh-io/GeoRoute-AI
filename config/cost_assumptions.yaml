@@ -1,0 +1,67 @@
+# ==============================================================================
+# GeoRoute AI — Part 3: Cost Surface Modeling Configuration
+# ==============================================================================
+# Transparent, configurable parameters for multi-objective railway corridor routing:
+# 1. Pure physical distance
+# 2. Estimated construction difficulty (slope, land cover, buildings, water, highway)
+# 3. Environmental impact proxy (statutory protected areas, forest, wetland, water)
+# ==============================================================================
+
+model_version: "1.0.0"
+
+# --- 1. Distance Objective ---
+distance:
+  base_cell_distance_m: 10.0
+  unit: "metres"
+
+# --- 2. Terrain Slope Penalty (Construction Difficulty) ---
+slope:
+  slope_source: "slope_percent"     # 'slope_percent' or 'slope_degrees'
+  slope_reference: 20.0             # Reference gradient in percent (e.g. 20% = 1:5)
+  power: 2.0                        # Nonlinear power scaling: P_slope = (slope / slope_ref)^power
+  weight: 2.0                       # Relative weight (w_s) in construction difficulty
+  max_penalty_cap: null             # Uncapped by default
+
+# --- 3. Land-Cover Difficulty Weights (Construction Difficulty) ---
+landcover:
+  weight: 1.0
+  class_penalties:
+    10: 2.5    # Tree cover (Forest clearing & compensatory afforestation)
+    20: 0.3    # Shrubland
+    30: 0.2    # Grassland
+    40: 1.0    # Cropland (Agricultural land acquisition compensation)
+    50: 8.0    # Built-up (Urban resettlement & acquisition friction)
+    60: 0.1    # Bare / sparse vegetation
+    70: 15.0   # Snow and ice
+    80: 10.0   # Permanent water bodies
+    90: 6.0    # Herbaceous wetland
+    95: 8.0    # Mangroves
+    100: 2.0   # Moss and lichen
+
+# --- 4. Physical Obstacles & Infrastructure Crossings ---
+obstacles:
+  building_penalty: 10.0
+  building_weight: 1.5
+  building_hard_exclusion: false    # If true, building footprints are absolute hard exclusions
+  water_crossing_penalty: 5.0      # Structural bridging difficulty
+  water_crossing_weight: 1.0
+  highway_crossing_penalty: 2.0    # Grade-separated crossing (ROB/RUB) proxy
+  highway_crossing_weight: 0.5
+
+# --- 5. Environmental Impact Proxy ---
+environmental:
+  protected_area_policy: "HARD_EXCLUSION"  # 'HARD_EXCLUSION' or 'SOFT_PENALTY'
+  protected_area_penalty: 50.0
+  forest_base_penalty: 2.0
+  forest_weight: 2.0
+  use_ndvi_canopy_weighting: true  # Scale forest sensitivity with Sentinel-2 NDVI
+  wetland_penalty: 5.0
+  wetland_weight: 2.5
+  water_penalty: 4.0
+  water_weight: 1.5
+
+# --- 6. Hard Constraints & Unknown Data Policy ---
+constraints:
+  treat_nodata_as_blocked: true    # Unknown data cells are blocked from routing
+  blocked_cell_cost: -9999.0       # Nodata fill value in cost rasters
+  hard_constraint_binary_value: 1  # 1 in hard_constraint_mask.tif
