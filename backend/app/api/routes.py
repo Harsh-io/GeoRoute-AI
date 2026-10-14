@@ -87,6 +87,7 @@ async def generate_routes(request_payload: RouteGenerationRequest, request: Requ
                 snap_to_valid=request_payload.snap_to_valid,
                 max_snap_radius_m=request_payload.max_snap_radius_m,
                 regional=True,
+                region_name=request_payload.region_name,
             )
         except OutOfCoverageError as e:
             raise HTTPException(
@@ -95,8 +96,10 @@ async def generate_routes(request_payload: RouteGenerationRequest, request: Requ
                     "code": "OUT_OF_COVERAGE",
                     "message": str(e),
                     "coverage_note": (
-                        "Requested coordinate is outside the active regional corridor study area "
-                        "(UTM 43N: [641670..745170, 3131340..3543180])."
+                        "Requested coordinate is outside the active regional corridor study areas. "
+                        "Supported regional corridors: "
+                        "1) Mandi–Delhi (UTM 43N: [641670..745170, 3131340..3543180]), "
+                        "2) Kangra–Mandi (UTM 43N: [603480..699360, 3491070..3581190])."
                     ),
                 },
             )

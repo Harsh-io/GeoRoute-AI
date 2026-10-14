@@ -10,9 +10,14 @@ from georoute.cost.cost_assumptions import (
     ObstaclePenaltyConfig,
     SlopePenaltyConfig,
 )
-from georoute.cost.cost_diagnostics import CostDiagnosticsVisualizer
-from georoute.cost.cost_surface_builder import CostSurfaceBuilder
-from georoute.cost.cost_surface_validator import CostSurfaceValidator
+try:
+    from georoute.cost.cost_diagnostics import CostDiagnosticsVisualizer
+    from georoute.cost.cost_surface_builder import CostSurfaceBuilder
+    from georoute.cost.cost_surface_validator import CostSurfaceValidator
+except Exception:
+    CostDiagnosticsVisualizer = None
+    CostSurfaceBuilder = None
+    CostSurfaceValidator = None
 from georoute.cost.distance_cost_model import DistanceCostModel
 from georoute.cost.environmental_cost_model import EnvironmentalCostModel
 

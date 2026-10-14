@@ -21,7 +21,7 @@ export default function CoverageAlert({ outOfCoverageError, onDismiss }) {
         <div style={{ flex: 1 }}>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
             <h4 style={{ fontSize: "13px", fontWeight: 700, color: "#fca5a5" }}>
-              OUT_OF_COVERAGE: Requested Coordinate Outside Mandi Study Grid
+              OUT_OF_COVERAGE: Requested Coordinate Outside Active Study Grid
             </h4>
             {onDismiss && (
               <button
@@ -84,20 +84,20 @@ export default function CoverageAlert({ outOfCoverageError, onDismiss }) {
       <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
         <Compass size={15} color="var(--turquoise)" style={{ flexShrink: 0 }} />
         <span style={{ fontSize: "11.5px", color: "var(--text-muted)" }}>
-          <strong style={{ color: "var(--text-main)" }}>Study Area:</strong> Mandi Regional Grid (5.79 × 5.65 km · EPSG:32643 UTM 43N · 10m res)
+          <strong style={{ color: "var(--text-main)" }}>Corridor Coverage:</strong> Mandi Local (5.8×5.7km) · Mandi–Delhi (353km) · Kangra–Mandi (81km)
         </span>
       </div>
       <span
         style={{
           fontSize: "10.5px",
-          color: "var(--status-amber)",
-          background: "rgba(245, 158, 11, 0.1)",
+          color: "var(--status-teal)",
+          background: "rgba(13, 148, 136, 0.15)",
           padding: "2px 6px",
           borderRadius: "4px",
-          border: "1px solid rgba(245, 158, 11, 0.25)",
+          border: "1px solid rgba(13, 148, 136, 0.3)",
         }}
       >
-        Delhi: 341km South (Regional Stage)
+        Regional Grids Active
       </span>
     </div>
   );

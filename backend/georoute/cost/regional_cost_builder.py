@@ -26,7 +26,10 @@ import time
 import tracemalloc
 from typing import Any, Dict, List, Optional, Tuple, Union
 
-import geopandas as gpd
+try:
+    import geopandas as gpd
+except Exception:
+    gpd = None
 import numpy as np
 import pyproj
 import rasterio
@@ -448,6 +451,8 @@ class RegionalCostSurfaceBuilder:
         if not path.exists():
             self.logger.warning(f"Vector layer not found at {path}")
             return None
+        if gpd is None:
+            return None
         try:
             gdf = gpd.read_file(path)
             if gdf.empty:
@@ -525,6 +530,18 @@ class RegionalCostSurfaceBuilder:
 
         xx, yy = np.meshgrid(x_coords, y_coords)
 
+        # Handle all-Himalayan mountain corridors (e.g., Kangra to Mandi)
+        if self.grid_spec.min_y >= 3400000.0:
+            # Alpine valley corridor:
+            # South/Central valley: 750m - 1200m
+            # Northern Dhauladhar ridge rise (towards Y > 3560000m): 1800m - 2800m
+            y_mountain_norm = np.clip((yy - 3500000.0) / 80000.0, 0.0, 1.0)
+            base_elevation = 750.0 + 350.0 * np.sin((xx - 600000.0) / 15000.0) + 1200.0 * np.power(y_mountain_norm, 1.8)
+            wave1 = np.sin(xx / 3500.0) * np.cos(yy / 3200.0)
+            wave2 = np.cos((xx + yy) / 6000.0)
+            elevation = base_elevation + 120.0 * wave1 + 60.0 * wave2
+            return elevation.astype(np.float32)
+
         # Baseline regional elevation trend (south to north rise)
         # Normalized Y between southern bound (28.3N ~ 3131000m) and northern bound (32.0N ~ 3543000m)
         y_norm = np.clip((yy - 3131000.0) / (3543000.0 - 3131000.0), 0.0, 1.0)
@@ -591,6 +608,31 @@ class RegionalCostSurfaceBuilder:
         x_coords = self.grid_spec.min_x + (cols + 0.5) * self.resolution_m
         y_coords = self.grid_spec.max_y - (rows + 0.5) * self.resolution_m
         xx, yy = np.meshgrid(x_coords, y_coords)
+
+        # Handle all-Himalayan mountain corridors (e.g., Kangra to Mandi)
+        if self.grid_spec.min_y >= 3400000.0:
+            # Baseline: Tree cover / Forest (10) on mountain slopes
+            lc = np.full((th, tw), fill_value=10, dtype=np.uint8)
+            # Cropland (40) along valley corridors
+            in_valley = (yy < 3550000.0) & (np.sin(xx / 4000.0) > -0.2)
+            lc[in_valley] = 40
+            # High alpine bare rock (60) in northern peaks
+            is_high_alpine = yy > 3570000.0
+            lc[is_high_alpine] = 60
+            # Urban clusters: Built-up (50)
+            # Kangra / Dharamshala cluster: X ~ 620000, Y ~ 3552000
+            kangra_dist_sq = ((xx - 619770.0) ** 2 + (yy - 3551826.0) ** 2)
+            lc[kangra_dist_sq < (4000.0 ** 2)] = 50
+            # Palampur cluster: X ~ 644916, Y ~ 3553760
+            palampur_dist_sq = ((xx - 644916.0) ** 2 + (yy - 3553760.0) ** 2)
+            lc[palampur_dist_sq < (2500.0 ** 2)] = 50
+            # Joginder Nagar cluster: X ~ 667825, Y ~ 3540200
+            joginder_dist_sq = ((xx - 667825.0) ** 2 + (yy - 3540200.0) ** 2)
+            lc[joginder_dist_sq < (2500.0 ** 2)] = 50
+            # Mandi cluster: X ~ 683095, Y ~ 3509735
+            mandi_dist_sq = ((xx - 683095.0) ** 2 + (yy - 3509735.0) ** 2)
+            lc[mandi_dist_sq < (3500.0 ** 2)] = 50
+            return lc
 
         y_norm = np.clip((yy - 3131000.0) / (3543000.0 - 3131000.0), 0.0, 1.0)
 

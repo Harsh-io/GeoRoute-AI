@@ -2,7 +2,7 @@
 
 import os
 from pathlib import Path
-from typing import List
+from typing import List, Optional
 from pydantic import BaseModel, Field
 
 
@@ -32,6 +32,9 @@ class AppConfig(BaseModel):
     base_data_dir: Path = Field(default_factory=lambda: Path(os.getenv("GEOROUTE_DATA_DIR", "data")))
     cost_dir: Path = Field(default_factory=lambda: Path(os.getenv("GEOROUTE_COST_DIR", "data/cost")))
     regional_cost_dir: Path = Field(default_factory=lambda: Path(os.getenv("GEOROUTE_REGIONAL_COST_DIR", "data/cost/regional")))
+    regional_kangra_cost_dir: Path = Field(
+        default_factory=lambda: Path(os.getenv("GEOROUTE_REGIONAL_KANGRA_COST_DIR", "data/cost/regional_kangra"))
+    )
     features_dir: Path = Field(default_factory=lambda: Path(os.getenv("GEOROUTE_FEATURES_DIR", "data/features")))
     processed_dir: Path = Field(default_factory=lambda: Path(os.getenv("GEOROUTE_PROCESSED_DIR", "data/processed")))
     jobs_dir: Path = Field(default_factory=lambda: Path(os.getenv("GEOROUTE_JOBS_DIR", "data/jobs")))
@@ -51,9 +54,15 @@ class AppConfig(BaseModel):
         "structural designs, or statutory environmental approvals."
     )
 
+    def get_regional_cost_dir(self, region_name: Optional[str] = None) -> Path:
+        """Resolves active regional cost directory based on region identifier."""
+        if region_name and "kangra" in str(region_name).lower():
+            return self.regional_kangra_cost_dir
+        return self.regional_cost_dir
+
     def ensure_directories(self) -> None:
         """Ensures that all runtime storage directories exist."""
-        for d in [self.base_data_dir, self.cost_dir, self.features_dir, self.processed_dir, self.jobs_dir]:
+        for d in [self.base_data_dir, self.cost_dir, self.regional_cost_dir, self.regional_kangra_cost_dir, self.features_dir, self.processed_dir, self.jobs_dir]:
             d.mkdir(parents=True, exist_ok=True)
         self.sqlite_db_path.parent.mkdir(parents=True, exist_ok=True)
 

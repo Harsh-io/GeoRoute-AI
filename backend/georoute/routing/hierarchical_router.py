@@ -175,6 +175,8 @@ class HierarchicalRegionalRouter:
         target_wgs84: Tuple[float, float] = DELHI_STATION_WGS84,
         source_crs: str = "EPSG:4326",
         target_crs: str = "EPSG:4326",
+        source_name: str = "Source",
+        target_name: str = "Destination",
     ) -> Tuple[Tuple[float, float], Tuple[float, float]]:
         """Projects and validates endpoints against regional raster grid bounds.
 
@@ -188,12 +190,12 @@ class HierarchicalRegionalRouter:
         res_src = self.endpoint_validator.validate_and_resolve(
             coords=source_wgs84,
             crs=source_crs,
-            name="Mandi Railway Station",
+            name=source_name,
         )
         res_tgt = self.endpoint_validator.validate_and_resolve(
             coords=target_wgs84,
             crs=target_crs,
-            name="New Delhi Railway Station",
+            name=target_name,
         )
         return (res_src.x, res_src.y), (res_tgt.x, res_tgt.y)
 
@@ -528,13 +530,17 @@ class HierarchicalRegionalRouter:
         source_wgs84: Tuple[float, float] = MANDI_STATION_WGS84,
         target_wgs84: Tuple[float, float] = DELHI_STATION_WGS84,
         refinement_buffer_m: Optional[float] = None,
+        source_name: str = "Source",
+        target_name: str = "Destination",
     ) -> CoarseToFineRouteResult:
         """Executes full two-stage coarse-to-fine routing for a single planning objective."""
         t0 = time.time()
         tracemalloc.start()
 
         buf_m = refinement_buffer_m or self.refinement_buffer_m
-        src_xy, tgt_xy = self.resolve_endpoints(source_wgs84, target_wgs84)
+        src_xy, tgt_xy = self.resolve_endpoints(
+            source_wgs84, target_wgs84, source_name=source_name, target_name=target_name
+        )
 
         self.logger.info(f"Hierarchical Routing for Objective: '{objective.value}'...")
         self.logger.info(f" - Level 0: Coarse overview at {self.coarse_res_x:.1f}m resolution...")
@@ -670,12 +676,19 @@ class HierarchicalRegionalRouter:
         source_wgs84: Tuple[float, float] = MANDI_STATION_WGS84,
         target_wgs84: Tuple[float, float] = DELHI_STATION_WGS84,
         region_name: str = "mandi_to_delhi_corridor",
+        source_name: Optional[str] = None,
+        target_name: Optional[str] = None,
     ) -> RoutingManifest:
         """Executes full Phase D three-objective coarse-to-fine routing pipeline and exports deliverables."""
         t0 = time.time()
         self.logger.info("=" * 80)
         self.logger.info("STARTING PHASE D: THREE-OBJECTIVE COARSE-TO-FINE ROUTING")
         self.logger.info("=" * 80)
+
+        if source_name is None:
+            source_name = "Kangra Mandir Railway Station (HP)" if "kangra" in region_name.lower() else "Mandi Railway Station (HP)"
+        if target_name is None:
+            target_name = "Mandi Railway Station (HP)" if "kangra" in region_name.lower() else "New Delhi Railway Station (Delhi NCT)"
 
         objectives = [
             RoutingObjective.SHORTEST_DISTANCE,
@@ -691,6 +704,8 @@ class HierarchicalRegionalRouter:
                 objective=obj,
                 source_wgs84=source_wgs84,
                 target_wgs84=target_wgs84,
+                source_name=source_name,
+                target_name=target_name,
             )
 
             # Profile candidate route across physical, slope, land cover, and infrastructure dimensions
@@ -814,12 +829,12 @@ class HierarchicalRegionalRouter:
             pipeline_status="SUCCESS",
             elapsed_seconds=round(elapsed, 2),
             source={
-                "name": "Mandi Railway Station (HP)",
+                "name": source_name,
                 "wgs84": list(source_wgs84),
                 "crs": self.crs,
             },
             destination={
-                "name": "New Delhi Railway Station (Delhi NCT)",
+                "name": target_name,
                 "wgs84": list(target_wgs84),
                 "crs": self.crs,
             },

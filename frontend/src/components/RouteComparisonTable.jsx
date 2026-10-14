@@ -36,27 +36,27 @@ export default function RouteComparisonTable({
 
   const getForestPct = (rt) => {
     const lc = rt.landcover_distribution_percent || {};
-    return lc["Tree cover / Forest"] ?? lc["forest"] ?? lc["Tree cover"] ?? null;
+    return lc["Tree cover / Forest"] ?? lc["forest"] ?? lc["Tree cover"] ?? lc["forest_and_tree_cover"] ?? null;
   };
 
   const getUrbanPct = (rt) => {
     const lc = rt.landcover_distribution_percent || {};
-    return lc["Built-up / Urban"] ?? lc["builtup"] ?? lc["Urban"] ?? null;
+    return lc["Built-up / Urban"] ?? lc["builtup"] ?? lc["Urban"] ?? lc["urban_and_built_up"] ?? null;
   };
 
   const getCropPct = (rt) => {
     const lc = rt.landcover_distribution_percent || {};
-    return lc["Cropland"] ?? lc["cropland"] ?? null;
+    return lc["Cropland"] ?? lc["cropland"] ?? lc["cropland_and_alluvial_plains"] ?? null;
   };
 
   const getHighwayCrossings = (rt) => {
     const inf = rt.infrastructure_crossings || {};
-    return inf.highway_crossings ?? null;
+    return inf.highway_crossings ?? inf.highway_crossings_count ?? null;
   };
 
   const getWaterCrossings = (rt) => {
     const inf = rt.infrastructure_crossings || {};
-    return inf.water_crossings ?? null;
+    return inf.water_crossings ?? inf.waterway_crossings ?? inf.waterway_crossings_count ?? null;
   };
 
   // Specific trade-off observations based on mathematical cost formulation

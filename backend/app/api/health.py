@@ -59,6 +59,14 @@ async def get_ready(request: Request) -> ReadyResponse:
         and (regional_rasters / "valid_data_mask.tif").exists()
     )
 
+    # Check regional Kangra rasters readiness
+    regional_kangra_rasters = settings.regional_kangra_cost_dir / "rasters"
+    regional_kangra_ready = (
+        (regional_kangra_rasters / "distance_friction.tif").exists()
+        and (regional_kangra_rasters / "hard_constraint_mask.tif").exists()
+        and (regional_kangra_rasters / "valid_data_mask.tif").exists()
+    )
+
     job_store = getattr(request.app.state, "job_store", None)
     active_jobs = job_store.count_active_jobs() if job_store else 0
     queued_jobs = job_store.count_queued_jobs() if job_store else 0
@@ -76,7 +84,9 @@ async def get_ready(request: Request) -> ReadyResponse:
         details={
             "cost_rasters_dir": str(cost_rasters),
             "regional_rasters_dir": str(regional_rasters),
+            "regional_kangra_rasters_dir": str(regional_kangra_rasters),
             "regional_ready": regional_ready,
+            "regional_kangra_ready": regional_kangra_ready,
             "jobs_storage_dir": str(settings.jobs_dir),
             "sqlite_db_path": str(settings.sqlite_db_path),
         },
@@ -117,9 +127,10 @@ async def get_capabilities() -> CapabilitiesResponse:
             },
             "geographic_limitation": (
                 "The current local precomputed dataset covers the Mandi 5.79km x 5.65km test area. "
-                "New Delhi Railway Station is 340.97km south and lies outside the local raster extent. "
-                "Requests with New Delhi destination under 'precomputed' mode will be rejected with an out-of-coverage error. "
-                "Use 'precomputed_regional' or 'full_pipeline' mode for Mandi-to-Delhi regional corridor planning."
+                "New Delhi Railway Station is 340.97km south and Kangra District is ~80km northwest, "
+                "both lying outside the local 5x5km raster extent. "
+                "Requests with New Delhi or Kangra endpoints under 'precomputed' mode will return OUT_OF_COVERAGE. "
+                "Use 'precomputed_regional' mode for Mandi–Delhi or Kangra–Mandi regional corridor planning."
             ),
             "regional_coverage": {
                 "region_name": "mandi_delhi_regional_corridor",
@@ -150,6 +161,37 @@ async def get_capabilities() -> CapabilitiesResponse:
                 "terminals_covered": [
                     "Mandi Railway Station (HP)",
                     "New Delhi Railway Station (Delhi NCT)",
+                ],
+            },
+            "kangra_mandi_regional_coverage": {
+                "region_name": "kangra_to_mandi_corridor",
+                "coverage_type": "regional_corridor_study_area",
+                "grid_dimensions": {
+                    "fine_width": 3196,
+                    "fine_height": 3004,
+                    "fine_resolution_meters": 30.0,
+                    "coarse_width": 959,
+                    "coarse_height": 902,
+                    "coarse_resolution_meters": 100.0,
+                },
+                "bounds_utm43n": {
+                    "crs": "EPSG:32643",
+                    "left": 603480.0,
+                    "bottom": 3491070.0,
+                    "right": 699360.0,
+                    "top": 3581190.0,
+                },
+                "approximate_wgs84_bounds": {
+                    "min_lon": 76.10,
+                    "min_lat": 31.55,
+                    "max_lon": 77.10,
+                    "max_lat": 32.35,
+                },
+                "dataset_readiness": "ready",
+                "coverage_span_km": "90.1 km North-South x 95.9 km East-West",
+                "terminals_covered": [
+                    "Kangra Mandir Railway Station (HP)",
+                    "Mandi Railway Station (HP)",
                 ],
             },
         },

@@ -4,6 +4,7 @@ Extracts comprehensive physical, topographic, land cover, and infrastructure
 metrics along candidate route LineStrings across the full Mandi-to-Delhi corridor.
 """
 
+import json
 from dataclasses import asdict, dataclass
 import logging
 import math
@@ -14,7 +15,7 @@ import geopandas as gpd
 import numpy as np
 import pyproj
 import rasterio
-from shapely.geometry import LineString, Point
+from shapely.geometry import LineString, Point, shape
 from shapely.ops import transform as shapely_transform
 
 logger = logging.getLogger("georoute.analysis.profiler")
@@ -128,39 +129,45 @@ class CorridorProfiler:
         self._rw_gdf: Optional[gpd.GeoDataFrame] = None
         self._hw_gdf: Optional[gpd.GeoDataFrame] = None
 
+    def _load_geojson_gdf(self, path: Path) -> gpd.GeoDataFrame:
+        """Safely loads GeoDataFrame from GeoJSON without relying on pyogrio / pyarrow binary wheels."""
+        if not path.exists():
+            return gpd.GeoDataFrame(geometry=[], crs=self.crs)
+        try:
+            with open(path, "r", encoding="utf-8") as f:
+                data = json.load(f)
+            features = data.get("features", [])
+            if not features:
+                return gpd.GeoDataFrame(geometry=[], crs=self.crs)
+            geoms = [shape(feat["geometry"]) for feat in features]
+            props = [feat.get("properties") or {} for feat in features]
+            src_crs = data.get("crs", {}).get("properties", {}).get("name", "EPSG:4326")
+            gdf = gpd.GeoDataFrame(props, geometry=geoms, crs=src_crs)
+            if gdf.crs != self.crs:
+                gdf = gdf.to_crs(self.crs)
+            return gdf
+        except Exception as e:
+            logger.warning(f"Could not load vector dataset {path}: {e}")
+            return gpd.GeoDataFrame(geometry=[], crs=self.crs)
+
     def _get_protected_areas(self) -> gpd.GeoDataFrame:
         if self._pa_gdf is None:
             path = self.vectors_dir / "corridor_protected_areas.geojson"
             if not path.exists():
                 path = self.vectors_dir / "protected_areas.geojson"
-            gdf = gpd.read_file(path)
-            if gdf.crs != self.crs:
-                gdf = gdf.to_crs(self.crs)
-            self._pa_gdf = gdf
+            self._pa_gdf = self._load_geojson_gdf(path)
         return self._pa_gdf
 
     def _get_waterways(self) -> gpd.GeoDataFrame:
         if self._ww_gdf is None:
             path = self.vectors_dir / "corridor_waterways.geojson"
-            if path.exists():
-                gdf = gpd.read_file(path)
-                if gdf.crs != self.crs:
-                    gdf = gdf.to_crs(self.crs)
-                self._ww_gdf = gdf
-            else:
-                self._ww_gdf = gpd.GeoDataFrame(geometry=[], crs=self.crs)
+            self._ww_gdf = self._load_geojson_gdf(path)
         return self._ww_gdf
 
     def _get_railways(self) -> gpd.GeoDataFrame:
         if self._rw_gdf is None:
             path = self.vectors_dir / "corridor_railways.geojson"
-            if path.exists():
-                gdf = gpd.read_file(path)
-                if gdf.crs != self.crs:
-                    gdf = gdf.to_crs(self.crs)
-                self._rw_gdf = gdf
-            else:
-                self._rw_gdf = gpd.GeoDataFrame(geometry=[], crs=self.crs)
+            self._rw_gdf = self._load_geojson_gdf(path)
         return self._rw_gdf
 
     def _get_highways(self) -> gpd.GeoDataFrame:
@@ -168,13 +175,7 @@ class CorridorProfiler:
             path = self.vectors_dir / "highways_f0a6780aa8d56c9b.geojson"
             if not path.exists():
                 path = self.vectors_dir / "corridor_highways.geojson"
-            if path.exists():
-                gdf = gpd.read_file(path)
-                if gdf.crs != self.crs:
-                    gdf = gdf.to_crs(self.crs)
-                self._hw_gdf = gdf
-            else:
-                self._hw_gdf = gpd.GeoDataFrame(geometry=[], crs=self.crs)
+            self._hw_gdf = self._load_geojson_gdf(path)
         return self._hw_gdf
 
     def audit_endpoint_snapping(

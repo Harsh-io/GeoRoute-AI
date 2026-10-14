@@ -40,6 +40,7 @@ class PipelineOrchestrator:
         snap_to_valid: bool = True,
         max_snap_radius_m: float = 500.0,
         regional: bool = False,
+        region_name: Optional[str] = None,
     ) -> Dict[str, Any]:
         """Performs fast synchronous validation of requested endpoints against current raster coverage.
 
@@ -49,7 +50,14 @@ class PipelineOrchestrator:
             FileNotFoundError: If required cost rasters are missing.
         """
         if regional:
-            rasters_dir = settings.regional_cost_dir / "rasters"
+            cost_dir = settings.get_regional_cost_dir(region_name)
+            if "kangra" not in str(region_name).lower():
+                src_lon, src_lat = source_coords
+                dst_lon, dst_lat = target_coords
+                if (src_lon < 76.65 or dst_lon < 76.65) and (src_lat > 31.4 or dst_lat > 31.4):
+                    cost_dir = settings.regional_kangra_cost_dir
+
+            rasters_dir = cost_dir / "rasters"
             hard_mask_path = rasters_dir / "hard_constraint_mask.tif"
             valid_mask_path = rasters_dir / "valid_data_mask.tif"
 
@@ -186,6 +194,7 @@ class PipelineOrchestrator:
                 snap_to_valid=snap_to_valid,
                 max_snap_radius_m=max_snap_radius,
                 regional=is_regional,
+                region_name=region_name,
             )
 
             if mode == "precomputed":
@@ -287,9 +296,19 @@ class PipelineOrchestrator:
                 if is_cancelled_check and is_cancelled_check():
                     return
 
+                # Determine regional cost dir
+                chosen_cost_dir = settings.get_regional_cost_dir(region_name)
+                chosen_region_name = region_name or "mandi_to_delhi_corridor"
+                if "kangra" not in str(region_name).lower():
+                    src_lon, src_lat = src_coords
+                    dst_lon, dst_lat = dst_coords
+                    if (src_lon < 76.65 or dst_lon < 76.65) and (src_lat > 31.4 or dst_lat > 31.4):
+                        chosen_cost_dir = settings.regional_kangra_cost_dir
+                        chosen_region_name = "kangra_to_mandi_corridor"
+
                 from georoute.routing.hierarchical_router import HierarchicalRegionalRouter
                 router = HierarchicalRegionalRouter(
-                    cost_dir=settings.regional_cost_dir,
+                    cost_dir=chosen_cost_dir,
                     output_dir=job_out_dir,
                     coarse_factor=8,
                     refinement_buffer_m=5000.0,
@@ -298,7 +317,9 @@ class PipelineOrchestrator:
                 manifest = router.run_all_objectives(
                     source_wgs84=src_coords,
                     target_wgs84=dst_coords,
-                    region_name=region_name or "mandi_to_delhi_corridor",
+                    region_name=chosen_region_name,
+                    source_name=source.get("name"),
+                    target_name=destination.get("name"),
                 )
 
                 # Stage: validating_routes

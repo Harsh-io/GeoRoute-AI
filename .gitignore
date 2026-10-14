@@ -13,6 +13,7 @@ georoute_ai.egg-info/
 # Generated / temporary data and large regional datasets
 data/jobs/
 data/cost/regional/
+data/cost/regional_kangra/
 data/raw/cache/
 data/processed/
 data/*.tmp

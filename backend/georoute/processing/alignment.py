@@ -1,9 +1,13 @@
 """Spatial alignment, metric UTM reprojection, and raster co-registration module."""
 
+from __future__ import annotations
 from dataclasses import dataclass
 import logging
 from typing import Dict, List, Optional, Tuple
-import geopandas as gpd
+try:
+    import geopandas as gpd
+except Exception:
+    gpd = None
 import numpy as np
 import pyproj
 import rasterio

@@ -31,6 +31,15 @@ const PRESETS = [
     destination: { longitude: 76.9500, latitude: 31.7150, name: "East Ridge Portal" },
   },
   {
+    id: "kangra-mandi-regional",
+    label: "Kangra Mandir → Mandi (81 km Regional Corridor)",
+    description: "Regional multi-objective routing across Himalayan terrain in Himachal Pradesh",
+    source: { longitude: 76.2693, latitude: 32.0964, name: "Kangra Mandir Railway Station" },
+    destination: { longitude: 76.9322, latitude: 31.7084, name: "Mandi Railway Station" },
+    mode: "precomputed_regional",
+    region_name: "kangra_to_mandi_corridor",
+  },
+  {
     id: "delhi-test",
     label: "Mandi → New Delhi (341 km Boundary Test)",
     description: "Demonstrates backend OUT_OF_COVERAGE validation in local mode",
@@ -45,6 +54,7 @@ const PRESETS = [
     source: { longitude: 76.9322, latitude: 31.7084, name: "Mandi Railway Station" },
     destination: { longitude: 77.2195, latitude: 28.6430, name: "New Delhi Railway Station" },
     mode: "precomputed_regional",
+    region_name: "mandi_to_delhi_corridor",
   },
 ];
 
@@ -66,6 +76,7 @@ export default function PlanningPanel({
   const [destName, setDestName] = useState("North Ridge Portal");
 
   const [processingMode, setProcessingMode] = useState("precomputed");
+  const [regionName, setRegionName] = useState("mandi_corridor_study_area");
   const [objectives, setObjectives] = useState([
     "shortest_distance",
     "lowest_construction_difficulty",
@@ -88,6 +99,13 @@ export default function PlanningPanel({
     setDestName(preset.destination.name);
     if (preset.mode) {
       setProcessingMode(preset.mode);
+    }
+    if (preset.region_name) {
+      setRegionName(preset.region_name);
+    } else if (preset.mode === "precomputed_regional") {
+      setRegionName("mandi_to_delhi_corridor");
+    } else {
+      setRegionName("mandi_corridor_study_area");
     }
     setValidationError(null);
   };
@@ -137,6 +155,15 @@ export default function PlanningPanel({
       return;
     }
 
+    let finalRegion = regionName;
+    if (processingMode === "precomputed_regional") {
+      if (sLon < 76.65 || dLon < 76.65) {
+        finalRegion = "kangra_to_mandi_corridor";
+      } else {
+        finalRegion = "mandi_to_delhi_corridor";
+      }
+    }
+
     const payload = {
       source: {
         longitude: sLon,
@@ -152,7 +179,7 @@ export default function PlanningPanel({
       target_crs: "EPSG:4326",
       processing_mode: processingMode,
       objectives: objectives,
-      region_name: "mandi_corridor_study_area",
+      region_name: finalRegion,
       snap_to_valid: snapToValid,
       max_snap_radius_m: parseFloat(maxSnapRadius),
       backend: backendEngine,
