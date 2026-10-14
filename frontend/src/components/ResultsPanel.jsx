@@ -155,7 +155,7 @@ export default function ResultsPanel({
         <div style={{ fontSize: "11.5px", color: "#e2e8f0", lineHeight: "1.45" }}>
           <strong style={{ color: "#fbbf24" }}>Mandatory Engineering & Geographic Disclaimer:</strong>
           <p style={{ marginTop: "4px" }}>
-            {jobResult?.engineering_disclaimer ||
+            {result?.engineering_disclaimer ||
               "GeoRoute AI generates preliminary candidate corridors from available geospatial data and configurable cost assumptions. These outputs are not certified railway alignments, construction cost estimates, environmental clearances, or substitutes for professional engineering and surveying. Preliminary regional planning corridors represent bounded engineering approximations only."}
           </p>
         </div>

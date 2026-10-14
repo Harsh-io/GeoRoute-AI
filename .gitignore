@@ -18,6 +18,7 @@ data/processed/
 data/*.tmp
 data/*.db
 data/test_out/
+backend/data/
 *.part
 *.tif
 !data/dem/mandi_dem_30m.tif

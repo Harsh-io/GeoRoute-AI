@@ -152,7 +152,7 @@ export default function InteractiveMap({
         center: [76.9312, 31.7084], // Mandi study grid center
         zoom: 13,
         maxZoom: 18,
-        minZoom: 9,
+        minZoom: 5,
         attributionControl: false,
         transformRequest: (url) => {
           if (url && url.includes("cartocdn.com") && !url.includes("key=") && !url.includes("cb1_")) {
