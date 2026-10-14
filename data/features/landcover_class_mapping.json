@@ -1,0 +1,82 @@
+{
+  "source": "ESA WorldCover 10m 2021 Legend",
+  "legend": {
+    "10": {
+      "id": 10,
+      "name": "Tree cover",
+      "category": "forest",
+      "description": "Tree canopy cover >= 10%, tree height >= 5m",
+      "part3_implication": "High clearing and compensatory afforestation cost; moderate terrain and environmental sensitivity"
+    },
+    "20": {
+      "id": 20,
+      "name": "Shrubland",
+      "category": "vegetation",
+      "description": "Woody perennial plants with persistent woody stems, height < 5m",
+      "part3_implication": "Low clearing cost; standard construction difficulty"
+    },
+    "30": {
+      "id": 30,
+      "name": "Grassland",
+      "category": "vegetation",
+      "description": "Natural herbaceous vegetation without substantial tree or shrub cover",
+      "part3_implication": "Minimal clearing cost; favorable for earthwork"
+    },
+    "40": {
+      "id": 40,
+      "name": "Cropland",
+      "category": "agriculture",
+      "description": "Cultivated agricultural land and harvested fields",
+      "part3_implication": "Moderate to high agricultural land acquisition compensation"
+    },
+    "50": {
+      "id": 50,
+      "name": "Built-up",
+      "category": "urban",
+      "description": "Urban and built-up land, residential and commercial structures",
+      "part3_implication": "Very high property acquisition and resettlement cost; strict corridor avoidance preferred"
+    },
+    "60": {
+      "id": 60,
+      "name": "Bare / sparse vegetation",
+      "category": "bare",
+      "description": "Lands with exposed soil, sand, rocks with vegetative cover < 10%",
+      "part3_implication": "Zero land acquisition friction; potential geotechnical/slope stability review"
+    },
+    "70": {
+      "id": 70,
+      "name": "Snow and ice",
+      "category": "cryosphere",
+      "description": "Perennial snowfields and glaciers",
+      "part3_implication": "Extreme engineering hazard and maintenance burden; high routing friction"
+    },
+    "80": {
+      "id": 80,
+      "name": "Permanent water bodies",
+      "category": "water",
+      "description": "Lakes, reservoirs, wide rivers, and coastal waters",
+      "part3_implication": "Severe engineering constraint requiring major bridge or causeway infrastructure"
+    },
+    "90": {
+      "id": 90,
+      "name": "Herbaceous wetland",
+      "category": "wetland",
+      "description": "Inundated or saturated marshlands and swamps",
+      "part3_implication": "Strict ecological sensitivity and poor foundation soil bearing capacity"
+    },
+    "95": {
+      "id": 95,
+      "name": "Mangroves",
+      "category": "wetland",
+      "description": "Tidal mangrove formations along estuaries",
+      "part3_implication": "Statutory coastal regulation exclusion and high bridge foundation cost"
+    },
+    "100": {
+      "id": 100,
+      "name": "Moss and lichen",
+      "category": "tundra",
+      "description": "High altitude or polar moss and lichen cover",
+      "part3_implication": "Alpine fragile ecosystem friction"
+    }
+  }
+}

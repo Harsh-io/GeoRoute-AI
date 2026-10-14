@@ -1,0 +1,250 @@
+{
+  "schema_version": "5.0.0",
+  "generated_at": "2026-10-13T21:02:09.975537+00:00",
+  "region_name": "mandi_to_delhi_corridor",
+  "pipeline_status": "SUCCESS",
+  "elapsed_seconds": 49.77,
+  "source": {
+    "name": "Mandi Railway Station (HP)",
+    "wgs84": [
+      76.9322,
+      31.7084
+    ],
+    "crs": "EPSG:32643"
+  },
+  "destination": {
+    "name": "New Delhi Railway Station (Delhi NCT)",
+    "wgs84": [
+      77.2195,
+      28.643
+    ],
+    "crs": "EPSG:32643"
+  },
+  "spatial_reference": {
+    "crs": "EPSG:32643",
+    "fine_resolution_m": 30.0,
+    "coarse_resolution_m": 240.0,
+    "coarse_factor": 8,
+    "refinement_buffer_m": 5000.0
+  },
+  "num_routes": 3,
+  "routes": [
+    {
+      "route_id": "ROUTE_REGIONAL_SHORTEST_DISTANCE",
+      "objective": "shortest_distance",
+      "status": "preliminary_candidate_corridor",
+      "length_m": 353329.41,
+      "length_km": 353.329,
+      "accumulated_cost": 353329.41,
+      "cost_units": "metres",
+      "num_nodes": 11311,
+      "algorithm": "coarse_to_fine_pyorps_cython (D=8, W=5.0km)",
+      "slope_profile": {
+        "coarse_length_km": 353.342,
+        "coarse_cost": 353341.84,
+        "search_space_reduction_percent": 91.52,
+        "mean_slope_degrees": 1.26,
+        "max_slope_degrees": 21.15,
+        "min_slope_degrees": 0.0,
+        "pct_gentle_under_2deg": 82.4,
+        "pct_moderate_2_to_15deg": 16.95,
+        "pct_steep_15_to_30deg": 0.65,
+        "pct_extreme_over_30deg": 0.0
+      },
+      "landcover_distribution_percent": {
+        "cropland_and_alluvial_plains": 83.3,
+        "forest_and_tree_cover": 0.0,
+        "urban_and_built_up": 3.93,
+        "water_and_wetland_buffer": 12.77,
+        "grassland_and_scrub": 0.0
+      },
+      "infrastructure_crossings": {
+        "waterway_crossings": 35,
+        "railway_crossings": 2,
+        "highway_crossings": 4,
+        "protected_area_intrusions": 0,
+        "major_river_crossings": [
+          "Sutlej",
+          "Western Yamuna Canal",
+          "Markanda",
+          "Beas Sutlej Link Canal"
+        ]
+      },
+      "validation": {
+        "is_connected": true,
+        "is_globally_optimal_proven": false,
+        "geodesic_length_km": 353.30634936791466,
+        "snapping_audit": {
+          "source_requested_wgs84": [
+            76.9322,
+            31.7084
+          ],
+          "source_actual_wgs84": [
+            76.932069,
+            31.708467
+          ],
+          "source_snapping_distance_m": 14.41,
+          "dest_requested_wgs84": [
+            77.2195,
+            28.643
+          ],
+          "dest_actual_wgs84": [
+            77.219578,
+            28.642963
+          ],
+          "dest_snapping_distance_m": 8.68,
+          "is_within_tolerance": true
+        },
+        "min_clearance_to_protected_area_m": 18.5,
+        "approximation_disclosure": "Corridor restricted to +/-5.0km buffer around coarse Level-0 path. Search space reduced by 91.5% vs unconstrained monolithic grid. This hierarchical search is a computationally efficient bounded engineering approximation; mathematical global optimality across the unconstrained full-resolution grid is not claimed.",
+        "execution_time_seconds": 11.45,
+        "peak_ram_mb": 410.67
+      }
+    },
+    {
+      "route_id": "ROUTE_REGIONAL_LOWEST_CONSTRUCTION_DIFFICULTY",
+      "objective": "lowest_construction_difficulty",
+      "status": "preliminary_candidate_corridor",
+      "length_m": 353421.55,
+      "length_km": 353.422,
+      "accumulated_cost": 1123541.2,
+      "cost_units": "dimensionless difficulty-weighted distance",
+      "num_nodes": 11312,
+      "algorithm": "coarse_to_fine_pyorps_cython (D=8, W=5.0km)",
+      "slope_profile": {
+        "coarse_length_km": 354.263,
+        "coarse_cost": 1133311.78,
+        "search_space_reduction_percent": 91.54,
+        "mean_slope_degrees": 0.96,
+        "max_slope_degrees": 23.02,
+        "min_slope_degrees": 0.0,
+        "pct_gentle_under_2deg": 86.47,
+        "pct_moderate_2_to_15deg": 13.36,
+        "pct_steep_15_to_30deg": 0.18,
+        "pct_extreme_over_30deg": 0.0
+      },
+      "landcover_distribution_percent": {
+        "cropland_and_alluvial_plains": 88.19,
+        "forest_and_tree_cover": 0.0,
+        "urban_and_built_up": 4.8,
+        "water_and_wetland_buffer": 7.01,
+        "grassland_and_scrub": 0.0
+      },
+      "infrastructure_crossings": {
+        "waterway_crossings": 21,
+        "railway_crossings": 36,
+        "highway_crossings": 7,
+        "protected_area_intrusions": 0,
+        "major_river_crossings": [
+          "Yamuna",
+          "Western Yamuna Canal",
+          "Sutlej"
+        ]
+      },
+      "validation": {
+        "is_connected": true,
+        "is_globally_optimal_proven": false,
+        "geodesic_length_km": 353.3690857570167,
+        "snapping_audit": {
+          "source_requested_wgs84": [
+            76.9322,
+            31.7084
+          ],
+          "source_actual_wgs84": [
+            76.932069,
+            31.708467
+          ],
+          "source_snapping_distance_m": 14.41,
+          "dest_requested_wgs84": [
+            77.2195,
+            28.643
+          ],
+          "dest_actual_wgs84": [
+            77.219578,
+            28.642963
+          ],
+          "dest_snapping_distance_m": 8.68,
+          "is_within_tolerance": true
+        },
+        "min_clearance_to_protected_area_m": 401.93,
+        "approximation_disclosure": "Corridor restricted to +/-5.0km buffer around coarse Level-0 path. Search space reduced by 91.5% vs unconstrained monolithic grid. This hierarchical search is a computationally efficient bounded engineering approximation; mathematical global optimality across the unconstrained full-resolution grid is not claimed.",
+        "execution_time_seconds": 14.111,
+        "peak_ram_mb": 418.13
+      }
+    },
+    {
+      "route_id": "ROUTE_REGIONAL_LOWEST_ENVIRONMENTAL_IMPACT",
+      "objective": "lowest_environmental_impact",
+      "status": "preliminary_candidate_corridor",
+      "length_m": 358794.32,
+      "length_km": 358.794,
+      "accumulated_cost": 448873.16,
+      "cost_units": "dimensionless sensitivity-weighted distance",
+      "num_nodes": 11366,
+      "algorithm": "coarse_to_fine_pyorps_cython (D=8, W=5.0km)",
+      "slope_profile": {
+        "coarse_length_km": 359.06,
+        "coarse_cost": 454698.31,
+        "search_space_reduction_percent": 91.41,
+        "mean_slope_degrees": 1.44,
+        "max_slope_degrees": 20.52,
+        "min_slope_degrees": 0.0,
+        "pct_gentle_under_2deg": 78.76,
+        "pct_moderate_2_to_15deg": 20.76,
+        "pct_steep_15_to_30deg": 0.48,
+        "pct_extreme_over_30deg": 0.0
+      },
+      "landcover_distribution_percent": {
+        "cropland_and_alluvial_plains": 91.3,
+        "forest_and_tree_cover": 0.0,
+        "urban_and_built_up": 4.12,
+        "water_and_wetland_buffer": 4.58,
+        "grassland_and_scrub": 0.0
+      },
+      "infrastructure_crossings": {
+        "waterway_crossings": 16,
+        "railway_crossings": 2,
+        "highway_crossings": 3,
+        "protected_area_intrusions": 0,
+        "major_river_crossings": [
+          "Markanda",
+          "Western Yamuna Canal",
+          "Sutlej"
+        ]
+      },
+      "validation": {
+        "is_connected": true,
+        "is_globally_optimal_proven": false,
+        "geodesic_length_km": 358.7600516974294,
+        "snapping_audit": {
+          "source_requested_wgs84": [
+            76.9322,
+            31.7084
+          ],
+          "source_actual_wgs84": [
+            76.932069,
+            31.708467
+          ],
+          "source_snapping_distance_m": 14.41,
+          "dest_requested_wgs84": [
+            77.2195,
+            28.643
+          ],
+          "dest_actual_wgs84": [
+            77.219578,
+            28.642963
+          ],
+          "dest_snapping_distance_m": 8.68,
+          "is_within_tolerance": true
+        },
+        "min_clearance_to_protected_area_m": 2818.64,
+        "approximation_disclosure": "Corridor restricted to +/-5.0km buffer around coarse Level-0 path. Search space reduced by 91.4% vs unconstrained monolithic grid. This hierarchical search is a computationally efficient bounded engineering approximation; mathematical global optimality across the unconstrained full-resolution grid is not claimed.",
+        "execution_time_seconds": 12.355,
+        "peak_ram_mb": 423.45
+      }
+    }
+  ],
+  "engineering_disclaimer": "GeoRoute AI Phase D routes represent preliminary regional planning corridors only, not certified engineering-feasible railway alignments. The coarse-to-fine hierarchical search restricts high-resolution search to a 5.0 km lateral tube around the coarse overview path; this is a computationally efficient bounded engineering approximation, not a mathematically proven global optimum across the unconstrained full-resolution grid.",
+  "warnings": [],
+  "errors": []
+}

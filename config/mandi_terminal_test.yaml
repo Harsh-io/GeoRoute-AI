@@ -1,0 +1,81 @@
+# GeoRoute AI: Mandi Origin Terminal Area (Himachal Pradesh)
+# Small 5km x 5km test AOI around Mandi town and Beas river valley
+# Validated Origin Coordinates: Mandi HP (31.7084° N, 76.9322° E)
+# All coordinates are in WGS84 (EPSG:4326)
+
+region:
+  name: "mandi_terminal_5x5km"
+  description: "Mandi HP origin terminal area (mountain terrain test)"
+  bbox:
+    min_lon: 76.9000
+    min_lat: 31.6800
+    max_lon: 76.9600
+    max_lat: 31.7300
+
+temporal:
+  start_date: "2024-04-01"
+  end_date: "2024-06-30"
+
+stac:
+  api_url: "https://planetarycomputer.microsoft.com/api/stac/v1"
+  use_planetary_computer: true
+
+  optical:
+    collection: "sentinel-2-l2a"
+    max_cloud_cover_percent: 20.0
+    target_resolution_meters: 10.0
+    bands: ["B04", "B03", "B02", "B08"]
+
+  elevation:
+    collection: "cop-dem-glo-30"
+    asset_name: "data"
+
+  land_cover:
+    enabled: true
+    collection: "esa-worldcover"
+    asset_name: "map"
+    year: 2021
+    resampling_method: "nearest"
+
+vector:
+  layers:
+    highways:
+      tags:
+        highway: true
+      description: "Existing roads and paths"
+    buildings:
+      tags:
+        building: true
+      description: "Built-up obstacle structures"
+    railways:
+      tags:
+        railway: true
+      description: "Existing railway infrastructure"
+    waterways:
+      tags:
+        waterway: true
+      description: "Beas River and tributaries"
+  timeout_seconds: 60
+  max_retries: 3
+
+protected_areas:
+  enabled: true
+  authoritative_source_path: "./data/vector/protected_areas.geojson"
+  layer_name: "environmental_zones"
+  fallback_to_osm: true
+  osm_tags:
+    boundary: "protected_area"
+    leisure: "nature_reserve"
+
+processing:
+  dem_resampling_method: "bilinear"
+  land_cover_resampling_method: "nearest"
+  target_pixel_size_meters: 10.0
+
+export:
+  output_dir: "./data/processed/mandi_terminal"
+  vector_format: "geojson"
+  cog:
+    block_size: 256
+    compression: "deflate"
+    overview_levels: [2, 4, 8, 16]

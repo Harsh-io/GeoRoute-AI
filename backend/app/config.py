@@ -31,6 +31,7 @@ class AppConfig(BaseModel):
     # Base storage directories
     base_data_dir: Path = Field(default_factory=lambda: Path(os.getenv("GEOROUTE_DATA_DIR", "data")))
     cost_dir: Path = Field(default_factory=lambda: Path(os.getenv("GEOROUTE_COST_DIR", "data/cost")))
+    regional_cost_dir: Path = Field(default_factory=lambda: Path(os.getenv("GEOROUTE_REGIONAL_COST_DIR", "data/cost/regional")))
     features_dir: Path = Field(default_factory=lambda: Path(os.getenv("GEOROUTE_FEATURES_DIR", "data/features")))
     processed_dir: Path = Field(default_factory=lambda: Path(os.getenv("GEOROUTE_PROCESSED_DIR", "data/processed")))
     jobs_dir: Path = Field(default_factory=lambda: Path(os.getenv("GEOROUTE_JOBS_DIR", "data/jobs")))

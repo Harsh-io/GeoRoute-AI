@@ -1,5 +1,6 @@
-@"
 .env
+.env.*
+!.env.example
 .venv/
 venv/
 __pycache__/
@@ -9,15 +10,29 @@ cache/
 georoute_ai.egg-info/
 *.egg-info/
 
-# Generated / temporary data
+# Generated / temporary data and large regional datasets
+data/jobs/
+data/cost/regional/
+data/raw/cache/
 data/processed/
 data/*.tmp
+data/*.db
+data/test_out/
+*.part
+*.tif
+!data/dem/mandi_dem_30m.tif
+!data/dem/delhi_dem_30m.tif
 
-# IDE
+# Frontend
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+frontend/.env
+frontend/.env.*
+!frontend/.env.example
+
+# IDE & OS
 .vscode/
 .idea/
-
-# OS
 .DS_Store
-Thumbs.db
-"@ | Out-File -Encoding utf8 .gitignore
+Thumbs.db

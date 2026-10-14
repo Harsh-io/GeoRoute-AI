@@ -1,0 +1,100 @@
+{
+  "pipeline": "GeoRoute AI - Mandi->Delhi Railway Routing",
+  "source": {
+    "name": "Mandi, Himachal Pradesh",
+    "lat": 31.7084,
+    "lon": 76.9322
+  },
+  "destination": {
+    "name": "New Delhi Railway Station",
+    "lat": 28.6428,
+    "lon": 77.2191
+  },
+  "total_elapsed_seconds": 69.52,
+  "vector_ingestion": {
+    "delhi_stations": {
+      "features": 12,
+      "path": "data\\routes\\mandi_delhi\\vector\\delhi_stations.geojson"
+    },
+    "delhi_railways": {
+      "features": 238,
+      "path": "data\\routes\\mandi_delhi\\vector\\delhi_railways.geojson"
+    },
+    "mandi_infrastructure": {
+      "features": 16,
+      "path": "data\\routes\\mandi_delhi\\vector\\mandi_infrastructure.geojson"
+    }
+  },
+  "routing": {
+    "source": {
+      "lat": 31.7084,
+      "lon": 76.9322,
+      "name": "Mandi, Himachal Pradesh"
+    },
+    "destination": {
+      "lat": 28.6428,
+      "lon": 77.2191,
+      "name": "New Delhi Railway Station"
+    },
+    "num_routes": 3,
+    "elapsed_seconds": 0.0,
+    "graph_nodes": 0,
+    "graph_edges": 0,
+    "routes": [
+      {
+        "route_id": "route_1_shortest",
+        "strategy": "shortest",
+        "length_km": 373.26,
+        "num_nodes": 12,
+        "validation": {
+          "geometry_valid": true,
+          "geometry_empty": false,
+          "start_near_source": true,
+          "end_near_destination": true
+        }
+      },
+      {
+        "route_id": "route_2_inland",
+        "strategy": "inland_bias",
+        "length_km": 419.87,
+        "num_nodes": 12,
+        "validation": {
+          "geometry_valid": true,
+          "geometry_empty": false,
+          "start_near_source": true,
+          "end_near_destination": true
+        }
+      },
+      {
+        "route_id": "route_3_gradient_aware",
+        "strategy": "gradient_aware",
+        "length_km": 375.33,
+        "num_nodes": 15,
+        "validation": {
+          "geometry_valid": true,
+          "geometry_empty": false,
+          "start_near_source": true,
+          "end_near_destination": true
+        }
+      }
+    ],
+    "saved_files": {
+      "route_1_shortest": "data\\routes\\mandi_delhi\\route_1\\route_1_shortest.geojson",
+      "route_2_inland": "data\\routes\\mandi_delhi\\route_2\\route_2_inland.geojson",
+      "route_3_gradient_aware": "data\\routes\\mandi_delhi\\route_3\\route_3_gradient_aware.geojson",
+      "combined": "data\\routes\\mandi_delhi\\all_routes_combined.geojson",
+      "metadata": "data\\routes\\mandi_delhi\\route_metadata.json"
+    }
+  },
+  "validation": {
+    "source_coordinates_correct": true,
+    "destination_coordinates_correct": true,
+    "exactly_3_routes": true,
+    "all_geometries_valid": true,
+    "no_empty_geometries": true,
+    "routes_not_identical": true,
+    "routes_have_distance": true,
+    "serialisation_ok": true,
+    "overall_status": "PASSED"
+  }
+}

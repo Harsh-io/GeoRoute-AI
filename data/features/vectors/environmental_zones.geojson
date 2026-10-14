@@ -1,0 +1,8 @@
+{
+"type": "FeatureCollection",
+"name": "environmental_zones",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::32643" } },
+"features": [
+
+]
+}

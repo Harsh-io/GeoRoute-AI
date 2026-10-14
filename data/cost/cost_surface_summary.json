@@ -1,0 +1,32 @@
+{
+  "region_name": "mandi_terminal_5x5km",
+  "grid_dimensions": {
+    "width": 579,
+    "height": 565
+  },
+  "resolution_meters": 10.0,
+  "total_cells": 327135,
+  "distance_cost": {
+    "traversable_cells": 324851,
+    "traversable_cost_min": 10.0,
+    "traversable_cost_max": 10.0,
+    "unit": "metres per 10m cell"
+  },
+  "construction_cost": {
+    "traversable_cells": 324851,
+    "mean_cost": 159.51133728027344,
+    "std_cost": 106.9831314086914,
+    "semantics": "dimensionless relative difficulty score * 10m"
+  },
+  "environmental_cost": {
+    "traversable_cells": 324851,
+    "mean_cost": 53.22511672973633,
+    "std_cost": 23.645662307739258,
+    "semantics": "dimensionless relative ecological sensitivity proxy * 10m"
+  },
+  "hard_constraints": {
+    "blocked_cells": 2284,
+    "blocked_percentage": 0.6982,
+    "policy": true
+  }
+}

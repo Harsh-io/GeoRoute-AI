@@ -1,0 +1,55 @@
+{
+  "model_version": "1.0.0",
+  "distance": {
+    "base_cell_distance_m": 10.0,
+    "unit": "metres"
+  },
+  "slope": {
+    "slope_source": "slope_percent",
+    "slope_reference": 20.0,
+    "power": 2.0,
+    "weight": 2.0,
+    "max_penalty_cap": null
+  },
+  "landcover": {
+    "class_penalties": {
+      "10": 2.5,
+      "20": 0.3,
+      "30": 0.2,
+      "40": 1.0,
+      "50": 8.0,
+      "60": 0.1,
+      "70": 15.0,
+      "80": 10.0,
+      "90": 6.0,
+      "95": 8.0,
+      "100": 2.0
+    },
+    "weight": 1.0
+  },
+  "obstacles": {
+    "building_penalty": 10.0,
+    "building_weight": 1.5,
+    "building_hard_exclusion": false,
+    "water_crossing_penalty": 5.0,
+    "water_crossing_weight": 1.0,
+    "highway_crossing_penalty": 2.0,
+    "highway_crossing_weight": 0.5
+  },
+  "environmental": {
+    "protected_area_policy": "HARD_EXCLUSION",
+    "protected_area_penalty": 50.0,
+    "forest_base_penalty": 2.0,
+    "forest_weight": 2.0,
+    "use_ndvi_canopy_weighting": true,
+    "wetland_penalty": 5.0,
+    "wetland_weight": 2.5,
+    "water_penalty": 4.0,
+    "water_weight": 1.5
+  },
+  "constraints": {
+    "treat_nodata_as_blocked": true,
+    "blocked_cell_cost": -9999.0,
+    "hard_constraint_binary_value": 1
+  }
+}

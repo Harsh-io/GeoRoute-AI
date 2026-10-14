@@ -31,6 +31,14 @@ stac:
     collection: "cop-dem-glo-30"
     asset_name: "data"
 
+  land_cover:
+    # ESA WorldCover 10m categorical land cover
+    enabled: true
+    collection: "esa-worldcover"
+    asset_name: "map"
+    year: 2021
+    resampling_method: "nearest"
+
 vector:
   # OpenStreetMap feature queries via OSMnx
   layers:
@@ -42,18 +50,32 @@ vector:
       tags:
         building: true
       description: "Building footprints to avoid as physical obstacles"
-    environmental_zones:
+    railways:
       tags:
-        boundary: "protected_area"
-        leisure: "nature_reserve"
-      description: "Protected and natural areas to avoid for environmental compliance"
+        railway: true
+      description: "Existing railway tracks and infrastructure"
+    waterways:
+      tags:
+        waterway: true
+      description: "Rivers, streams, and mapped water bodies"
 
   timeout_seconds: 60
   max_retries: 3
 
+protected_areas:
+  enabled: true
+  authoritative_source_path: "./data/vector/protected_areas.geojson"
+  layer_name: "environmental_zones"
+  fallback_to_osm: true # Uses your GeoJSON first; falls back to OSM only if the file is missing
+
+  osm_tags:
+    boundary: "protected_area"
+    leisure: "nature_reserve"
+
 processing:
   # Interpolation method for DEM resampling (bilinear, cubic, lanczos)
   dem_resampling_method: "bilinear"
+  land_cover_resampling_method: "nearest"
   # Target grid pixel size in projected UTM coordinates (meters)
   target_pixel_size_meters: 10.0
 

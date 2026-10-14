@@ -1,0 +1,93 @@
+# GeoRoute AI — Reproducible Evaluation Scenarios Configuration
+# Part 6, Task 4
+schema_version: "1.0.0"
+region_name: "mandi_corridor_study_area"
+spatial_reference:
+  crs: "EPSG:32643"
+  display_crs: "EPSG:4326"
+  resolution_meters: 10.0
+  grid_shape: [565, 579] # [height, width]
+  bounds_utm43n:
+    left: 680000.0
+    bottom: 3506530.0
+    right: 685790.0
+    top: 3512180.0
+
+scenarios:
+  - id: "scenario_1_local_in_coverage_success"
+    name: "Valid In-Coverage Corridor Optimization"
+    description: "Evaluates the 3 candidate routing objectives across the real 10m Mandi regional grid."
+    source:
+      longitude: 76.9312
+      latitude: 31.7084
+      name: "Mandi Valley Entry"
+    destination:
+      longitude: 76.9425
+      latitude: 31.7220
+      name: "North Ridge Portal"
+    objectives:
+      - "shortest_distance"
+      - "lowest_construction_difficulty"
+      - "lowest_environmental_impact"
+    processing_mode: "precomputed"
+    snap_to_valid: true
+    max_snap_radius_m: 500.0
+    expected_result: "SUCCESS"
+    checks:
+      - "all_three_objectives_present"
+      - "geometry_continuous_and_valid"
+      - "zero_hard_constraint_violations"
+      - "zero_nodata_violations"
+      - "tradeoffs_exhibited"
+
+  - id: "scenario_2_out_of_coverage_rejection"
+    name: "New Delhi Out-of-Coverage Rejection"
+    description: "Verifies strict rejection of endpoints located outside the precomputed raster extent without arbitrary boundary snapping."
+    source:
+      longitude: 76.9312
+      latitude: 31.7084
+      name: "Mandi Valley Entry"
+    destination:
+      longitude: 77.2197
+      latitude: 28.6431
+      name: "New Delhi Railway Station (341km South)"
+    objectives:
+      - "shortest_distance"
+    processing_mode: "precomputed"
+    expected_result: "REJECTED_OUT_OF_COVERAGE"
+    expected_http_status: 422
+    expected_error_code: "OUT_OF_COVERAGE"
+
+  - id: "scenario_3_blocked_endpoint_no_snapping"
+    name: "Impassable Obstacle Endpoint (No Snapping)"
+    description: "Tests rejection when an endpoint is placed inside a hard obstacle mask cell with snap_to_valid disabled."
+    source:
+      longitude: 76.9312
+      latitude: 31.7084
+      name: "Mandi Valley Entry"
+    destination:
+      longitude: 76.9425
+      latitude: 31.7220
+      name: "North Ridge Portal"
+    snap_to_valid: false
+    processing_mode: "precomputed"
+    expected_result: "HANDLED_ENDPOINT_CHECK"
+
+  - id: "scenario_4_synthetic_no_path_barrier"
+    name: "Controlled Fixture: Infeasible Enclosed Barrier"
+    description: "Synthetic controlled 50x50 raster fixture severed by an impenetrable obstacle wall (clearly labeled synthetic)."
+    fixture_type: "SYNTHETIC_CONTROLLED_FIXTURE"
+    expected_result: "NO_PATH_DETECTED"
+
+  - id: "scenario_5_job_cancellation"
+    name: "Asynchronous Job Cancellation"
+    description: "Verifies thread-pool job termination upon operator cancellation request."
+    source:
+      longitude: 76.9312
+      latitude: 31.7084
+      name: "Mandi Valley Entry"
+    destination:
+      longitude: 76.9425
+      latitude: 31.7220
+      name: "North Ridge Portal"
+    expected_result: "CANCELLED"

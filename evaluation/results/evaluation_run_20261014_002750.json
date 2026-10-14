@@ -1,0 +1,108 @@
+{
+  "evaluation_title": "GeoRoute AI Multi-Objective Pipeline & Route Correctness Evaluation",
+  "evaluation_version": "1.0.0",
+  "overall_status": "PASSED",
+  "total_scenarios": 5,
+  "passed_scenarios": 5,
+  "failed_scenarios": 0,
+  "environment": {
+    "timestamp_utc": "2026-10-13T18:57:49.443065+00:00",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "python_version": "3.12.3",
+    "processor": "Intel64 Family 6 Model 154 Stepping 3, GenuineIntel",
+    "git_commit": "48dd84e829124dcba0bac404940f9f61dea29926",
+    "packages": {
+      "pyorps": "0.4.0",
+      "fastapi": "0.143.0",
+      "rasterio": "1.4.4",
+      "geopandas": "1.1.4",
+      "shapely": "2.1.2",
+      "pyproj": "3.8.0",
+      "numpy": "2.5.4"
+    }
+  },
+  "performance_metrics": {
+    "job_submission_latency_ms": 64.47,
+    "total_optimization_latency_ms": 618.36,
+    "out_of_coverage_rejection_ms": 10.68
+  },
+  "scenario_results": [
+    {
+      "scenario_id": "scenario_1_local_in_coverage_success",
+      "name": "Valid In-Coverage Corridor Optimization",
+      "status": "PASSED",
+      "job_id": "job_4f6e3c4e7cbe",
+      "num_routes": 3,
+      "objectives_evaluated": [
+        "shortest_distance",
+        "lowest_construction_difficulty",
+        "lowest_environmental_impact"
+      ],
+      "independent_validation": {
+        "all_routes_valid": true,
+        "zero_nodata_violations": true,
+        "zero_hard_violations": true,
+        "routes": [
+          {
+            "route_id": "route_1_shortest_distance",
+            "objective": "shortest_distance",
+            "length_km": 1.9607821048680263,
+            "accumulated_cost": 1960.7821048680262,
+            "nodata_violations": 0,
+            "hard_constraint_violations": 0,
+            "is_valid": true
+          },
+          {
+            "route_id": "route_2_lowest_construction_difficulty",
+            "objective": "lowest_construction_difficulty",
+            "length_km": 2.4116652224137107,
+            "accumulated_cost": 18001.757624823447,
+            "nodata_violations": 0,
+            "hard_constraint_violations": 0,
+            "is_valid": true
+          },
+          {
+            "route_id": "route_3_lowest_environmental_impact",
+            "objective": "lowest_environmental_impact",
+            "length_km": 2.4609545442950553,
+            "accumulated_cost": 3921.7854985816093,
+            "nodata_violations": 0,
+            "hard_constraint_violations": 0,
+            "is_valid": true
+          }
+        ]
+      },
+      "timings_ms": {
+        "submission_latency_ms": 64.47,
+        "optimization_latency_ms": 618.36
+      }
+    },
+    {
+      "scenario_id": "scenario_2_out_of_coverage_rejection",
+      "name": "New Delhi Out-of-Coverage Rejection",
+      "status": "PASSED",
+      "http_status": 422,
+      "error_code": "OUT_OF_COVERAGE",
+      "latency_ms": 10.68
+    },
+    {
+      "scenario_id": "scenario_3_blocked_endpoint_no_snapping",
+      "name": "Impassable Obstacle Endpoint (No Snapping)",
+      "status": "PASSED",
+      "http_status": 202
+    },
+    {
+      "scenario_id": "scenario_4_synthetic_no_path_barrier",
+      "name": "Controlled Fixture: Infeasible Enclosed Barrier",
+      "status": "PASSED",
+      "fixture_type": "SYNTHETIC_CONTROLLED_FIXTURE_50x50",
+      "no_path_correctly_detected": true
+    },
+    {
+      "scenario_id": "scenario_5_job_cancellation",
+      "name": "Asynchronous Job Cancellation",
+      "status": "PASSED",
+      "cancelled_job_id": "job_6aa741bbb48d"
+    }
+  ]
+}

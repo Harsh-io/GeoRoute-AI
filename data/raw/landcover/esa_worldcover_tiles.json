@@ -1,0 +1,16 @@
+[
+  {
+    "item_id": "ESA_WorldCover_10m_2021_v200_N30E075",
+    "collection": "esa-worldcover",
+    "year": 2021,
+    "nominal_resolution_m": 10.0,
+    "asset_url": "https://ai4edataeuwest.blob.core.windows.net/esa-worldcover/v200/2021/map/ESA_WorldCover_10m_2021_v200_N30E075_Map.tif?st=2026-10-12T20%3A09%3A51Z&se=2026-10-13T20%3A54%3A51Z&sp=rl&sv=2025-07-05&sr=c&skoid=9c8ff44a-6a2c-4dfb-b298-1c9212f64d9a&sktid=72f988bf-86f1-41af-91ab-2d7cd011db47&skt=2026-10-13T19%3A05%3A25Z&ske=2026-10-20T19%3A05%3A25Z&sks=b&skv=2025-07-05&sig=ECsZyjuyxw%2BDe/8QdV0/BpPdKjER7qzKaxBMcksHmZs%3D"
+  },
+  {
+    "item_id": "ESA_WorldCover_10m_2021_v200_N27E075",
+    "collection": "esa-worldcover",
+    "year": 2021,
+    "nominal_resolution_m": 10.0,
+    "asset_url": "https://ai4edataeuwest.blob.core.windows.net/esa-worldcover/v200/2021/map/ESA_WorldCover_10m_2021_v200_N27E075_Map.tif?st=2026-10-12T20%3A09%3A51Z&se=2026-10-13T20%3A54%3A51Z&sp=rl&sv=2025-07-05&sr=c&skoid=9c8ff44a-6a2c-4dfb-b298-1c9212f64d9a&sktid=72f988bf-86f1-41af-91ab-2d7cd011db47&skt=2026-10-13T19%3A05%3A25Z&ske=2026-10-20T19%3A05%3A25Z&sks=b&skv=2025-07-05&sig=ECsZyjuyxw%2BDe/8QdV0/BpPdKjER7qzKaxBMcksHmZs%3D"
+  }
+]

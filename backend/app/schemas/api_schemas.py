@@ -38,9 +38,9 @@ class RouteGenerationRequest(BaseModel):
     destination: CoordinatePoint = Field(..., description="Destination endpoint coordinates")
     source_crs: str = Field(default="EPSG:4326", description="CRS of source coordinates")
     target_crs: str = Field(default="EPSG:4326", description="CRS of destination coordinates")
-    processing_mode: Literal["precomputed", "full_pipeline"] = Field(
+    processing_mode: Literal["precomputed", "precomputed_regional", "full_pipeline"] = Field(
         default="precomputed",
-        description="Routing workflow mode ('precomputed' uses prepared rasters; 'full_pipeline' runs ingestion-to-routing)",
+        description="Routing workflow mode ('precomputed' uses local Mandi rasters; 'precomputed_regional' uses validated regional rasters; 'full_pipeline' runs ingestion-to-routing)",
     )
     objectives: List[
         Literal["shortest_distance", "lowest_construction_difficulty", "lowest_environmental_impact"]

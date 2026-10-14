@@ -53,6 +53,7 @@ async def generate_routes(request_payload: RouteGenerationRequest, request: Requ
                 target_crs=request_payload.target_crs,
                 snap_to_valid=request_payload.snap_to_valid,
                 max_snap_radius_m=request_payload.max_snap_radius_m,
+                regional=False,
             )
         except OutOfCoverageError as e:
             raise HTTPException(
@@ -75,6 +76,39 @@ async def generate_routes(request_payload: RouteGenerationRequest, request: Requ
             raise HTTPException(
                 status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
                 detail={"code": "VALIDATION_FAILED", "message": f"Pre-flight validation error: {e}"},
+            )
+    elif request_payload.processing_mode in ("precomputed_regional", "full_pipeline"):
+        try:
+            orchestrator.pre_validate_endpoints(
+                source_coords=request_payload.source.as_tuple,
+                target_coords=request_payload.destination.as_tuple,
+                source_crs=request_payload.source_crs,
+                target_crs=request_payload.target_crs,
+                snap_to_valid=request_payload.snap_to_valid,
+                max_snap_radius_m=request_payload.max_snap_radius_m,
+                regional=True,
+            )
+        except OutOfCoverageError as e:
+            raise HTTPException(
+                status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
+                detail={
+                    "code": "OUT_OF_COVERAGE",
+                    "message": str(e),
+                    "coverage_note": (
+                        "Requested coordinate is outside the active regional corridor study area "
+                        "(UTM 43N: [641670..745170, 3131340..3543180])."
+                    ),
+                },
+            )
+        except ImpassableEndpointError as e:
+            raise HTTPException(
+                status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
+                detail={"code": "IMPASSABLE_ENDPOINT", "message": str(e)},
+            )
+        except Exception as e:
+            raise HTTPException(
+                status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                detail={"code": "VALIDATION_FAILED", "message": f"Pre-flight regional validation error: {e}"},
             )
 
     # Generate unique job ID

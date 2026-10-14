@@ -1,0 +1,27 @@
+# GeoRoute AI — Evaluation Report
+
+**Run Timestamp:** 2026-10-13T19:20:11.604471+00:00  
+**Overall Status:** `PASSED`  
+**Git Commit:** `48dd84e829124dcba0bac404940f9f61dea29926`  
+**Platform:** `Windows-11-10.0.26300-SP0`  
+**PYORPS Engine:** `0.4.0`  
+
+## 1. Scenario Execution Matrix
+
+| Scenario ID | Name | Status | Key Diagnostics |
+| :--- | :--- | :--- | :--- |
+| `scenario_1_local_in_coverage_success` | Valid In-Coverage Corridor Optimization | **PASSED** | 3 routes evaluated; True valid |
+| `scenario_2_out_of_coverage_rejection` | New Delhi Out-of-Coverage Rejection | **PASSED** | HTTP 422 (OUT_OF_COVERAGE) |
+| `scenario_3_blocked_endpoint_no_snapping` | Impassable Obstacle Endpoint (No Snapping) | **PASSED** | HTTP 202 (N/A) |
+| `scenario_4_synthetic_no_path_barrier` | Controlled Fixture: Infeasible Enclosed Barrier | **PASSED** | Barrier enforced: True |
+| `scenario_5_job_cancellation` | Asynchronous Job Cancellation | **PASSED** | Cancelled job job_ef2a1ce569df |
+
+## 2. Performance Measurements
+
+- **Job Submission Latency:** 68.0 ms
+- **Corridor Optimization Runtime:** 624.47 ms
+- **Out-of-Coverage Rejection Latency:** 11.08 ms
+
+## 3. Engineering Disclaimer
+
+> GeoRoute AI generates preliminary candidate corridors from available geospatial data and configurable cost assumptions. These outputs are not certified railway alignments, construction cost estimates, environmental clearances, or substitutes for professional engineering and surveying. Current precomputed coverage is limited to a local study area around Mandi, Himachal Pradesh; full Mandi-to-New Delhi corridor planning is not yet supported.

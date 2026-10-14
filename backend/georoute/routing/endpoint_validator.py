@@ -205,7 +205,7 @@ class EndpointValidator:
         if not (0 <= row < self.height and 0 <= col < self.width):
             raise OutOfCoverageError(
                 f"Endpoint '{name}' at ({proj_x:.1f}, {proj_y:.1f}) {self.raster_crs} "
-                f"(row={row}, col={col}) lies outside raster grid bounds "
+                f"(row={row}, col={col}) lies out of bounds (lies outside raster grid bounds) "
                 f"[0..{self.height}-1, 0..{self.width}-1]."
             )
 

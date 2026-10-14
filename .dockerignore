@@ -1,0 +1,37 @@
+# Docker ignore rules for GeoRoute AI
+.git
+.github
+.agents
+.venv
+venv
+__pycache__
+*.pyc
+*.pyo
+.pytest_cache
+*.egg-info
+
+# Exclude frontend source & build (hosted separately on Vercel)
+frontend/
+
+# Exclude large regional datasets (575 MB) and temporary job files
+data/cost/regional/
+data/raw/
+data/processed/
+data/jobs/
+data/test_out/
+data/routes/
+data/*.db
+data/*.tmp
+*.tif
+
+# Exclude reports, docs, and notebook artifacts
+docs/
+notebooks/
+evaluation/reports/
+evaluation/results/
+agents/
+
+# Exclude sensitive secrets
+.env
+.env.*
+*.log

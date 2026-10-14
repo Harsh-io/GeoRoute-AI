@@ -1,0 +1,7397 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1316496,
+          28.6527444
+        ]
+      },
+      "properties": {
+        "osm_id": 249823635,
+        "name": "Ramesh Nagar",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3144992,
+          28.6498106
+        ]
+      },
+      "properties": {
+        "osm_id": 252584508,
+        "name": "Anand Vihar",
+        "railway": "station",
+        "operator": "Northern Railway"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1692817,
+          28.6450127
+        ]
+      },
+      "properties": {
+        "osm_id": 268217229,
+        "name": "Patel Nagar",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1071813,
+          28.7208064
+        ]
+      },
+      "properties": {
+        "osm_id": 268381455,
+        "name": "Rithala",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1988974,
+          28.6667177
+        ]
+      },
+      "properties": {
+        "osm_id": 268381457,
+        "name": "Pratap Nagar",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2074156,
+          28.6664068
+        ]
+      },
+      "properties": {
+        "osm_id": 268381463,
+        "name": "Pul Bangash",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2282488,
+          28.6674493
+        ]
+      },
+      "properties": {
+        "osm_id": 268381477,
+        "name": "Kashmere Gate",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1405393,
+          28.6980415
+        ]
+      },
+      "properties": {
+        "osm_id": 311963955,
+        "name": "Kohat Enclave",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.8214533,
+          30.7021622
+        ]
+      },
+      "properties": {
+        "osm_id": 345195351,
+        "name": "Chandigarh Railway Station",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.8482707,
+          30.6102864
+        ]
+      },
+      "properties": {
+        "osm_id": 345195380,
+        "name": "Ghagghar",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.7877754,
+          30.3960955
+        ]
+      },
+      "properties": {
+        "osm_id": 345195425,
+        "name": "Dhulkot",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.8504589,
+          30.2555275
+        ]
+      },
+      "properties": {
+        "osm_id": 345195453,
+        "name": "Mohri",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.8616655,
+          30.1658852
+        ]
+      },
+      "properties": {
+        "osm_id": 345195476,
+        "name": "Shahabad Markanda",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.8538341,
+          30.1153978
+        ]
+      },
+      "properties": {
+        "osm_id": 345195481,
+        "name": "Dhola Mazra",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.8444394,
+          30.0664157
+        ]
+      },
+      "properties": {
+        "osm_id": 345195495,
+        "name": "Dhirpur",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.8424108,
+          30.0185597
+        ]
+      },
+      "properties": {
+        "osm_id": 345195502,
+        "name": "Dhoda Kheri",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.8517108,
+          29.9698587
+        ]
+      },
+      "properties": {
+        "osm_id": 345195515,
+        "name": "Kurukshetra Junction",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.8996025,
+          29.9046213
+        ]
+      },
+      "properties": {
+        "osm_id": 345195519,
+        "name": "Amin",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.9254714,
+          29.8319792
+        ]
+      },
+      "properties": {
+        "osm_id": 345195547,
+        "name": "Nilokheri",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.9555293,
+          29.7519953
+        ]
+      },
+      "properties": {
+        "osm_id": 345195574,
+        "name": "Bhaini Khurd",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.9653774,
+          29.5408768
+        ]
+      },
+      "properties": {
+        "osm_id": 345195615,
+        "name": "Gharaunda",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.9685943,
+          29.4956582
+        ]
+      },
+      "properties": {
+        "osm_id": 345195621,
+        "name": "Kohand",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.9666194,
+          29.4499843
+        ]
+      },
+      "properties": {
+        "osm_id": 345195626,
+        "name": "Babarpur",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.9801567,
+          29.3180709
+        ]
+      },
+      "properties": {
+        "osm_id": 345195648,
+        "name": "Diwana",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0084189,
+          29.1852264
+        ]
+      },
+      "properties": {
+        "osm_id": 345195663,
+        "name": "Bhodwal Majri",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0110886,
+          29.1315256
+        ]
+      },
+      "properties": {
+        "osm_id": 345195671,
+        "name": "Ganaur",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0590439,
+          28.9040911
+        ]
+      },
+      "properties": {
+        "osm_id": 345195701,
+        "name": "Barota",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.964085,
+          29.3903294
+        ]
+      },
+      "properties": {
+        "osm_id": 345195776,
+        "name": "Panipat Junction",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.9654962,
+          29.6134124
+        ]
+      },
+      "properties": {
+        "osm_id": 345195782,
+        "name": "Bazida Jatan",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0856631,
+          28.8464766
+        ]
+      },
+      "properties": {
+        "osm_id": 345195834,
+        "name": "Narela",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0128043,
+          29.0634081
+        ]
+      },
+      "properties": {
+        "osm_id": 345195836,
+        "name": "Sandal Kalan",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1024832,
+          28.8015786
+        ]
+      },
+      "properties": {
+        "osm_id": 345195841,
+        "name": "Holambi Kalan",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1158609,
+          28.7696903
+        ]
+      },
+      "properties": {
+        "osm_id": 345199448,
+        "name": "Khera Kalan",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1885235,
+          28.6440122
+        ]
+      },
+      "properties": {
+        "osm_id": 345234441,
+        "name": "Karol Bagh",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.8872227,
+          30.7270873
+        ]
+      },
+      "properties": {
+        "osm_id": 345322690,
+        "name": "Chandi Mandir",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.9315647,
+          30.8392295
+        ]
+      },
+      "properties": {
+        "osm_id": 345332167,
+        "name": "Kalka",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.5936242,
+          30.4862768
+        ]
+      },
+      "properties": {
+        "osm_id": 347408489,
+        "name": "Rajpura Junction",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1506635,
+          28.655746
+        ]
+      },
+      "properties": {
+        "osm_id": 347676531,
+        "name": "Kirti Nagar (Blue Line)",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1582587,
+          28.6515829
+        ]
+      },
+      "properties": {
+        "osm_id": 347676595,
+        "name": "Shadipur",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1424288,
+          28.657859
+        ]
+      },
+      "properties": {
+        "osm_id": 347676947,
+        "name": "Moti Nagar",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0930017,
+          28.4812716
+        ]
+      },
+      "properties": {
+        "osm_id": 535297593,
+        "name": "Sikanderpur",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1207949,
+          28.5487786
+        ]
+      },
+      "properties": {
+        "osm_id": 554257763,
+        "name": "Delhi Aerocity",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2067072,
+          28.5442564
+        ]
+      },
+      "properties": {
+        "osm_id": 554257787,
+        "name": "Hauz Khas (Yellow Line)",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2113218,
+          28.6288963
+        ]
+      },
+      "properties": {
+        "osm_id": 554257833,
+        "name": "Shivaji Stadium",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2227421,
+          28.6434826
+        ]
+      },
+      "properties": {
+        "osm_id": 554257841,
+        "name": "New Delhi",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2166306,
+          28.6671626
+        ]
+      },
+      "properties": {
+        "osm_id": 561316983,
+        "name": "Tis Hazari",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.4377864,
+          28.6743756
+        ]
+      },
+      "properties": {
+        "osm_id": 571763990,
+        "name": "Naya Ghaziabad",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3398383,
+          30.0828384
+        ]
+      },
+      "properties": {
+        "osm_id": 571775041,
+        "name": "Kalanour",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1156635,
+          28.6117094
+        ]
+      },
+      "properties": {
+        "osm_id": 632050796,
+        "name": "Delhi Cantonment",
+        "railway": "station",
+        "operator": "Northern Railway"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2505301,
+          28.6684339
+        ]
+      },
+      "properties": {
+        "osm_id": 663755930,
+        "name": "Shastri Park",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2668137,
+          28.6698165
+        ]
+      },
+      "properties": {
+        "osm_id": 663758609,
+        "name": "Seelampur",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2778473,
+          28.6717907
+        ]
+      },
+      "properties": {
+        "osm_id": 663758748,
+        "name": "Welcome (Red Line)",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2898858,
+          28.6734298
+        ]
+      },
+      "properties": {
+        "osm_id": 663758998,
+        "name": "Shahdara",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2922087,
+          28.6734557
+        ]
+      },
+      "properties": {
+        "osm_id": 663759047,
+        "name": "Delhi Shahdara Junction",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3123949,
+          28.6757197
+        ]
+      },
+      "properties": {
+        "osm_id": 663759851,
+        "name": "Jhilmil",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3182947,
+          28.6731908
+        ]
+      },
+      "properties": {
+        "osm_id": 663760328,
+        "name": "Vivek Vihar",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1818589,
+          28.6700885
+        ]
+      },
+      "properties": {
+        "osm_id": 663761411,
+        "name": "Shastri Nagar",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1703467,
+          28.6735891
+        ]
+      },
+      "properties": {
+        "osm_id": 663761428,
+        "name": "Inderlok (Red Line)",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1647754,
+          28.6824082
+        ]
+      },
+      "properties": {
+        "osm_id": 663761505,
+        "name": "Kanhaiya Nagar",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1616833,
+          28.6889264
+        ]
+      },
+      "properties": {
+        "osm_id": 663762151,
+        "name": "Keshav Puram",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1524856,
+          28.6960485
+        ]
+      },
+      "properties": {
+        "osm_id": 663762964,
+        "name": "Netaji Subhash Place (Red Line)",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1322497,
+          28.7032676
+        ]
+      },
+      "properties": {
+        "osm_id": 663765153,
+        "name": "Madhuban Chowk",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1259971,
+          28.7075774
+        ]
+      },
+      "properties": {
+        "osm_id": 663766390,
+        "name": "Rohini East",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3644349,
+          28.6742784
+        ]
+      },
+      "properties": {
+        "osm_id": 902351341,
+        "name": "Sahibabad Junction",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1862115,
+          28.5822036
+        ]
+      },
+      "properties": {
+        "osm_id": 910356438,
+        "name": "Delhi Safdarjang",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2276886,
+          28.5789548
+        ]
+      },
+      "properties": {
+        "osm_id": 910356522,
+        "name": "Sewa Nagar",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2656232,
+          28.5594753
+        ]
+      },
+      "properties": {
+        "osm_id": 910356583,
+        "name": "Okhla",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2004935,
+          28.6685068
+        ]
+      },
+      "properties": {
+        "osm_id": 913081055,
+        "name": "Subzimandi",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2276494,
+          28.660932
+        ]
+      },
+      "properties": {
+        "osm_id": 913095905,
+        "name": "Delhi Junction",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2063998,
+          28.6981333
+        ]
+      },
+      "properties": {
+        "osm_id": 913485885,
+        "name": "GTB Nagar",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1770629,
+          28.7035041
+        ]
+      },
+      "properties": {
+        "osm_id": 913486329,
+        "name": "Delhi Azadpur",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.17119,
+          28.6671217
+        ]
+      },
+      "properties": {
+        "osm_id": 914644353,
+        "name": "Dayabasti",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.156957,
+          28.6598088
+        ]
+      },
+      "properties": {
+        "osm_id": 914644362,
+        "name": "Patel Nagar",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1852561,
+          28.6627515
+        ]
+      },
+      "properties": {
+        "osm_id": 915407469,
+        "name": "Delhi Sarai Rohilla",
+        "railway": "station",
+        "operator": "Northern Railway"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.5331576,
+          30.9725363
+        ]
+      },
+      "properties": {
+        "osm_id": 919621691,
+        "name": "Rupnagar",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1672884,
+          28.7144008
+        ]
+      },
+      "properties": {
+        "osm_id": 920882336,
+        "name": "Adarsh Nagar",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0866995,
+          28.5564626
+        ]
+      },
+      "properties": {
+        "osm_id": 927873494,
+        "name": "IGI Airport",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.25909,
+          28.5494785
+        ]
+      },
+      "properties": {
+        "osm_id": 927873510,
+        "name": "Kalkaji Mandir",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1617158,
+          28.5918719
+        ]
+      },
+      "properties": {
+        "osm_id": 927873513,
+        "name": "Dhaula Kuan",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2720537,
+          28.9573736
+        ]
+      },
+      "properties": {
+        "osm_id": 928023324,
+        "name": "Baghpat Road",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2889628,
+          28.8713993
+        ]
+      },
+      "properties": {
+        "osm_id": 928023337,
+        "name": "Khekra",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2231116,
+          28.6424786
+        ]
+      },
+      "properties": {
+        "osm_id": 938409545,
+        "name": "New Delhi Airport Express Terminal",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0924713,
+          28.585353
+        ]
+      },
+      "properties": {
+        "osm_id": 940975619,
+        "name": "Palam",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0512889,
+          28.5369587
+        ]
+      },
+      "properties": {
+        "osm_id": 941132747,
+        "name": "Bijwasan",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3155003,
+          28.6488509
+        ]
+      },
+      "properties": {
+        "osm_id": 944845341,
+        "name": "Anand Vihar Terminal",
+        "railway": "station",
+        "operator": "Northern Railway"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1390403,
+          31.1084158
+        ]
+      },
+      "properties": {
+        "osm_id": 1007594553,
+        "name": "Summer Hill",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1223602,
+          31.101442
+        ]
+      },
+      "properties": {
+        "osm_id": 1007643832,
+        "name": "Jutogh",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1396526,
+          31.0761952
+        ]
+      },
+      "properties": {
+        "osm_id": 1007967365,
+        "name": "Taradevi",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1247482,
+          31.0390358
+        ]
+      },
+      "properties": {
+        "osm_id": 1008185895,
+        "name": "Shoghi railway station",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.117454,
+          30.9918762
+        ]
+      },
+      "properties": {
+        "osm_id": 1008275379,
+        "name": "Kanoh",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1075184,
+          30.9662763
+        ]
+      },
+      "properties": {
+        "osm_id": 1008406111,
+        "name": "Kandaghat",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1308917,
+          30.934895
+        ]
+      },
+      "properties": {
+        "osm_id": 1008495103,
+        "name": "Salogra",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0983488,
+          30.9084118
+        ]
+      },
+      "properties": {
+        "osm_id": 1010148792,
+        "name": "Solan",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0561745,
+          30.889192
+        ]
+      },
+      "properties": {
+        "osm_id": 1010176759,
+        "name": "Kumarhatti",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0238599,
+          30.9000422
+        ]
+      },
+      "properties": {
+        "osm_id": 1010180792,
+        "name": "Dharampur Himachal",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.004641,
+          30.8944372
+        ]
+      },
+      "properties": {
+        "osm_id": 1010186137,
+        "name": "Sonwara",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.9920345,
+          30.882141
+        ]
+      },
+      "properties": {
+        "osm_id": 1010270861,
+        "name": "Jabli",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.9940495,
+          30.8521234
+        ]
+      },
+      "properties": {
+        "osm_id": 1010277394,
+        "name": "Koti",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.9717678,
+          30.8422079
+        ]
+      },
+      "properties": {
+        "osm_id": 1010284302,
+        "name": "Gumman",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.9540411,
+          30.844939
+        ]
+      },
+      "properties": {
+        "osm_id": 1010299574,
+        "name": "Taksal",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0823928,
+          30.8899327
+        ]
+      },
+      "properties": {
+        "osm_id": 1010433994,
+        "name": "Barog",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1600593,
+          31.1024672
+        ]
+      },
+      "properties": {
+        "osm_id": 1010816739,
+        "name": "Shimla",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2423298,
+          30.1358522
+        ]
+      },
+      "properties": {
+        "osm_id": 1191193947,
+        "name": "Jagadhri Workshop",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2876637,
+          30.117322
+        ]
+      },
+      "properties": {
+        "osm_id": 1191194121,
+        "name": "Yamunanagar Jagadhri",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.4596338,
+          29.805291
+        ]
+      },
+      "properties": {
+        "osm_id": 1212550756,
+        "name": "Rampur Maniharn",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.4397053,
+          29.7027806
+        ]
+      },
+      "properties": {
+        "osm_id": 1212553648,
+        "name": "Nanauta",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3166981,
+          29.444942
+        ]
+      },
+      "properties": {
+        "osm_id": 1214772651,
+        "name": "Shamli",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.4201253,
+          29.6149564
+        ]
+      },
+      "properties": {
+        "osm_id": 1215312246,
+        "name": "Thana Bhawan",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2925329,
+          29.3239298
+        ]
+      },
+      "properties": {
+        "osm_id": 1215329148,
+        "name": "Kandhla",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.4111951,
+          29.5927617
+        ]
+      },
+      "properties": {
+        "osm_id": 1216083488,
+        "name": "Thana Bhawan Town",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2729245,
+          29.0969176
+        ]
+      },
+      "properties": {
+        "osm_id": 1218978767,
+        "name": "Baraut",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2859874,
+          29.1827849
+        ]
+      },
+      "properties": {
+        "osm_id": 1218979865,
+        "name": "Qasimpur Kheri",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.5005778,
+          31.2299862
+        ]
+      },
+      "properties": {
+        "osm_id": 1364801853,
+        "name": "Anandpur Sahib",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.7396095,
+          30.6659824
+        ]
+      },
+      "properties": {
+        "osm_id": 1424479531,
+        "name": "Sahibzada Ajitsingh Nagar (Mohali)",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.6362157,
+          30.7266681
+        ]
+      },
+      "properties": {
+        "osm_id": 1432140896,
+        "name": "Kharar",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3070774,
+          28.4107617
+        ]
+      },
+      "properties": {
+        "osm_id": 1572649890,
+        "name": "Faridabad",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.5796261,
+          28.8909196
+        ]
+      },
+      "properties": {
+        "osm_id": 1617345292,
+        "name": "Rohtak Junction",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3096295,
+          28.7443269
+        ]
+      },
+      "properties": {
+        "osm_id": 1665773472,
+        "name": "Noli",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.8286956,
+          30.3382427
+        ]
+      },
+      "properties": {
+        "osm_id": 1682138966,
+        "name": "Ambala Cantonment Junction",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.7312921,
+          29.3912906
+        ]
+      },
+      "properties": {
+        "osm_id": 1682140689,
+        "name": "Karsindhu",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.6618039,
+          29.3976959
+        ]
+      },
+      "properties": {
+        "osm_id": 1682140720,
+        "name": "Safidon",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.5212869,
+          28.3301012
+        ]
+      },
+      "properties": {
+        "osm_id": 1740292314,
+        "name": "Jatusana",
+        "railway": "station",
+        "operator": "NWR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.6297119,
+          28.359565
+        ]
+      },
+      "properties": {
+        "osm_id": 1741803778,
+        "name": "Palhawas",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.643426,
+          28.486429
+        ]
+      },
+      "properties": {
+        "osm_id": 1758228351,
+        "name": "Machhrauli",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.6387719,
+          28.5933993
+        ]
+      },
+      "properties": {
+        "osm_id": 1758228413,
+        "name": "Jhajjar Junction",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.6400672,
+          28.7415074
+        ]
+      },
+      "properties": {
+        "osm_id": 1758228541,
+        "name": "Dighal",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.6290527,
+          28.858154
+        ]
+      },
+      "properties": {
+        "osm_id": 1759694209,
+        "name": "Asthal Bohar Junction",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.4238978,
+          30.023901
+        ]
+      },
+      "properties": {
+        "osm_id": 1761043358,
+        "name": "Sarsawa",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0111572,
+          28.4890874
+        ]
+      },
+      "properties": {
+        "osm_id": 1774430929,
+        "name": "Gurgaon",
+        "railway": "station",
+        "operator": "Northern Railway"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.7188545,
+          28.3200927
+        ]
+      },
+      "properties": {
+        "osm_id": 1811444172,
+        "name": "Inchhapuri",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1513605,
+          28.6545409
+        ]
+      },
+      "properties": {
+        "osm_id": 1824659702,
+        "name": "Kirti Nagar (Green Line)",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1577026,
+          28.6620531
+        ]
+      },
+      "properties": {
+        "osm_id": 1824659742,
+        "name": "Satguru Ramsingh Marg",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1275679,
+          28.6814073
+        ]
+      },
+      "properties": {
+        "osm_id": 1825425942,
+        "name": "Shakurbasti",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3121997,
+          28.3402623
+        ]
+      },
+      "properties": {
+        "osm_id": 1834247581,
+        "name": "Ballabgarh",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3094718,
+          28.377372
+        ]
+      },
+      "properties": {
+        "osm_id": 1834384707,
+        "name": "Faridabad New Town",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2970508,
+          28.5034421
+        ]
+      },
+      "properties": {
+        "osm_id": 1835677720,
+        "name": "Tughlakabad",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.7646449,
+          30.3780749
+        ]
+      },
+      "properties": {
+        "osm_id": 1880739921,
+        "name": "Ambala City",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.8864299,
+          30.2940126
+        ]
+      },
+      "properties": {
+        "osm_id": 1882492132,
+        "name": "Dukheri",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.5182933,
+          28.9598736
+        ]
+      },
+      "properties": {
+        "osm_id": 1950805863,
+        "name": "Samar Gopalpur",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.5563075,
+          29.3781947
+        ]
+      },
+      "properties": {
+        "osm_id": 1951388077,
+        "name": "Budhakhera",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1405102,
+          28.6137142
+        ]
+      },
+      "properties": {
+        "osm_id": 1988513576,
+        "name": "Brar Square",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1979077,
+          28.6627442
+        ]
+      },
+      "properties": {
+        "osm_id": 1988513580,
+        "name": "Delhi Kishanganj",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2440352,
+          28.5792815
+        ]
+      },
+      "properties": {
+        "osm_id": 1988513581,
+        "name": "Lajpat Nagar",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2168728,
+          28.5797537
+        ]
+      },
+      "properties": {
+        "osm_id": 1988513582,
+        "name": "Lodhi Colony",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2472109,
+          28.6160392
+        ]
+      },
+      "properties": {
+        "osm_id": 1988513583,
+        "name": "Pragati Maidan",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1963127,
+          28.5812101
+        ]
+      },
+      "properties": {
+        "osm_id": 1988513597,
+        "name": "Sarojini Nagar",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2266682,
+          28.6334521
+        ]
+      },
+      "properties": {
+        "osm_id": 1988513598,
+        "name": "Shivaji Bridge",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2374037,
+          28.6281166
+        ]
+      },
+      "properties": {
+        "osm_id": 1988513599,
+        "name": "Tilak Bridge",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1838135,
+          28.6644729
+        ]
+      },
+      "properties": {
+        "osm_id": 1988513600,
+        "name": "Vivekanand Puri",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2535202,
+          28.5889646
+        ]
+      },
+      "properties": {
+        "osm_id": 1988585233,
+        "name": "Hazrat Nizamuddin Junction",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.115385,
+          28.7149569
+        ]
+      },
+      "properties": {
+        "osm_id": 1988598418,
+        "name": "Rohini West",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0881318,
+          28.4917023
+        ]
+      },
+      "properties": {
+        "osm_id": 1988848864,
+        "name": "Belvedere Towers",
+        "railway": "station",
+        "operator": "Haryana Mass Rapid Transport Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0929909,
+          28.4875596
+        ]
+      },
+      "properties": {
+        "osm_id": 1988848882,
+        "name": "DLF Phase 2",
+        "railway": "station",
+        "operator": "Haryana Mass Rapid Transport Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0944367,
+          28.4809969
+        ]
+      },
+      "properties": {
+        "osm_id": 1988848900,
+        "name": "Sikanderpur RMRG Station",
+        "railway": "station",
+        "operator": "Haryana Mass Rapid Transport Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0032892,
+          29.2415096
+        ]
+      },
+      "properties": {
+        "osm_id": 1999318064,
+        "name": "Samalkha",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.572102,
+          30.8348982
+        ]
+      },
+      "properties": {
+        "osm_id": 2114824165,
+        "name": "Kurali",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.824853,
+          29.9669022
+        ]
+      },
+      "properties": {
+        "osm_id": 2370877858,
+        "name": "Thanesar City",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.9698292,
+          29.6951152
+        ]
+      },
+      "properties": {
+        "osm_id": 2372269781,
+        "name": "Karnal",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.9307249,
+          28.4382985
+        ]
+      },
+      "properties": {
+        "osm_id": 2410174120,
+        "name": "Garhi Harsaru Junction",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0946306,
+          28.5007775
+        ]
+      },
+      "properties": {
+        "osm_id": 2533456421,
+        "name": "Moulsari Avenue Station",
+        "railway": "station",
+        "operator": "Haryana Mass Rapid Transport Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.093661,
+          28.4935677
+        ]
+      },
+      "properties": {
+        "osm_id": 2533456422,
+        "name": "Phase 3 Station",
+        "railway": "station",
+        "operator": "Haryana Mass Rapid Transport Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.9785264,
+          28.6119086
+        ]
+      },
+      "properties": {
+        "osm_id": 2579042823,
+        "name": "Dhansa Bus Stand",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.9380354,
+          29.7977912
+        ]
+      },
+      "properties": {
+        "osm_id": 2634530967,
+        "name": "Taraori",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.6210932,
+          29.8840783
+        ]
+      },
+      "properties": {
+        "osm_id": 2636626122,
+        "name": "Pehowa Road",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.7046616,
+          29.9183346
+        ]
+      },
+      "properties": {
+        "osm_id": 2636626123,
+        "name": "Pindarsi",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.5272073,
+          29.8501333
+        ]
+      },
+      "properties": {
+        "osm_id": 2636631817,
+        "name": "Tik",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.8693734,
+          29.401351
+        ]
+      },
+      "properties": {
+        "osm_id": 2650054070,
+        "name": "Asan",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.9068632,
+          29.3999555
+        ]
+      },
+      "properties": {
+        "osm_id": 2650054073,
+        "name": "Khukrana",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.8100252,
+          29.400038
+        ]
+      },
+      "properties": {
+        "osm_id": 2650054075,
+        "name": "Madlauda",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.5507406,
+          29.2391117
+        ]
+      },
+      "properties": {
+        "osm_id": 2661970260,
+        "name": "Bhambewa",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.6896855,
+          29.1407871
+        ]
+      },
+      "properties": {
+        "osm_id": 2663052813,
+        "name": "Gohana Junction",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.6800868,
+          29.0952479
+        ]
+      },
+      "properties": {
+        "osm_id": 2663289264,
+        "name": "Bhainswan",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.6547624,
+          29.0184184
+        ]
+      },
+      "properties": {
+        "osm_id": 2663289268,
+        "name": "Jasia",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.6287684,
+          28.9492514
+        ]
+      },
+      "properties": {
+        "osm_id": 2663289271,
+        "name": "Makrauli",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.8366605,
+          29.278363
+        ]
+      },
+      "properties": {
+        "osm_id": 2663623456,
+        "name": "Israna",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.7577587,
+          29.2121977
+        ]
+      },
+      "properties": {
+        "osm_id": 2663623460,
+        "name": "Mundlana",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.8861683,
+          29.315768
+        ]
+      },
+      "properties": {
+        "osm_id": 2663623464,
+        "name": "Naultha",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.5046773,
+          30.7953231
+        ]
+      },
+      "properties": {
+        "osm_id": 2677260537,
+        "name": "Morinda Junction",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0171182,
+          28.9898429
+        ]
+      },
+      "properties": {
+        "osm_id": 2727721421,
+        "name": "Sonipat Junction",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.7399498,
+          28.7997503
+        ]
+      },
+      "properties": {
+        "osm_id": 2743083594,
+        "name": "Ismaila Haryana",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.6810632,
+          28.8313433
+        ]
+      },
+      "properties": {
+        "osm_id": 2743084748,
+        "name": "Kharawar",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.7730354,
+          28.7822931
+        ]
+      },
+      "properties": {
+        "osm_id": 2743517925,
+        "name": "Sampla",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2050447,
+          28.5433691
+        ]
+      },
+      "properties": {
+        "osm_id": 2832938172,
+        "name": "Hauz Khas (Magenta Line)",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1750592,
+          28.5568967
+        ]
+      },
+      "properties": {
+        "osm_id": 2832938185,
+        "name": "Munirka",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2749004,
+          28.5597477
+        ]
+      },
+      "properties": {
+        "osm_id": 2832938187,
+        "name": "Sukhdev Vihar",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1611168,
+          28.557827
+        ]
+      },
+      "properties": {
+        "osm_id": 2832938196,
+        "name": "Vasant Vihar",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1402814,
+          28.5608462
+        ]
+      },
+      "properties": {
+        "osm_id": 2832938301,
+        "name": "Shankar Vihar",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1111279,
+          28.5771145
+        ]
+      },
+      "properties": {
+        "osm_id": 2832938307,
+        "name": "Sadar Bazar Cantonment",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0830764,
+          28.5889102
+        ]
+      },
+      "properties": {
+        "osm_id": 2832938323,
+        "name": "Palam",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0823751,
+          28.60185
+        ]
+      },
+      "properties": {
+        "osm_id": 2832938324,
+        "name": "Dashrath Puri",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0779492,
+          28.6289471
+        ]
+      },
+      "properties": {
+        "osm_id": 2832938329,
+        "name": "Janakpuri West",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.321595,
+          28.5529418
+        ]
+      },
+      "properties": {
+        "osm_id": 2833058715,
+        "name": "Okhla Bird Sanctuary",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2384925,
+          28.5419077
+        ]
+      },
+      "properties": {
+        "osm_id": 2833058716,
+        "name": "Greater Kailash",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3101107,
+          28.542916
+        ]
+      },
+      "properties": {
+        "osm_id": 2833058718,
+        "name": "Kalindi Kunj",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2569441,
+          28.5503522
+        ]
+      },
+      "properties": {
+        "osm_id": 2833058719,
+        "name": "Kalkaji Mandir",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.291877,
+          28.5612999
+        ]
+      },
+      "properties": {
+        "osm_id": 2833058720,
+        "name": "Okhla Vihar",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2210916,
+          28.5423747
+        ]
+      },
+      "properties": {
+        "osm_id": 2833058721,
+        "name": "Panchsheel Park",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1855231,
+          28.5503805
+        ]
+      },
+      "properties": {
+        "osm_id": 2833058722,
+        "name": "R. K. Puram",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2966578,
+          28.5458279
+        ]
+      },
+      "properties": {
+        "osm_id": 2833058723,
+        "name": "Jasola Vihar Shaheen Bagh",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3338373,
+          28.5639051
+        ]
+      },
+      "properties": {
+        "osm_id": 2833058750,
+        "name": "Botanical Garden (Magenta Line)",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1226566,
+          28.564835
+        ]
+      },
+      "properties": {
+        "osm_id": 2833058753,
+        "name": "Terminal 1 IGI Airport",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3088549,
+          28.613453
+        ]
+      },
+      "properties": {
+        "osm_id": 2833531907,
+        "name": "Trilokpuri Sanjay Lake",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3158749,
+          28.6468336
+        ]
+      },
+      "properties": {
+        "osm_id": 2833971686,
+        "name": "Anand Vihar (Blue Line)",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3060686,
+          28.6493434
+        ]
+      },
+      "properties": {
+        "osm_id": 2833971689,
+        "name": "Karkarduma (Pink Line)",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1382701,
+          28.7446411
+        ]
+      },
+      "properties": {
+        "osm_id": 2837147019,
+        "name": "Samaypur Badli",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1398526,
+          28.7383795
+        ]
+      },
+      "properties": {
+        "osm_id": 2837147020,
+        "name": "Rohini Sector 18, 19",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1962004,
+          30.1527779
+        ]
+      },
+      "properties": {
+        "osm_id": 3025146977,
+        "name": "Darazpur",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0384921,
+          30.2128704
+        ]
+      },
+      "properties": {
+        "osm_id": 3046558115,
+        "name": "Barara",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.9338376,
+          30.2654448
+        ]
+      },
+      "properties": {
+        "osm_id": 3047562521,
+        "name": "Kesri",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1223564,
+          30.1813556
+        ]
+      },
+      "properties": {
+        "osm_id": 3047562523,
+        "name": "Mustafabad",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.988666,
+          30.2339088
+        ]
+      },
+      "properties": {
+        "osm_id": 3047568193,
+        "name": "Tandwal",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1048971,
+          28.4329768
+        ]
+      },
+      "properties": {
+        "osm_id": 3181132316,
+        "name": "Sector 54 Chowk",
+        "railway": "station",
+        "operator": "Haryana Mass Rapid Transport Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1004632,
+          28.4463829
+        ]
+      },
+      "properties": {
+        "osm_id": 3181132336,
+        "name": "Sector 53-54",
+        "railway": "station",
+        "operator": "Haryana Mass Rapid Transport Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0969529,
+          28.4574254
+        ]
+      },
+      "properties": {
+        "osm_id": 3181132346,
+        "name": "Sector 42-43",
+        "railway": "station",
+        "operator": "Haryana Mass Rapid Transport Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2863387,
+          28.5630488
+        ]
+      },
+      "properties": {
+        "osm_id": 3284155408,
+        "name": "Jamia Millia Islamia",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.8253658,
+          28.467225
+        ]
+      },
+      "properties": {
+        "osm_id": 3735985541,
+        "name": "Farrukhnagar",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0715537,
+          28.5603258
+        ]
+      },
+      "properties": {
+        "osm_id": 3736001861,
+        "name": "Shahbad Muhammadpur",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2303164,
+          28.5411108
+        ]
+      },
+      "properties": {
+        "osm_id": 3832323219,
+        "name": "Chirag Delhi",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0939606,
+          28.4714258
+        ]
+      },
+      "properties": {
+        "osm_id": 3953773571,
+        "name": "DLF Phase 1",
+        "railway": "station",
+        "operator": "Haryana Mass Rapid Transport Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1051327,
+          28.4233556
+        ]
+      },
+      "properties": {
+        "osm_id": 3953773598,
+        "name": "Sector 55\u201356",
+        "railway": "station",
+        "operator": "Haryana Mass Rapid Transport Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.4223772,
+          28.4942558
+        ]
+      },
+      "properties": {
+        "osm_id": 4165777365,
+        "name": "Noida Sector 143",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.4766042,
+          28.4480552
+        ]
+      },
+      "properties": {
+        "osm_id": 4165777372,
+        "name": "Noida Sector 148",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.466115,
+          28.4593549
+        ]
+      },
+      "properties": {
+        "osm_id": 4165778709,
+        "name": "Noida Sector 147",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.433077,
+          28.4862877
+        ]
+      },
+      "properties": {
+        "osm_id": 4165778734,
+        "name": "Noida Sector 144",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3964456,
+          28.5222688
+        ]
+      },
+      "properties": {
+        "osm_id": 4267913896,
+        "name": "Noida Sector 83",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.4036068,
+          28.5107689
+        ]
+      },
+      "properties": {
+        "osm_id": 4267913913,
+        "name": "Noida Sector 137",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.310718,
+          28.6319032
+        ]
+      },
+      "properties": {
+        "osm_id": 4676900918,
+        "name": "IP Extension",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2957877,
+          28.6536001
+        ]
+      },
+      "properties": {
+        "osm_id": 4676900919,
+        "name": "Karkarduma Court",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3054069,
+          28.6200437
+        ]
+      },
+      "properties": {
+        "osm_id": 4676900933,
+        "name": "East Vinod Nagar - Mayur Vihar - II",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3044525,
+          28.624979
+        ]
+      },
+      "properties": {
+        "osm_id": 4676901224,
+        "name": "Mandawali - West Vinod Nagar",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.4552077,
+          28.4688192
+        ]
+      },
+      "properties": {
+        "osm_id": 4678434989,
+        "name": "Noida Sector 146",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.44241,
+          28.4789957
+        ]
+      },
+      "properties": {
+        "osm_id": 4678434990,
+        "name": "Noida Sector 145",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.7894848,
+          31.9891581
+        ]
+      },
+      "properties": {
+        "osm_id": 4781894867,
+        "name": "Joginder Nagar",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3947544,
+          28.5324041
+        ]
+      },
+      "properties": {
+        "osm_id": 4849443432,
+        "name": "NSEZ",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.4743773,
+          29.8450559
+        ]
+      },
+      "properties": {
+        "osm_id": 4880330847,
+        "name": "Bhankla",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3849489,
+          28.5560481
+        ]
+      },
+      "properties": {
+        "osm_id": 4950920120,
+        "name": "Noida Sector 101",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3752593,
+          28.5857189
+        ]
+      },
+      "properties": {
+        "osm_id": 4950923222,
+        "name": "Noida Sector 51",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3796581,
+          28.5653305
+        ]
+      },
+      "properties": {
+        "osm_id": 4950923223,
+        "name": "Noida Sector 76",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3899489,
+          28.5492993
+        ]
+      },
+      "properties": {
+        "osm_id": 4950923224,
+        "name": "Noida Sector 81",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.4065374,
+          28.6734288
+        ]
+      },
+      "properties": {
+        "osm_id": 4951104873,
+        "name": "Hindon River",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.4959882,
+          28.5875659
+        ]
+      },
+      "properties": {
+        "osm_id": 5045260875,
+        "name": "Maripat",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.4555218,
+          28.7037921
+        ]
+      },
+      "properties": {
+        "osm_id": 5049369446,
+        "name": "Guldhar",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1182795,
+          28.6981
+        ]
+      },
+      "properties": {
+        "osm_id": 5215706475,
+        "name": "Deepali Chowk",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.142467,
+          28.7248993
+        ]
+      },
+      "properties": {
+        "osm_id": 5215706476,
+        "name": "Haiderpur Village",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1300725,
+          28.7035674
+        ]
+      },
+      "properties": {
+        "osm_id": 5215706520,
+        "name": "Madhuban Chowk",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1387306,
+          28.7130743
+        ]
+      },
+      "properties": {
+        "osm_id": 5215706525,
+        "name": "North Pitampura - Prashant Vihar",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.168087,
+          28.7369574
+        ]
+      },
+      "properties": {
+        "osm_id": 5215706542,
+        "name": "Bhalaswa",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1995697,
+          28.7298286
+        ]
+      },
+      "properties": {
+        "osm_id": 5215706767,
+        "name": "Burari",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.223995,
+          28.7211162
+        ]
+      },
+      "properties": {
+        "osm_id": 5215706768,
+        "name": "Jagatpur - Wazirabad",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2544989,
+          28.7052606
+        ]
+      },
+      "properties": {
+        "osm_id": 5215706769,
+        "name": "Khajuri Khas",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2773106,
+          28.7023762
+        ]
+      },
+      "properties": {
+        "osm_id": 5215706770,
+        "name": "Yamuna Vihar",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2626474,
+          28.7035987
+        ]
+      },
+      "properties": {
+        "osm_id": 5215706782,
+        "name": "Bhajanpura",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2274526,
+          28.7102223
+        ]
+      },
+      "properties": {
+        "osm_id": 5215706793,
+        "name": "Soorghat",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1491044,
+          28.7299398
+        ]
+      },
+      "properties": {
+        "osm_id": 5397665618,
+        "name": "Haiderpur Badli Mor",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2122822,
+          28.6158794
+        ]
+      },
+      "properties": {
+        "osm_id": 5453646586,
+        "name": "Central Secretariat",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.9828171,
+          28.4645841
+        ]
+      },
+      "properties": {
+        "osm_id": 5698863055,
+        "name": "Basai Dhankot",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.7522376,
+          28.347879
+        ]
+      },
+      "properties": {
+        "osm_id": 5698863060,
+        "name": "Pataudi Road",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.9977711,
+          28.6913435
+        ]
+      },
+      "properties": {
+        "osm_id": 5737166729,
+        "name": "Ghevra",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.9303569,
+          28.7012243
+        ]
+      },
+      "properties": {
+        "osm_id": 5737166743,
+        "name": "Bahadurgarh",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0573608,
+          28.6862813
+        ]
+      },
+      "properties": {
+        "osm_id": 5737166756,
+        "name": "Nangloi",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0494433,
+          28.586443
+        ]
+      },
+      "properties": {
+        "osm_id": 5737168025,
+        "name": "Dwarka Sector 11",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1782756,
+          28.6424955
+        ]
+      },
+      "properties": {
+        "osm_id": 5781445033,
+        "name": "Rajendra Place",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2515057,
+          28.5460584
+        ]
+      },
+      "properties": {
+        "osm_id": 5795235047,
+        "name": "Nehru Enclave",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2170087,
+          28.658087
+        ]
+      },
+      "properties": {
+        "osm_id": 5854161857,
+        "name": "Sadar Bazar",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.6838914,
+          30.4288941
+        ]
+      },
+      "properties": {
+        "osm_id": 5996554300,
+        "name": "Shambhu",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.5154463,
+          30.5375961
+        ]
+      },
+      "properties": {
+        "osm_id": 5996651903,
+        "name": "Sarai Banjara",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.5179434,
+          30.4153659
+        ]
+      },
+      "properties": {
+        "osm_id": 6010960061,
+        "name": "Kauli",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2894599,
+          28.721381
+        ]
+      },
+      "properties": {
+        "osm_id": 6049373291,
+        "name": "Shiv Vihar",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2901293,
+          28.7128806
+        ]
+      },
+      "properties": {
+        "osm_id": 6049373292,
+        "name": "Johri Enclave",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2861253,
+          28.7024752
+        ]
+      },
+      "properties": {
+        "osm_id": 6049373293,
+        "name": "Gokulpuri",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2796973,
+          28.6920781
+        ]
+      },
+      "properties": {
+        "osm_id": 6049373294,
+        "name": "Maujpur-Babarpur",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2748055,
+          28.6826822
+        ]
+      },
+      "properties": {
+        "osm_id": 6049373295,
+        "name": "Jaffrabad",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2770239,
+          28.6724018
+        ]
+      },
+      "properties": {
+        "osm_id": 6049373296,
+        "name": "Welcome (Pink Line)",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2848431,
+          28.6646764
+        ]
+      },
+      "properties": {
+        "osm_id": 6049373297,
+        "name": "East Azad Nagar",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2901199,
+          28.6578127
+        ]
+      },
+      "properties": {
+        "osm_id": 6049373298,
+        "name": "Krishna Nagar",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2217499,
+          28.6419258
+        ]
+      },
+      "properties": {
+        "osm_id": 6131069513,
+        "name": "New Delhi",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2022237,
+          28.521168
+        ]
+      },
+      "properties": {
+        "osm_id": 6179179025,
+        "name": "Saket",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1818406,
+          28.724403
+        ]
+      },
+      "properties": {
+        "osm_id": 6196100475,
+        "name": "Majlis Park",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2492973,
+          28.565871
+        ]
+      },
+      "properties": {
+        "osm_id": 6196100477,
+        "name": "Vinobapuri",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2909319,
+          28.6036425
+        ]
+      },
+      "properties": {
+        "osm_id": 6196100478,
+        "name": "Mayur Vihar - I (Pink Line)",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2987023,
+          28.6058619
+        ]
+      },
+      "properties": {
+        "osm_id": 6196100479,
+        "name": "Shree Ram Mandir Mayur Vihar",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2572494,
+          28.5887494
+        ]
+      },
+      "properties": {
+        "osm_id": 6196100480,
+        "name": "Sarai Kale Khan - Nizamuddin",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2585979,
+          28.5724231
+        ]
+      },
+      "properties": {
+        "osm_id": 6196100481,
+        "name": "Ashram",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.8597082,
+          28.7367594
+        ]
+      },
+      "properties": {
+        "osm_id": 6290617350,
+        "name": "Asaudah",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.7325789,
+          29.1849998
+        ]
+      },
+      "properties": {
+        "osm_id": 6293927838,
+        "name": "Sarsadh",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.8552662,
+          29.043042
+        ]
+      },
+      "properties": {
+        "osm_id": 6296131195,
+        "name": "Mohana",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.7944291,
+          30.4797102
+        ]
+      },
+      "properties": {
+        "osm_id": 6343594198,
+        "name": "Lalru",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.8073838,
+          30.5173904
+        ]
+      },
+      "properties": {
+        "osm_id": 6346667013,
+        "name": "Dapper",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1143745,
+          30.9291649
+        ]
+      },
+      "properties": {
+        "osm_id": 6348901109,
+        "name": "Solan Brewery",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1035189,
+          31.0220107
+        ]
+      },
+      "properties": {
+        "osm_id": 6348909494,
+        "name": "Kathleeghat",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.4282442,
+          28.6528563
+        ]
+      },
+      "properties": {
+        "osm_id": 6354716753,
+        "name": "Ghaziabad Junction",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.4731049,
+          29.9976497
+        ]
+      },
+      "properties": {
+        "osm_id": 6355893044,
+        "name": "Pilkhani",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3447406,
+          29.5050859
+        ]
+      },
+      "properties": {
+        "osm_id": 6358902801,
+        "name": "Silawar",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.363043,
+          29.5290735
+        ]
+      },
+      "properties": {
+        "osm_id": 6358919641,
+        "name": "Hind",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.4524173,
+          29.7573398
+        ]
+      },
+      "properties": {
+        "osm_id": 6358957041,
+        "name": "Sona Arjunpur",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.4990077,
+          29.8845693
+        ]
+      },
+      "properties": {
+        "osm_id": 6358977884,
+        "name": "Manani",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.5805165,
+          30.8637804
+        ]
+      },
+      "properties": {
+        "osm_id": 6363140863,
+        "name": "Chatouli",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.5664983,
+          30.912297
+        ]
+      },
+      "properties": {
+        "osm_id": 6363164130,
+        "name": "Mianpur",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.5918851,
+          31.0265582
+        ]
+      },
+      "properties": {
+        "osm_id": 6367852201,
+        "name": "Ghanauli",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.5928775,
+          31.1106196
+        ]
+      },
+      "properties": {
+        "osm_id": 6367909366,
+        "name": "Bharatgarh",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.5629437,
+          31.1867093
+        ]
+      },
+      "properties": {
+        "osm_id": 6367919406,
+        "name": "Kiratpur Sahib",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1076284,
+          28.6028727
+        ]
+      },
+      "properties": {
+        "osm_id": 6388555278,
+        "name": "Nasirpur",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.857079,
+          28.4010774
+        ]
+      },
+      "properties": {
+        "osm_id": 6388592702,
+        "name": "Patli",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.7994236,
+          28.3728138
+        ]
+      },
+      "properties": {
+        "osm_id": 6388606320,
+        "name": "Jataula Jauri Sampka",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3918919,
+          28.676999
+        ]
+      },
+      "properties": {
+        "osm_id": 6397652315,
+        "name": "Arthala",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3339154,
+          28.6766619
+        ]
+      },
+      "properties": {
+        "osm_id": 6397652316,
+        "name": "Shaheed Nagar",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3840026,
+          28.6785372
+        ]
+      },
+      "properties": {
+        "osm_id": 6397652318,
+        "name": "Mohan Nagar",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3706454,
+          28.6782281
+        ]
+      },
+      "properties": {
+        "osm_id": 6397652319,
+        "name": "Shyam Park",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3581426,
+          28.6776112
+        ]
+      },
+      "properties": {
+        "osm_id": 6397652320,
+        "name": "Rajendra Nagar",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3468279,
+          28.6770876
+        ]
+      },
+      "properties": {
+        "osm_id": 6397652321,
+        "name": "Raj Bagh",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.175741,
+          28.5785326
+        ]
+      },
+      "properties": {
+        "osm_id": 6453544485,
+        "name": "Sir M. Vishweshwaraiah Moti Bagh",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1878709,
+          28.5702618
+        ]
+      },
+      "properties": {
+        "osm_id": 6453544486,
+        "name": "Bhikaji Cama Place",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2075857,
+          28.5736524
+        ]
+      },
+      "properties": {
+        "osm_id": 6453544487,
+        "name": "Dilli Haat - INA (Pink Line)",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2385055,
+          28.56958
+        ]
+      },
+      "properties": {
+        "osm_id": 6453544488,
+        "name": "Lajpat Nagar (Pink Line)",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2205677,
+          28.5685664
+        ]
+      },
+      "properties": {
+        "osm_id": 6453544489,
+        "name": "South Extension",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1297333,
+          28.6371795
+        ]
+      },
+      "properties": {
+        "osm_id": 6453544492,
+        "name": "Mayapuri",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1242597,
+          28.6511896
+        ]
+      },
+      "properties": {
+        "osm_id": 6453992648,
+        "name": "Rajouri Garden (Pink Line)",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1227198,
+          28.6490563
+        ]
+      },
+      "properties": {
+        "osm_id": 6453992649,
+        "name": "Rajouri Garden (Blue Line)",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1542607,
+          28.6947146
+        ]
+      },
+      "properties": {
+        "osm_id": 6453992650,
+        "name": "Netaji Subhash Place (Pink Line)",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1819488,
+          28.7057821
+        ]
+      },
+      "properties": {
+        "osm_id": 6453992651,
+        "name": "Azadpur (Pink Line)",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1803722,
+          28.7070448
+        ]
+      },
+      "properties": {
+        "osm_id": 6453992652,
+        "name": "Azadpur (Yellow Line)",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2093017,
+          28.5741769
+        ]
+      },
+      "properties": {
+        "osm_id": 6453992653,
+        "name": "Dilli Haat - INA (Yellow Line)",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2364011,
+          28.5705968
+        ]
+      },
+      "properties": {
+        "osm_id": 6453992654,
+        "name": "Lajpat Nagar (Violet Line)",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3155317,
+          28.6466157
+        ]
+      },
+      "properties": {
+        "osm_id": 6454015469,
+        "name": "Anand Vihar (Pink Line)",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3055178,
+          28.6483176
+        ]
+      },
+      "properties": {
+        "osm_id": 6458130120,
+        "name": "Karkarduma (Blue Line)",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1404187,
+          28.6086201
+        ]
+      },
+      "properties": {
+        "osm_id": 6458165644,
+        "name": "Delhi Cantt",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1654317,
+          28.7019574
+        ]
+      },
+      "properties": {
+        "osm_id": 6458202840,
+        "name": "Shalimar Bagh",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1496094,
+          28.6857668
+        ]
+      },
+      "properties": {
+        "osm_id": 6458202841,
+        "name": "Shakurpur",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1980786,
+          28.575817
+        ]
+      },
+      "properties": {
+        "osm_id": 6458202842,
+        "name": "Sarojini Nagar",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1391976,
+          28.6727671
+        ]
+      },
+      "properties": {
+        "osm_id": 6458202843,
+        "name": "Punjabi Bagh West",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1364438,
+          28.6243852
+        ]
+      },
+      "properties": {
+        "osm_id": 6458202844,
+        "name": "Naraina Vihar",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1272678,
+          28.6580737
+        ]
+      },
+      "properties": {
+        "osm_id": 6458202845,
+        "name": "ESI - Basaidarapur",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1691872,
+          28.6727066
+        ]
+      },
+      "properties": {
+        "osm_id": 6465991434,
+        "name": "Inderlok (Green Line)",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.155291,
+          28.6716045
+        ]
+      },
+      "properties": {
+        "osm_id": 6465991435,
+        "name": "Ashok Park Main",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1461239,
+          28.672995
+        ]
+      },
+      "properties": {
+        "osm_id": 6465991436,
+        "name": "Punjabi Bagh",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1304722,
+          28.6750317
+        ]
+      },
+      "properties": {
+        "osm_id": 6465991437,
+        "name": "Shivaji Park",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1193599,
+          28.6764752
+        ]
+      },
+      "properties": {
+        "osm_id": 6465991438,
+        "name": "Madipur",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1122823,
+          28.6773563
+        ]
+      },
+      "properties": {
+        "osm_id": 6465991439,
+        "name": "Paschim Vihar East",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0926793,
+          28.6798074
+        ]
+      },
+      "properties": {
+        "osm_id": 6465991441,
+        "name": "Peera Garhi",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0808492,
+          28.681103
+        ]
+      },
+      "properties": {
+        "osm_id": 6465991442,
+        "name": "Udyog Nagar",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.074,
+          28.6818775
+        ]
+      },
+      "properties": {
+        "osm_id": 6465991443,
+        "name": "Surajmal Stadium",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0647319,
+          28.6824007
+        ]
+      },
+      "properties": {
+        "osm_id": 6465991444,
+        "name": "Nangloi",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0562463,
+          28.6822009
+        ]
+      },
+      "properties": {
+        "osm_id": 6465991445,
+        "name": "Nangloi Railway Station",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0439437,
+          28.6823085
+        ]
+      },
+      "properties": {
+        "osm_id": 6465991446,
+        "name": "Rajdhani Park",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0305741,
+          28.6824341
+        ]
+      },
+      "properties": {
+        "osm_id": 6465991447,
+        "name": "Mundka",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0171485,
+          28.6833701
+        ]
+      },
+      "properties": {
+        "osm_id": 6465991448,
+        "name": "Mundka Industrial Area",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.9961591,
+          28.6852384
+        ]
+      },
+      "properties": {
+        "osm_id": 6465991449,
+        "name": "Ghevra",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.9772082,
+          28.6868849
+        ]
+      },
+      "properties": {
+        "osm_id": 6465991450,
+        "name": "Tikri Kalan",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.9640828,
+          28.6880254
+        ]
+      },
+      "properties": {
+        "osm_id": 6465991451,
+        "name": "Tikri Border",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.9511988,
+          28.689281
+        ]
+      },
+      "properties": {
+        "osm_id": 6465991452,
+        "name": "Pandit Shree Ram Sharma",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.9354807,
+          28.6907783
+        ]
+      },
+      "properties": {
+        "osm_id": 6465991453,
+        "name": "Bahadurgarh City",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.9192027,
+          28.6974603
+        ]
+      },
+      "properties": {
+        "osm_id": 6465991454,
+        "name": "Brigadier Hoshiyar Singh",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1945546,
+          28.5470121
+        ]
+      },
+      "properties": {
+        "osm_id": 6485904396,
+        "name": "IIT Delhi",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.249551,
+          28.6206019
+        ]
+      },
+      "properties": {
+        "osm_id": 6537193575,
+        "name": "Indraprastha",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.268013,
+          28.6233124
+        ]
+      },
+      "properties": {
+        "osm_id": 6537193576,
+        "name": "Yamuna Bank",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3015085,
+          28.5890885
+        ]
+      },
+      "properties": {
+        "osm_id": 6537196022,
+        "name": "New Ashok Nagar",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3561638,
+          28.5747334
+        ]
+      },
+      "properties": {
+        "osm_id": 6537260850,
+        "name": "Noida City Centre",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3463247,
+          28.5673755
+        ]
+      },
+      "properties": {
+        "osm_id": 6537268384,
+        "name": "Noida Golf Course",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3343995,
+          28.5639434
+        ]
+      },
+      "properties": {
+        "osm_id": 6537285485,
+        "name": "Botanical Garden (Blue Line)",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3260756,
+          28.5707583
+        ]
+      },
+      "properties": {
+        "osm_id": 6537285486,
+        "name": "Noida Sector 18",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3177778,
+          28.578081
+        ]
+      },
+      "properties": {
+        "osm_id": 6537285487,
+        "name": "Noida Sector 16",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3116118,
+          28.5848835
+        ]
+      },
+      "properties": {
+        "osm_id": 6537285488,
+        "name": "Noida Sector 15",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2895398,
+          28.604064
+        ]
+      },
+      "properties": {
+        "osm_id": 6539745133,
+        "name": "Mayur Vihar - I (Blue Line)",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0407315,
+          28.5922362
+        ]
+      },
+      "properties": {
+        "osm_id": 6539894848,
+        "name": "Dwarka Sector 12",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1999165,
+          28.6443188
+        ]
+      },
+      "properties": {
+        "osm_id": 6539894849,
+        "name": "Jhandewalan",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2085787,
+          28.6392436
+        ]
+      },
+      "properties": {
+        "osm_id": 6539894850,
+        "name": "Ramakrishna Ashram Marg",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2193123,
+          28.6327062
+        ]
+      },
+      "properties": {
+        "osm_id": 6539894851,
+        "name": "Rajiv Chowk",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2250046,
+          28.6297676
+        ]
+      },
+      "properties": {
+        "osm_id": 6539894855,
+        "name": "Barakhambha Road",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2341966,
+          28.6256122
+        ]
+      },
+      "properties": {
+        "osm_id": 6539894856,
+        "name": "Mandi House",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2425278,
+          28.6234752
+        ]
+      },
+      "properties": {
+        "osm_id": 6539894857,
+        "name": "Supreme Court",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0574996,
+          28.5810577
+        ]
+      },
+      "properties": {
+        "osm_id": 6539894859,
+        "name": "Dwarka Sector 10",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0653316,
+          28.574272
+        ]
+      },
+      "properties": {
+        "osm_id": 6539894860,
+        "name": "Dwarka Sector 9",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0670366,
+          28.5656109
+        ]
+      },
+      "properties": {
+        "osm_id": 6539894861,
+        "name": "Dwarka Sector 8",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0585605,
+          28.5519218
+        ]
+      },
+      "properties": {
+        "osm_id": 6539894862,
+        "name": "Dwarka Sector 21",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3735885,
+          28.6169861
+        ]
+      },
+      "properties": {
+        "osm_id": 6539894863,
+        "name": "Noida Sector 62",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3726828,
+          28.6065279
+        ]
+      },
+      "properties": {
+        "osm_id": 6539894864,
+        "name": "Noida Sector 59",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3722663,
+          28.5975854
+        ]
+      },
+      "properties": {
+        "osm_id": 6539894865,
+        "name": "Noida Sector 61",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3730237,
+          28.5868739
+        ]
+      },
+      "properties": {
+        "osm_id": 6539894866,
+        "name": "Noida Sector 52",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3634917,
+          28.5802538
+        ]
+      },
+      "properties": {
+        "osm_id": 6539894867,
+        "name": "Noida Sector 34",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3750033,
+          28.6282627
+        ]
+      },
+      "properties": {
+        "osm_id": 6539894868,
+        "name": "Noida Electronic City",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.078085,
+          28.6295839
+        ]
+      },
+      "properties": {
+        "osm_id": 6541854249,
+        "name": "Janakpuri West",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0652861,
+          28.6248465
+        ]
+      },
+      "properties": {
+        "osm_id": 6541854250,
+        "name": "Uttam Nagar East",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0557122,
+          28.621757
+        ]
+      },
+      "properties": {
+        "osm_id": 6541854251,
+        "name": "Uttam Nagar West",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0450787,
+          28.6202758
+        ]
+      },
+      "properties": {
+        "osm_id": 6541854252,
+        "name": "Nawada",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0332792,
+          28.61931
+        ]
+      },
+      "properties": {
+        "osm_id": 6541854253,
+        "name": "Dwarka Mor",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0224342,
+          28.6158874
+        ]
+      },
+      "properties": {
+        "osm_id": 6541854254,
+        "name": "Dwarka - Kakrola (Grey Line)",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0227628,
+          28.6149362
+        ]
+      },
+      "properties": {
+        "osm_id": 6541854255,
+        "name": "Dwarka - Kakrola (Blue Line)",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0259765,
+          28.6022218
+        ]
+      },
+      "properties": {
+        "osm_id": 6541854256,
+        "name": "Dwarka Sector 14",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0335407,
+          28.597009
+        ]
+      },
+      "properties": {
+        "osm_id": 6541854257,
+        "name": "Dwarka Sector 13",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1704223,
+          28.7165805
+        ]
+      },
+      "properties": {
+        "osm_id": 6547772109,
+        "name": "Adarsh Nagar",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.162658,
+          28.7259717
+        ]
+      },
+      "properties": {
+        "osm_id": 6547772110,
+        "name": "Jahangirpuri",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.086757,
+          28.633021
+        ]
+      },
+      "properties": {
+        "osm_id": 6548798518,
+        "name": "Janakpuri East",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0964961,
+          28.6365482
+        ]
+      },
+      "properties": {
+        "osm_id": 6548798519,
+        "name": "Tilak Nagar",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1051815,
+          28.6404593
+        ]
+      },
+      "properties": {
+        "osm_id": 6548798520,
+        "name": "Subhash Nagar",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.11282,
+          28.6437265
+        ]
+      },
+      "properties": {
+        "osm_id": 6548798521,
+        "name": "Tagore Garden",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1022685,
+          28.4820212
+        ]
+      },
+      "properties": {
+        "osm_id": 7018301879,
+        "name": "Guru Dronacharya",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1939912,
+          28.7027136
+        ]
+      },
+      "properties": {
+        "osm_id": 7018301880,
+        "name": "Model Town",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0798926,
+          28.4795543
+        ]
+      },
+      "properties": {
+        "osm_id": 7018301881,
+        "name": "M G Road",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0724222,
+          28.4723277
+        ]
+      },
+      "properties": {
+        "osm_id": 7018301882,
+        "name": "IFFCO Chowk",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2078058,
+          28.5668602
+        ]
+      },
+      "properties": {
+        "osm_id": 7018301883,
+        "name": "A.I.I.M.S.",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2067933,
+          28.5580071
+        ]
+      },
+      "properties": {
+        "osm_id": 7018316585,
+        "name": "Green Park",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2250299,
+          28.6768508
+        ]
+      },
+      "properties": {
+        "osm_id": 7018316586,
+        "name": "Civil Lines",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2217271,
+          28.6863222
+        ]
+      },
+      "properties": {
+        "osm_id": 7018316587,
+        "name": "Vidhan Sabha",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2147459,
+          28.6950772
+        ]
+      },
+      "properties": {
+        "osm_id": 7018316588,
+        "name": "Vishwa Vidyalaya",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0726571,
+          28.4593429
+        ]
+      },
+      "properties": {
+        "osm_id": 7018316590,
+        "name": "Millennium City Centre Gurugram",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2048241,
+          28.5290656
+        ]
+      },
+      "properties": {
+        "osm_id": 7018316591,
+        "name": "Malviya Nagar",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1750019,
+          28.5067242
+        ]
+      },
+      "properties": {
+        "osm_id": 7018316592,
+        "name": "Chhatarpur",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1613745,
+          28.4991235
+        ]
+      },
+      "properties": {
+        "osm_id": 7018711118,
+        "name": "Sultanpur",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2303375,
+          28.6584227
+        ]
+      },
+      "properties": {
+        "osm_id": 7018886724,
+        "name": "Chandni Chowk",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2265153,
+          28.6492649
+        ]
+      },
+      "properties": {
+        "osm_id": 7018886725,
+        "name": "Chawri Bazaar",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.214031,
+          28.6229664
+        ]
+      },
+      "properties": {
+        "osm_id": 7018886726,
+        "name": "Patel Chowk",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.211796,
+          28.6095136
+        ]
+      },
+      "properties": {
+        "osm_id": 7018886727,
+        "name": "Seva Teerth",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2110967,
+          28.5973513
+        ]
+      },
+      "properties": {
+        "osm_id": 7018886728,
+        "name": "Lok Kalyan Marg",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2125273,
+          28.5865094
+        ]
+      },
+      "properties": {
+        "osm_id": 7018886729,
+        "name": "Jor Bagh",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1864532,
+          28.512951
+        ]
+      },
+      "properties": {
+        "osm_id": 7018886730,
+        "name": "Qutab Minar",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1491866,
+          28.493751
+        ]
+      },
+      "properties": {
+        "osm_id": 7018886731,
+        "name": "Ghitorni",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1257622,
+          28.4807352
+        ]
+      },
+      "properties": {
+        "osm_id": 7018886732,
+        "name": "Arjan Garh",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0104375,
+          28.6173003
+        ]
+      },
+      "properties": {
+        "osm_id": 7039532905,
+        "name": "Nangli",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2517386,
+          28.5514171
+        ]
+      },
+      "properties": {
+        "osm_id": 7267374894,
+        "name": "Nehru Place",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2419637,
+          28.5553298
+        ]
+      },
+      "properties": {
+        "osm_id": 7267374895,
+        "name": "Kailash Colony",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2366607,
+          28.657483
+        ]
+      },
+      "properties": {
+        "osm_id": 7282286730,
+        "name": "Lal Quila",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2291281,
+          28.6022446
+        ]
+      },
+      "properties": {
+        "osm_id": 7282286731,
+        "name": "Khan Market",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2407795,
+          28.6392174
+        ]
+      },
+      "properties": {
+        "osm_id": 7282286733,
+        "name": "Delhi Gate",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2196985,
+          28.6327786
+        ]
+      },
+      "properties": {
+        "osm_id": 8018558072,
+        "name": "Rajiv Chowk",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1022154,
+          28.6786018
+        ]
+      },
+      "properties": {
+        "osm_id": 9066465094,
+        "name": "Paschim Vihar West",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.4154736,
+          28.6706449
+        ]
+      },
+      "properties": {
+        "osm_id": 9144051094,
+        "name": "Shaheed Sthal",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.9865067,
+          28.6124504
+        ]
+      },
+      "properties": {
+        "osm_id": 9172459622,
+        "name": "Najafgarh",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.277523,
+          28.6305974
+        ]
+      },
+      "properties": {
+        "osm_id": 9415047898,
+        "name": "Laxmi Nagar",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2952819,
+          28.6414176
+        ]
+      },
+      "properties": {
+        "osm_id": 9415047899,
+        "name": "Preet Vihar",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3103481,
+          28.4227134
+        ]
+      },
+      "properties": {
+        "osm_id": 9552724758,
+        "name": "Badhkal Mor",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3164509,
+          28.340002
+        ]
+      },
+      "properties": {
+        "osm_id": 9565595809,
+        "name": "Raja Nahar Singh",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2342555,
+          28.5644044
+        ]
+      },
+      "properties": {
+        "osm_id": 9584236504,
+        "name": "Moolchand",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2393151,
+          28.5830386
+        ]
+      },
+      "properties": {
+        "osm_id": 9584236505,
+        "name": "Jangpura",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2337833,
+          28.5882347
+        ]
+      },
+      "properties": {
+        "osm_id": 9584236506,
+        "name": "Jawaharlal Nehru Stadium",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2192587,
+          28.6240485
+        ]
+      },
+      "properties": {
+        "osm_id": 9584236507,
+        "name": "Janpath",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2410437,
+          28.6281909
+        ]
+      },
+      "properties": {
+        "osm_id": 9584236508,
+        "name": "ITO",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2642761,
+          28.5445521
+        ]
+      },
+      "properties": {
+        "osm_id": 9597709830,
+        "name": "Govind Puri",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2750407,
+          28.5429338
+        ]
+      },
+      "properties": {
+        "osm_id": 9597709831,
+        "name": "Harkesh Nagar Okhla",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.4520764,
+          30.0082402
+        ]
+      },
+      "properties": {
+        "osm_id": 9828929712,
+        "name": "unnamed_station",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2341926,
+          28.6255149
+        ]
+      },
+      "properties": {
+        "osm_id": 9920295123,
+        "name": "Mandi House",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0851893,
+          28.61572
+        ]
+      },
+      "properties": {
+        "osm_id": 9936590366,
+        "name": "Dabri Mor - Janakpuri South",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3782348,
+          28.5743583
+        ]
+      },
+      "properties": {
+        "osm_id": 10074648933,
+        "name": "Rainbow Metro Station",
+        "railway": "station",
+        "operator": "NR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2868145,
+          28.6364592
+        ]
+      },
+      "properties": {
+        "osm_id": 10314380321,
+        "name": "Nirman Vihar",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.339575,
+          28.6496701
+        ]
+      },
+      "properties": {
+        "osm_id": 10314380322,
+        "name": "Vaishali",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3243429,
+          28.6452857
+        ]
+      },
+      "properties": {
+        "osm_id": 10314380323,
+        "name": "Kaushambi",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.5237453,
+          28.8803334
+        ]
+      },
+      "properties": {
+        "osm_id": 10654590058,
+        "name": "Dobh Bhali",
+        "railway": "station",
+        "operator": "Indian Railways"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2580654,
+          28.5891891
+        ]
+      },
+      "properties": {
+        "osm_id": 10700089586,
+        "name": "Sarai Kale Khan",
+        "railway": "station",
+        "operator": "National Capital Region Transport Corporation"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3167989,
+          28.6474707
+        ]
+      },
+      "properties": {
+        "osm_id": 10700089589,
+        "name": "Anand Vihar",
+        "railway": "station",
+        "operator": "National Capital Region Transport Corporation"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3008678,
+          28.675385
+        ]
+      },
+      "properties": {
+        "osm_id": 10922685709,
+        "name": "Mansarovar Park",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.228051,
+          28.6686728
+        ]
+      },
+      "properties": {
+        "osm_id": 11174317216,
+        "name": "Kashmere Gate",
+        "railway": "station",
+        "operator": "Indian Railways"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0453073,
+          28.5508323
+        ]
+      },
+      "properties": {
+        "osm_id": 11203142798,
+        "name": "Yashobhoomi Dwarka Sector 25",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.4676413,
+          28.7422822
+        ]
+      },
+      "properties": {
+        "osm_id": 11293126096,
+        "name": "Duhai Depot Station",
+        "railway": "station",
+        "operator": "National Capital Region Transport Corporation"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.4714071,
+          28.7270172
+        ]
+      },
+      "properties": {
+        "osm_id": 11293126097,
+        "name": "Duhai",
+        "railway": "station",
+        "operator": "National Capital Region Transport Corporation"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.4137315,
+          28.6725546
+        ]
+      },
+      "properties": {
+        "osm_id": 11293189742,
+        "name": "Ghaziabad",
+        "railway": "station",
+        "operator": "National Capital Region Transport Corporation"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.4457502,
+          28.6995434
+        ]
+      },
+      "properties": {
+        "osm_id": 11294005967,
+        "name": "Guldhar",
+        "railway": "station",
+        "operator": "National Capital Region Transport Corporation"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0843425,
+          28.6477917
+        ]
+      },
+      "properties": {
+        "osm_id": 12149316873,
+        "name": "Krishna Park Extension",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3025205,
+          28.5913212
+        ]
+      },
+      "properties": {
+        "osm_id": 12478188647,
+        "name": "New Ashok Nagar",
+        "railway": "station",
+        "operator": "National Capital Region Transport Corporation"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0892567,
+          28.4980703
+        ]
+      },
+      "properties": {
+        "osm_id": 13289640468,
+        "name": "Cyber City",
+        "railway": "station",
+        "operator": "Haryana Mass Rapid Transport Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2425095,
+          28.7087185
+        ]
+      },
+      "properties": {
+        "osm_id": 13628489714,
+        "name": "Nanaksar - Sonia Vihar",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2137118,
+          28.7249649
+        ]
+      },
+      "properties": {
+        "osm_id": 13628489720,
+        "name": "Jharoda Majra",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1649348,
+          28.7022144
+        ]
+      },
+      "properties": {
+        "osm_id": 13821961795,
+        "name": "Shalimar Bagh Metro Station",
+        "railway": "station",
+        "operator": "Delhi Metro"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2946029,
+          28.5195804
+        ]
+      },
+      "properties": {
+        "osm_id": 13860634717,
+        "name": "Mohan Estate",
+        "railway": "station",
+        "operator": "Delhi Metro Rail Corporation Limited"
+      }
+    }
+  ]
+}

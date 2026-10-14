@@ -1,0 +1,54 @@
+{
+  "source": {
+    "lat": 31.7084,
+    "lon": 76.9322,
+    "name": "Mandi, Himachal Pradesh"
+  },
+  "destination": {
+    "lat": 28.6428,
+    "lon": 77.2191,
+    "name": "New Delhi Railway Station"
+  },
+  "num_routes": 3,
+  "elapsed_seconds": 0.0,
+  "graph_nodes": 0,
+  "graph_edges": 0,
+  "routes": [
+    {
+      "route_id": "route_1_shortest",
+      "strategy": "shortest",
+      "length_km": 373.26,
+      "num_nodes": 12,
+      "validation": {
+        "geometry_valid": true,
+        "geometry_empty": false,
+        "start_near_source": true,
+        "end_near_destination": true
+      }
+    },
+    {
+      "route_id": "route_2_inland",
+      "strategy": "inland_bias",
+      "length_km": 419.87,
+      "num_nodes": 12,
+      "validation": {
+        "geometry_valid": true,
+        "geometry_empty": false,
+        "start_near_source": true,
+        "end_near_destination": true
+      }
+    },
+    {
+      "route_id": "route_3_gradient_aware",
+      "strategy": "gradient_aware",
+      "length_km": 375.33,
+      "num_nodes": 15,
+      "validation": {
+        "geometry_valid": true,
+        "geometry_empty": false,
+        "start_near_source": true,
+        "end_near_destination": true
+      }
+    }
+  ]
+}

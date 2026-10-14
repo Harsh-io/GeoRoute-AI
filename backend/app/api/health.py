@@ -51,6 +51,14 @@ async def get_ready(request: Request) -> ReadyResponse:
     # Check storage writability
     storage_ready = settings.jobs_dir.exists() and settings.sqlite_db_path.parent.exists()
 
+    # Check regional rasters readiness
+    regional_rasters = settings.regional_cost_dir / "rasters"
+    regional_ready = (
+        (regional_rasters / "distance_friction.tif").exists()
+        and (regional_rasters / "hard_constraint_mask.tif").exists()
+        and (regional_rasters / "valid_data_mask.tif").exists()
+    )
+
     job_store = getattr(request.app.state, "job_store", None)
     active_jobs = job_store.count_active_jobs() if job_store else 0
     queued_jobs = job_store.count_queued_jobs() if job_store else 0
@@ -67,6 +75,8 @@ async def get_ready(request: Request) -> ReadyResponse:
         queued_jobs=queued_jobs,
         details={
             "cost_rasters_dir": str(cost_rasters),
+            "regional_rasters_dir": str(regional_rasters),
+            "regional_ready": regional_ready,
             "jobs_storage_dir": str(settings.jobs_dir),
             "sqlite_db_path": str(settings.sqlite_db_path),
         },
@@ -87,7 +97,7 @@ async def get_capabilities() -> CapabilitiesResponse:
         ],
         routing_backend="pyorps_cython",
         pyorps_version=getattr(pyorps, "__version__", "0.4.0"),
-        available_processing_modes=["precomputed", "full_pipeline"],
+        available_processing_modes=["precomputed", "precomputed_regional", "full_pipeline"],
         current_dataset_coverage={
             "region_name": "mandi_terminal_5x5km",
             "coverage_type": "local_test_corridor",
@@ -106,10 +116,42 @@ async def get_capabilities() -> CapabilitiesResponse:
                 "max_lat": 31.73,
             },
             "geographic_limitation": (
-                "The current precomputed dataset covers only the Mandi 5.79km x 5.65km test area. "
-                "New Delhi Railway Station is 340.97km south and lies outside the current raster extent. "
-                "Requests with New Delhi destination will be rejected with an out-of-coverage error."
+                "The current local precomputed dataset covers the Mandi 5.79km x 5.65km test area. "
+                "New Delhi Railway Station is 340.97km south and lies outside the local raster extent. "
+                "Requests with New Delhi destination under 'precomputed' mode will be rejected with an out-of-coverage error. "
+                "Use 'precomputed_regional' or 'full_pipeline' mode for Mandi-to-Delhi regional corridor planning."
             ),
+            "regional_coverage": {
+                "region_name": "mandi_delhi_regional_corridor",
+                "coverage_type": "regional_corridor_study_area",
+                "grid_dimensions": {
+                    "fine_width": 3450,
+                    "fine_height": 13728,
+                    "fine_resolution_meters": 30.0,
+                    "coarse_width": 1035,
+                    "coarse_height": 4114,
+                    "coarse_resolution_meters": 100.0,
+                },
+                "bounds_utm43n": {
+                    "crs": "EPSG:32643",
+                    "left": 641670.0,
+                    "bottom": 3131340.0,
+                    "right": 745170.0,
+                    "top": 3543180.0,
+                },
+                "approximate_wgs84_bounds": {
+                    "min_lon": 76.38,
+                    "min_lat": 28.28,
+                    "max_lon": 77.58,
+                    "max_lat": 32.01,
+                },
+                "dataset_readiness": "ready",
+                "coverage_span_km": "411.8 km North-South x 103.5 km East-West",
+                "terminals_covered": [
+                    "Mandi Railway Station (HP)",
+                    "New Delhi Railway Station (Delhi NCT)",
+                ],
+            },
         },
         engineering_disclaimer=settings.engineering_disclaimer,
     )

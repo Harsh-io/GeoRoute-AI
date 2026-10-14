@@ -36,6 +36,8 @@ from georoute.cost.regional_cost_builder import RegionalGridSpec
 from georoute.routing.endpoint_validator import (
     EndpointValidationError,
     EndpointValidator,
+    OutOfCoverageError,
+    ImpassableEndpointError,
     ResolvedEndpoint,
 )
 from georoute.routing.objective_router import (
@@ -153,6 +155,17 @@ class HierarchicalRegionalRouter:
         self.coarse_res_x = self.fine_res_x * self.coarse_factor
         self.coarse_res_y = self.fine_res_y * self.coarse_factor
 
+        # Initialize EndpointValidator for regional bounds and coverage
+        self.endpoint_validator = EndpointValidator(
+            raster_crs=self.crs,
+            transform=self.transform,
+            grid_shape=(self.grid_height, self.grid_width),
+            valid_data_mask=None,
+            hard_constraint_mask=None,
+            snap_to_valid=True,
+            max_snap_radius_m=300.0,
+        )
+
     # --------------------------------------------------------------------------
     # 1. Endpoint Resolution in Regional Grid
     # --------------------------------------------------------------------------
@@ -160,23 +173,29 @@ class HierarchicalRegionalRouter:
         self,
         source_wgs84: Tuple[float, float] = MANDI_STATION_WGS84,
         target_wgs84: Tuple[float, float] = DELHI_STATION_WGS84,
+        source_crs: str = "EPSG:4326",
+        target_crs: str = "EPSG:4326",
     ) -> Tuple[Tuple[float, float], Tuple[float, float]]:
-        """Projects WGS84 endpoints to UTM Zone 43N coordinates and verifies bounds.
+        """Projects and validates endpoints against regional raster grid bounds.
 
         Returns:
             Tuple of ((source_x, source_y), (target_x, target_y)) in EPSG:32643.
+
+        Raises:
+            OutOfCoverageError: If either endpoint falls outside active regional grid extent.
+            ImpassableEndpointError: If endpoint falls in prohibited cell and cannot be snapped.
         """
-        transformer = pyproj.Transformer.from_crs("EPSG:4326", self.crs, always_xy=True)
-        src_x, src_y = transformer.transform(source_wgs84[0], source_wgs84[1])
-        tgt_x, tgt_y = transformer.transform(target_wgs84[0], target_wgs84[1])
-
-        # Verify bounds
-        if not (self.bounds.left <= src_x <= self.bounds.right and self.bounds.bottom <= src_y <= self.bounds.top):
-            raise EndpointValidationError(f"Source endpoint {source_wgs84} ({src_x}, {src_y}) out of bounds")
-        if not (self.bounds.left <= tgt_x <= self.bounds.right and self.bounds.bottom <= tgt_y <= self.bounds.top):
-            raise EndpointValidationError(f"Target endpoint {target_wgs84} ({tgt_x}, {tgt_y}) out of bounds")
-
-        return (src_x, src_y), (tgt_x, tgt_y)
+        res_src = self.endpoint_validator.validate_and_resolve(
+            coords=source_wgs84,
+            crs=source_crs,
+            name="Mandi Railway Station",
+        )
+        res_tgt = self.endpoint_validator.validate_and_resolve(
+            coords=target_wgs84,
+            crs=target_crs,
+            name="New Delhi Railway Station",
+        )
+        return (res_src.x, res_src.y), (res_tgt.x, res_tgt.y)
 
     # --------------------------------------------------------------------------
     # 2. Stage 1: Coarse-Resolution Regional Overview Search (Level 0)
@@ -190,21 +209,32 @@ class HierarchicalRegionalRouter:
     ) -> PyorpsRouteResult:
         """Executes Level 0 coarse overview routing search connecting terminal endpoints.
 
-        Reads decimated friction and hard-constraint arrays using overview subsampling.
+        Uses pre-computed 100m coarse friction and hard constraints when available,
+        falling back to decimation subsampling.
         """
         cfg = OBJECTIVE_CONFIGS[objective]
-        friction_path = self.rasters_dir / cfg.friction_raster_name
-        hard_mask_path = self.rasters_dir / "hard_constraint_mask.tif"
+        coarse_fname = cfg.friction_raster_name.replace(".tif", "_100m.tif")
+        coarse_path = self.rasters_dir / coarse_fname
+        coarse_h_path = self.rasters_dir / "hard_constraint_mask_100m.tif"
 
-        cf = self.coarse_factor
+        if coarse_path.exists() and coarse_h_path.exists():
+            with rasterio.open(coarse_path) as c_src:
+                f_coarse = c_src.read(1).copy()
+                coarse_transform = c_src.transform
+            with rasterio.open(coarse_h_path) as ch_src:
+                h_coarse = ch_src.read(1).copy()
+        else:
+            friction_path = self.rasters_dir / cfg.friction_raster_name
+            hard_mask_path = self.rasters_dir / "hard_constraint_mask.tif"
+            cf = self.coarse_factor
 
-        with rasterio.open(friction_path) as f_src:
-            f_coarse = f_src.read(1)[::cf, ::cf].copy()
+            with rasterio.open(friction_path) as f_src:
+                f_coarse = f_src.read(1)[::cf, ::cf].copy()
 
-        with rasterio.open(hard_mask_path) as h_src:
-            h_coarse = h_src.read(1)[::cf, ::cf].copy()
+            with rasterio.open(hard_mask_path) as h_src:
+                h_coarse = h_src.read(1)[::cf, ::cf].copy()
 
-        coarse_transform = self.transform * Affine.scale(cf)
+            coarse_transform = self.transform * Affine.scale(cf)
 
         # Quantize to UInt16
         quantized = self.pyorps_adapter.quantize_friction_to_uint16(
@@ -741,7 +771,7 @@ class HierarchicalRegionalRouter:
                 "properties": summary.model_dump(),
             })
 
-        # Save candidate routes GeoJSON
+        # 1. Save candidate routes GeoJSON (primary UTM GeoJSON)
         geojson_path = self.output_dir / "candidate_corridors.geojson"
         with open(geojson_path, "w", encoding="utf-8") as f:
             json.dump({
@@ -749,6 +779,32 @@ class HierarchicalRegionalRouter:
                 "features": geojson_features,
             }, f, indent=2)
         self.logger.info(f"Saved candidate route geometries to: {geojson_path}")
+
+        # 2. Transform geometries to standard WGS84 for routes.geojson
+        wgs84 = pyproj.CRS.from_epsg(4326)
+        proj_crs = pyproj.CRS.from_user_input(self.crs)
+        transformer = pyproj.Transformer.from_crs(proj_crs, wgs84, always_xy=True)
+
+        wgs84_features = []
+        for feat in geojson_features:
+            geom_coords = feat["geometry"]["coordinates"]
+            wgs84_coords = [list(transformer.transform(x, y)) for x, y in geom_coords]
+            wgs84_features.append({
+                "type": "Feature",
+                "geometry": {
+                    "type": "LineString",
+                    "coordinates": wgs84_coords,
+                },
+                "properties": feat["properties"],
+            })
+
+        routes_geojson_path = self.output_dir / "routes.geojson"
+        with open(routes_geojson_path, "w", encoding="utf-8") as f:
+            json.dump({
+                "type": "FeatureCollection",
+                "features": wgs84_features,
+            }, f, indent=2)
+        self.logger.info(f"Saved standard WGS84 routes GeoJSON to: {routes_geojson_path}")
 
         elapsed = time.time() - t0
 
@@ -788,5 +844,11 @@ class HierarchicalRegionalRouter:
         manifest_path = self.output_dir / "routing_manifest.json"
         manifest.to_json_file(manifest_path)
         self.logger.info(f"Saved regional routing manifest to: {manifest_path}")
+
+        # 3. Save route_results.json
+        results_path = self.output_dir / "route_results.json"
+        with open(results_path, "w", encoding="utf-8") as f:
+            json.dump(manifest.model_dump(mode="json"), f, indent=2)
+        self.logger.info(f"Saved detailed route results to: {results_path}")
 
         return manifest

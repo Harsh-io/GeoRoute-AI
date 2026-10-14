@@ -1,0 +1,1442 @@
+# GeoRoute AI — Deep Dive Code Walkthrough
+### Every File · Every Block · Every Library · In Pipeline Execution Order
+
+---
+
+> **Reading guide**: This document follows the **exact execution order** of the pipeline.
+> Start at `main.py` (the CLI trigger), follow the data through ingestion, processing, and end at export.
+> Each section covers: *What the code does → Why it exists → Which library does it → How it fits in the pipeline.*
+
+---
+
+## 🗂️ Pipeline Execution Map
+
+```
+main.py  ──►  georoute/config.py  ──►  georoute/pipeline.py
+                                            │
+                    ┌───────────────────────┼───────────────────────┐
+                    ▼                       ▼                       ▼
+          utils/crs_utils.py     ingestion/              processing/
+          utils/logging_config.py  ├─ vector_ingestor.py   ├─ alignment.py
+                                   └─ stac_raster_ingestor  └─ cog_exporter.py
+```
+
+---
+
+---
+
+# FILE 1 — `main.py`
+### Role: CLI Entrypoint — The Pipeline's "On Switch"
+
+This is the **only file a user ever directly runs**. Its job is to parse command-line flags, wire up configuration, and hand control to the pipeline.
+
+---
+
+### Block 1 — Standard Library Imports
+
+```python
+import argparse
+import json
+import logging
+import sys
+from pathlib import Path
+```
+
+| Import | Library | Why it's here |
+|---|---|---|
+| `argparse` | Python stdlib | Parses `--config`, `--env`, `--output-dir`, `--verbose` flags from terminal |
+| `json` | Python stdlib | Pretty-prints the final execution summary dictionary to stdout |
+| `logging` | Python stdlib | Used to configure the root logger level |
+| `sys` | Python stdlib | `sys.exit(return_code)` — returns `0` on success, `1` on failure to the OS shell |
+| `pathlib.Path` | Python stdlib | Cross-platform file path objects (works on Windows + Linux/macOS without `os.path` string hacks) |
+
+> **Why `pathlib` over `os.path`?** `pathlib.Path` is an object-oriented API. `Path("config") / "config.yaml"` is safer and cleaner than `os.path.join("config", "config.yaml")`. It also has `.exists()`, `.mkdir()`, `.stem` built in.
+
+---
+
+### Block 2 — Internal Project Imports
+
+```python
+from georoute.config import PipelineConfig
+from georoute.pipeline import GeoRoutePipeline
+from georoute.utils.logging_config import setup_logger
+```
+
+These import the three pillars needed to launch:
+1. **`PipelineConfig`** — the validated configuration object (knows the bbox, dates, STAC URLs, etc.)
+2. **`GeoRoutePipeline`** — the master orchestrator that runs all 5 pipeline stages
+3. **`setup_logger`** — configures colored terminal + file logging before anything else runs
+
+---
+
+### Block 3 — `parse_args()` Function
+
+```python
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(
+        description="GeoRoute AI: Enterprise Data Ingestion & Preprocessing Pipeline (Part 1)",
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter,
+    )
+    parser.add_argument("-c", "--config",   type=Path, default=Path("config/config.yaml"), ...)
+    parser.add_argument("-e", "--env",      type=Path, default=Path(".env"), ...)
+    parser.add_argument("-o", "--output-dir", type=Path, default=None, ...)
+    parser.add_argument("-v", "--verbose",  action="store_true", ...)
+    return parser.parse_args()
+```
+
+**What `argparse` does:**
+- Reads `sys.argv` (the actual shell command you typed)
+- Converts `--config config/myfile.yaml` into `args.config = Path("config/myfile.yaml")`
+- `formatter_class=ArgumentDefaultsHelpFormatter` means `--help` automatically shows default values
+- `action="store_true"` means `--verbose` sets `args.verbose = True` with no value needed
+
+**Why we need it:**
+Without this, the pipeline would be hardcoded to one config file. This makes it reusable across dozens of different AOI regions without touching source code.
+
+---
+
+### Block 4 — `main()` Function
+
+```python
+def main() -> int:
+    args = parse_args()
+    log_level = "DEBUG" if args.verbose else "INFO"
+    logger = setup_logger(name="georoute", level=log_level)
+
+    try:
+        config = PipelineConfig.from_yaml(yaml_path=args.config, env_file=env_path)
+        if args.output_dir:
+            config.export.output_dir = args.output_dir
+        pipeline = GeoRoutePipeline(config=config, custom_logger=logger)
+        summary = pipeline.execute()
+        print(json.dumps(summary, indent=2))
+        return 0
+    except Exception as exc:
+        logger.exception(f"Pipeline execution aborted: {exc}")
+        return 1
+```
+
+**Step by step:**
+1. `setup_logger(...)` — creates the logger FIRST, before any other code runs, so no log message is ever lost
+2. `PipelineConfig.from_yaml(...)` — reads YAML + merges `.env` → returns a validated config object
+3. `config.export.output_dir = args.output_dir` — CLI `--output-dir` flag overrides YAML setting
+4. `GeoRoutePipeline(config).execute()` — runs all 5 pipeline stages, returns a summary dict
+5. `json.dumps(summary, indent=2)` — prints a machine-readable JSON to stdout (useful for CI/CD pipelines to parse results)
+6. `return 0 / return 1` — shell exit codes: 0 = success, 1 = failure (bash scripts use this)
+7. `logger.exception(...)` — logs the full Python traceback to the log file on any unhandled error
+
+---
+
+### Block 5 — Entry Guard
+
+```python
+if __name__ == "__main__":
+    sys.exit(main())
+```
+
+**Why this pattern exists:**
+When Python runs a file directly (`python main.py`), `__name__` equals `"__main__"`.
+When another module *imports* `main.py` (e.g., in tests), `__name__` equals `"main"` — so `main()` does NOT auto-run. This prevents side effects during imports. `sys.exit()` propagates the `return 0/1` to the OS.
+
+---
+
+---
+
+# FILE 2 — `georoute/config.py`
+### Role: Configuration Validation — The Pipeline's "Contract"
+
+This file defines **what valid inputs look like**. It uses Pydantic to enforce that the bbox coordinates are real, the dates exist, and all required settings are present — **before a single API call is made**.
+
+**Library: `pydantic` v2**
+Pydantic is a data validation library. You define data schemas as Python classes, and Pydantic automatically validates and coerces data to the correct types. If data is invalid, it raises a detailed `ValidationError` immediately.
+
+---
+
+### Block 1 — Imports
+
+```python
+from pydantic import BaseModel, Field, field_validator
+from shapely.geometry import box, Polygon
+import yaml
+from dotenv import load_dotenv
+```
+
+| Import | Library | Purpose |
+|---|---|---|
+| `BaseModel` | `pydantic` | Base class that gives auto-validation, `.model_dump()`, type coercion |
+| `Field` | `pydantic` | Adds metadata (description, default_factory) to model fields |
+| `field_validator` | `pydantic` v2 | Decorator for custom per-field validation logic |
+| `box, Polygon` | `shapely` | Creates geometric bounding box polygons from lon/lat tuples |
+| `yaml` | `pyyaml` | Parses `config.yaml` into a Python dictionary |
+| `load_dotenv` | `python-dotenv` | Reads `.env` files and injects variables into `os.environ` |
+
+---
+
+### Block 2 — `BBoxConfig` Model
+
+```python
+class BBoxConfig(BaseModel):
+    min_lon: float = Field(..., description="Western longitude [-180, 180]")
+    min_lat: float = Field(..., description="Southern latitude [-90, 90]")
+    max_lon: float = Field(..., description="Eastern longitude [-180, 180]")
+    max_lat: float = Field(..., description="Northern latitude [-90, 90]")
+
+    @field_validator("min_lon", "max_lon")
+    @classmethod
+    def validate_longitude(cls, v: float) -> float:
+        if not (-180.0 <= v <= 180.0):
+            raise ValueError(f"Longitude {v} must be in range [-180, 180].")
+        return v
+```
+
+**What Pydantic does here:**
+- `Field(...)` — the `...` means the field is **required** (no default). If missing from YAML, Pydantic raises an error instantly.
+- `@field_validator` — runs custom logic after type coercion. If `min_lon = 200`, Pydantic catches it with a clear message instead of silently passing a corrupt coordinate to the API.
+- `model_post_init` (below) — runs after ALL fields are validated to check cross-field logic (`min_lon < max_lon`).
+
+**The `.as_tuple` and `.as_polygon` properties:**
+```python
+@property
+def as_tuple(self) -> Tuple[float, float, float, float]:
+    return (self.min_lon, self.min_lat, self.max_lon, self.max_lat)
+
+@property
+def as_polygon(self) -> Polygon:
+    return box(self.min_lon, self.min_lat, self.max_lon, self.max_lat)
+```
+These are **convenience converters**. Different APIs and libraries want the bbox in different formats:
+- STAC API wants a list: `[min_lon, min_lat, max_lon, max_lat]` → use `.as_tuple`
+- OSMnx wants a Shapely `Polygon` → use `.as_polygon`
+- `shapely.geometry.box()` builds a rectangular Polygon from 4 coordinates
+
+---
+
+### Block 3 — `TemporalConfig` Model
+
+```python
+class TemporalConfig(BaseModel):
+    start_date: str = Field(..., description="Start date in ISO format YYYY-MM-DD")
+    end_date: str = Field(...)
+
+    @property
+    def date_range_string(self) -> str:
+        return f"{self.start_date}/{self.end_date}"
+```
+
+**Why this exists:** The STAC API's datetime parameter format is `"2023-06-01/2023-09-30"` (slash-separated). This property builds that string automatically so the pipeline code never manually formats dates.
+
+---
+
+### Block 4 — `OpticalConfig` and `ElevationConfig` Models
+
+```python
+class OpticalConfig(BaseModel):
+    collection: str = "sentinel-2-l2a"
+    max_cloud_cover_percent: float = 5.0
+    target_resolution_meters: float = 10.0
+    bands: List[str] = Field(default_factory=lambda: ["B04", "B03", "B02", "B08"])
+
+class ElevationConfig(BaseModel):
+    collection: str = "cop-dem-glo-30"
+    asset_name: str = "data"
+```
+
+- `"sentinel-2-l2a"` — the exact STAC collection ID at Microsoft Planetary Computer for Sentinel-2 Level 2A (atmospherically corrected, surface reflectance)
+- `"cop-dem-glo-30"` — the Copernicus Global 30m Digital Elevation Model collection
+- `bands: ["B04", "B03", "B02", "B08"]` — Red, Green, Blue, NIR bands. These are asset keys in the STAC item's assets dictionary.
+- `default_factory=lambda: [...]` — required when the default is a mutable (list/dict). Without `default_factory`, all instances would share the same list object (a classic Python gotcha).
+
+---
+
+### Block 5 — `VectorLayerConfig` and `VectorConfig` Models
+
+```python
+class VectorLayerConfig(BaseModel):
+    tags: Dict[str, Any]
+    description: str = ""
+
+class VectorConfig(BaseModel):
+    layers: Dict[str, VectorLayerConfig]
+    timeout_seconds: int = 60
+    max_retries: int = 3
+```
+
+This models the OSMnx query config. Each layer (highways, buildings, environmental_zones) has a `tags` dictionary. In OSMnx, `tags = {"highway": True}` means "fetch anything that has a `highway` key regardless of value." `tags = {"boundary": "protected_area"}` means "fetch only features where `boundary == 'protected_area'`."
+
+---
+
+### Block 6 — `COGConfig` and `ExportConfig` Models
+
+```python
+class COGConfig(BaseModel):
+    block_size: int = 256
+    compression: str = "deflate"
+    overview_levels: List[int] = Field(default_factory=lambda: [2, 4, 8, 16])
+
+class ExportConfig(BaseModel):
+    output_dir: Path = Path("./data/processed")
+    vector_format: str = "geojson"
+    cog: COGConfig = Field(default_factory=COGConfig)
+```
+
+- `block_size: 256` — COG tiles are 256×256 pixel blocks. GIS viewers like QGIS only need to download the relevant block, not the whole file.
+- `compression: "deflate"` — lossless zlib compression. Reduces file size ~60–70% without data loss.
+- `overview_levels: [2, 4, 8, 16]` — pyramid levels. Level 2 = half resolution, level 16 = 1/16th. Web map tiles zoom out using overviews instead of downsampling the full file.
+
+---
+
+### Block 7 — `PipelineConfig.from_yaml()` — The Master Loader
+
+```python
+@classmethod
+def from_yaml(cls, yaml_path: str | Path, env_file: Optional[str | Path] = None) -> "PipelineConfig":
+    if env_file:
+        load_dotenv(dotenv_path=env_file)
+    else:
+        load_dotenv()  # auto-finds .env in current directory
+
+    with open(yaml_path, "r", encoding="utf-8") as f:
+        data = yaml.safe_load(f)
+
+    region = data.get("region", {})
+    config_dict = {
+        "region_name": region.get("name", "unnamed_region"),
+        "bbox": region.get("bbox", {}),
+        "temporal": data.get("temporal", {}),
+        "stac": data.get("stac", {}),
+        "vector": data.get("vector", {}),
+        "processing": data.get("processing", {}),
+        "export": data.get("export", {}),
+    }
+
+    env_data_dir = os.getenv("DATA_DIR")
+    if env_data_dir:
+        config_dict.setdefault("export", {})["output_dir"] = Path(env_data_dir) / "processed"
+
+    return cls(**config_dict)
+```
+
+**Step by step:**
+1. `load_dotenv()` — reads `.env` file variables into `os.environ`. After this, `os.getenv("PC_SDK_SUBSCRIPTION_KEY")` works.
+2. `yaml.safe_load(f)` — `safe_load` (NOT `yaml.load`) prevents arbitrary Python code execution from malicious YAML files (YAML injection attacks).
+3. The nested YAML structure is **flattened** into the schema Pydantic expects. The `region.bbox` dict maps directly to `BBoxConfig`.
+4. `os.getenv("DATA_DIR")` — if the `.env` has `DATA_DIR=/mnt/storage`, the output goes to `/mnt/storage/processed` (useful in containerized deployments).
+5. `cls(**config_dict)` — calls `PipelineConfig(...)` which triggers Pydantic validation on all fields.
+
+---
+
+---
+
+# FILE 3 — `georoute/utils/logging_config.py`
+### Role: Logging Setup — The Pipeline's "Voice"
+
+Every single module in the pipeline uses `logging.getLogger("georoute.module_name")`. This file defines how those log messages look and where they go.
+
+**Library: Python `logging` (stdlib)**
+
+---
+
+### Block 1 — `PipelineFormatter` Class
+
+```python
+class PipelineFormatter(logging.Formatter):
+    GREY    = "\x1b[38;20m"
+    GREEN   = "\x1b[32;20m"
+    YELLOW  = "\x1b[33;20m"
+    RED     = "\x1b[31;20m"
+    BOLD_RED= "\x1b[31;1m"
+    RESET   = "\x1b[0m"
+    FORMAT  = "%(asctime)s | %(levelname)-8s | %(name)s:%(funcName)s:%(lineno)d - %(message)s"
+
+    FORMATS = {
+        logging.DEBUG:    GREY + FORMAT + RESET,
+        logging.INFO:     GREEN + FORMAT + RESET,
+        logging.WARNING:  YELLOW + FORMAT + RESET,
+        logging.ERROR:    RED + FORMAT + RESET,
+        logging.CRITICAL: BOLD_RED + FORMAT + RESET,
+    }
+
+    def format(self, record: logging.LogRecord) -> str:
+        log_fmt = self.FORMATS.get(record.levelno, self.FORMAT)
+        formatter = logging.Formatter(log_fmt, datefmt="%Y-%m-%d %H:%M:%S")
+        return formatter.format(record)
+```
+
+**What ANSI codes are:** `\x1b[32;20m` is an ANSI escape sequence supported by terminals (PowerShell, bash, iTerm). `32` = green foreground, `20` = normal weight. The formatter picks a color template based on the log level integer (`logging.INFO = 20`, `logging.ERROR = 40`, etc.).
+
+**Format string anatomy:**
+```
+2026-09-25 23:30:01 | INFO     | georoute.alignment:resample_and_align_dem:185 - Resampling DEM...
+│                     │           │                  │                  │       │
+│                     │           │                  │                  │       Message
+│                     │           │                  │                  Line number
+│                     │           │                  Function name
+│                     │           Logger name (hierarchy)
+│                     Level (padded to 8 chars)
+Timestamp
+```
+
+---
+
+### Block 2 — `setup_logger()` Function
+
+```python
+def setup_logger(name="georoute", level="INFO", log_file=None) -> logging.Logger:
+    logger = logging.getLogger(name)
+    logger.setLevel(getattr(logging, level.upper(), logging.INFO))
+
+    if logger.handlers:
+        return logger   # ← Guard against double-adding handlers
+
+    # Console handler (colored)
+    console_handler = logging.StreamHandler(sys.stdout)
+    console_handler.setFormatter(PipelineFormatter())
+    logger.addHandler(console_handler)
+
+    # File handler (plain text, DEBUG level)
+    if log_file:
+        file_handler = logging.FileHandler(log_file, encoding="utf-8")
+        file_handler.setLevel(logging.DEBUG)
+        file_handler.setFormatter(logging.Formatter("%(asctime)s | %(levelname)-8s | ..."))
+        logger.addHandler(file_handler)
+
+    return logger
+```
+
+**Key concept — Logger Hierarchy:**
+`logging.getLogger("georoute")` is the **parent** logger.
+`logging.getLogger("georoute.vector_ingestor")` is a **child** logger.
+In Python's logging system, child loggers **propagate** messages up to their parent. So configuring `"georoute"` once in `setup_logger` automatically captures logs from ALL submodules (`georoute.alignment`, `georoute.stac_ingestor`, etc.).
+
+**Why the `if logger.handlers: return logger` guard?**
+In Python, `logging.getLogger(name)` is a **singleton** — calling it twice returns the same object. Without this guard, every time `setup_logger` was called, it would add another console handler, causing duplicate log lines.
+
+---
+
+---
+
+# FILE 4 — `georoute/utils/crs_utils.py`
+### Role: CRS Math — Determining the Correct Metric Coordinate System
+
+This is the **mathematical backbone** of why all distances in the pipeline are accurate. WGS84 (EPSG:4326) uses degrees, which cannot be used for distance calculations. UTM uses meters.
+
+**Libraries: `pyproj`, `rasterio`**
+
+---
+
+### Block 1 — `calculate_utm_epsg()` Function
+
+```python
+def calculate_utm_epsg(lon: float, lat: float) -> int:
+    try:
+        utm_crs_list = query_utm_crs_info(
+            datum_name="WGS 84",
+            area_of_interest=AreaOfInterest(
+                west_bound_lon=lon, south_bound_lat=lat,
+                east_bound_lon=lon, north_bound_lat=lat,
+            ),
+        )
+        if utm_crs_list:
+            return int(utm_crs_list[0].code)
+    except Exception:
+        pass
+
+    # Mathematical fallback
+    zone = int(math.floor((lon + 180) / 6)) + 1
+    if lat >= 0:
+        return 32600 + zone   # Northern hemisphere: 32601–32660
+    else:
+        return 32700 + zone   # Southern hemisphere: 32701–32760
+```
+
+**Why the primary method uses `pyproj.database.query_utm_crs_info`:**
+UTM is not a simple formula. There are **special zones** — Norway (Zone 32V is widened), Svalbard (Zones 31X–37X are rearranged). `query_utm_crs_info` queries pyproj's embedded PROJ database which knows all these exceptions. The math fallback works for 98% of the globe but would give the wrong zone for the Norwegian coast.
+
+**How UTM EPSG codes work:**
+- `32601` → UTM Zone 1N (WGS84 North)
+- `32632` → UTM Zone 32N (Central Europe — Munich, our test region)
+- `32700 + zone` → Southern hemisphere equivalents
+
+---
+
+### Block 2 — `get_utm_crs_for_bbox()` Function
+
+```python
+def get_utm_crs_for_bbox(min_lon, min_lat, max_lon, max_lat) -> pyproj.CRS:
+    center_lon = (min_lon + max_lon) / 2.0
+    center_lat = (min_lat + max_lat) / 2.0
+    epsg_code = calculate_utm_epsg(center_lon, center_lat)
+    return pyproj.CRS.from_epsg(epsg_code)
+```
+
+Uses the **centroid of the bounding box** to determine the UTM zone. For a 10km × 10km area, the centroid is always in the same UTM zone as the corners, so this is accurate. Returns a `pyproj.CRS` object (not just a string), which `rasterio` and `geopandas` both accept natively.
+
+---
+
+### Block 3 — `compute_target_raster_grid()` Function
+
+This is the most critical function in the utils module.
+
+```python
+def compute_target_raster_grid(bbox_4326, target_crs, pixel_size_meters=10.0):
+    min_lon, min_lat, max_lon, max_lat = bbox_4326
+
+    # Step 1: Transform bbox from WGS84 to UTM
+    minx, miny, maxx, maxy = transform_bounds(
+        src_crs="EPSG:4326",
+        dst_crs=target_crs,
+        left=min_lon, bottom=min_lat, right=max_lon, top=max_lat,
+        densify_pts=21,           # ← sample 21 points along each edge
+    )
+
+    # Step 2: Snap to integer pixel multiples
+    snapped_minx = math.floor(minx / pixel_size_meters) * pixel_size_meters
+    snapped_miny = math.floor(miny / pixel_size_meters) * pixel_size_meters
+    snapped_maxx = math.ceil(maxx  / pixel_size_meters) * pixel_size_meters
+    snapped_maxy = math.ceil(maxy  / pixel_size_meters) * pixel_size_meters
+
+    # Step 3: Compute dimensions
+    width  = int(round((snapped_maxx - snapped_minx) / pixel_size_meters))
+    height = int(round((snapped_maxy - snapped_miny) / pixel_size_meters))
+
+    # Step 4: Build Affine transform
+    target_transform = rasterio.transform.from_bounds(
+        west=snapped_minx, south=snapped_miny,
+        east=snapped_maxx, north=snapped_maxy,
+        width=width, height=height,
+    )
+
+    return target_transform, width, height, (snapped_minx, snapped_miny, snapped_maxx, snapped_maxy)
+```
+
+**Why `densify_pts=21`:**
+WGS84 → UTM is a non-linear transformation. The edges of a WGS84 rectangle become **slightly curved** in UTM. By sampling 21 intermediate points along each edge, `transform_bounds` finds the true UTM bounding box that contains the curved shape (not just the 4 corner points).
+
+**Why snap to pixel multiples:**
+If the UTM bounds are `(500001.3, 5321998.7, 510002.1, 5332003.4)`, a 10m grid would need fractional pixels. Snapping outward with `floor`/`ceil` gives exact integer dimensions `(500000, 5321990, 510010, 5332010)` → `1001 × 1002` pixels. This guarantees the `width` and `height` are always whole numbers.
+
+**What is an Affine transform:**
+`rasterio.transform.from_bounds(...)` returns an `Affine` matrix:
+```
+| pixel_width   0          west  |
+| 0            -pixel_height north|
+| 0             0          1     |
+```
+It maps pixel coordinates `(row, col)` to geographic coordinates `(x, y)`. This same matrix is used by BOTH the optical bands and the DEM — guaranteeing they share an identical grid.
+
+---
+
+---
+
+# FILE 5 — `georoute/ingestion/vector_ingestor.py`
+### Role: OpenStreetMap Vector Data — "Fetch the Roads, Buildings & Protected Areas"
+
+**Libraries: `osmnx`, `geopandas`, `shapely`, `tenacity`**
+
+---
+
+### Block 1 — Imports and Logger
+
+```python
+import geopandas as gpd
+import osmnx as ox
+from shapely.geometry import Polygon
+from tenacity import retry, retry_if_exception_type, stop_after_attempt, wait_exponential, before_sleep_log
+```
+
+| Library | What it is |
+|---|---|
+| `osmnx` | Python library that queries the **Overpass API** (OpenStreetMap's query endpoint) and returns geospatial data as GeoDataFrames |
+| `geopandas` | Extension of pandas for geospatial data. A `GeoDataFrame` is a DataFrame with a `geometry` column containing Shapely geometries |
+| `shapely` | Computational geometry library. Provides `Polygon`, `Point`, `LineString` objects with spatial operations |
+| `tenacity` | Retry library with exponential backoff, jitter, stop conditions, and logging hooks |
+
+---
+
+### Block 2 — `OSMVectorIngestor.__init__()`
+
+```python
+def __init__(self, timeout_seconds=60, max_retries=3, custom_overpass_endpoint=None):
+    self.timeout_seconds = timeout_seconds
+    self.max_retries = max_retries
+
+    ox.settings.timeout = self.timeout_seconds
+    ox.settings.use_cache = True       # ← Cache Overpass responses to disk
+    ox.settings.log_console = False    # ← Suppress osmnx's own logger
+
+    if custom_overpass_endpoint:
+        ox.settings.overpass_endpoint = custom_overpass_endpoint
+```
+
+**Why `ox.settings.use_cache = True`?**
+The Overpass API is a public service with rate limits. When developing, you may run the pipeline many times against the same bbox. With disk caching enabled, osmnx saves the HTTP response to `~/.cache/osmnx/`. The second run completes in milliseconds instead of hitting the API again.
+
+**Why disable `log_console`?**
+osmnx has its own logger. If enabled, it creates a second set of log messages formatted differently from our `PipelineFormatter`. Disabling it means all logging goes through our standardized logger.
+
+---
+
+### Block 3 — `_sanitize_geodataframe()` — Data Cleaning Pipeline
+
+```python
+def _sanitize_geodataframe(self, gdf, layer_name):
+
+    # Guard: return empty GeoDataFrame schema if no data
+    if gdf.empty:
+        return gpd.GeoDataFrame({"layer": [], "geometry": []}, geometry="geometry", crs="EPSG:4326")
+
+    initial_count = len(gdf)
+
+    # Step 1: Drop null or zero-area geometries
+    gdf = gdf[gdf.geometry.notnull() & ~gdf.geometry.is_empty].copy()
+
+    # Step 2: Repair self-intersecting / invalid geometries
+    if not gdf.geometry.is_valid.all():
+        gdf["geometry"] = gdf["geometry"].make_valid()
+
+    # Re-filter (make_valid can produce empty collections)
+    gdf = gdf[gdf.geometry.notnull() & ~gdf.geometry.is_empty].copy()
+
+    # Step 3: Ensure CRS is EPSG:4326
+    if gdf.crs is None:
+        gdf.set_crs("EPSG:4326", inplace=True)
+    elif gdf.crs != "EPSG:4326":
+        gdf = gdf.to_crs("EPSG:4326")
+
+    # Step 4: Serialize list/dict attributes to JSON strings
+    for col in gdf.columns:
+        if col == "geometry":
+            continue
+        sample_val = gdf[col].dropna().iloc[0] if not gdf[col].dropna().empty else None
+        if isinstance(sample_val, (list, dict)):
+            gdf[col] = gdf[col].apply(
+                lambda x: json.dumps(x) if isinstance(x, (list, dict)) else str(x) if x is not None else None
+            )
+
+    gdf["layer_name"] = layer_name
+    return gdf
+```
+
+**Why each step exists:**
+
+**Step 1 — `~gdf.geometry.is_empty`:**
+OSMnx occasionally returns **node-only features** (points with no polygon geometry) or **relations** that couldn't be assembled. These produce empty Shapely objects. Routing algorithms and GeoJSON exports both fail on these.
+
+**Step 2 — `make_valid()`:**
+OSM data is contributed by humans. Some polygons have **self-intersecting rings** (like a figure-8 bowtie). These fail `is_valid` checks in Shapely/GEOS. `make_valid()` (from Shapely 2.0) uses GEOS's `GEOSMakeValid` function to repair them — it may split them into MultiPolygons.
+
+**Step 3 — CRS enforcement:**
+GeoPandas operations on two GeoDataFrames with different CRSes will throw errors or silently produce wrong results. Ensuring `EPSG:4326` here means the alignment module always receives a consistent input.
+
+**Step 4 — JSON string serialization:**
+OSM data has attributes like `opening_hours` which can be a Python `list` (e.g., `["Mo-Fr 09:00-18:00", "Sa 09:00-14:00"]`). GeoJSON format does not support list-valued attributes — they must be strings. `json.dumps(x)` converts `["a", "b"]` to `'["a", "b"]'`.
+
+---
+
+### Block 4 — `fetch_layer()` with `@retry`
+
+```python
+def fetch_layer(self, layer_name, aoi_polygon, tags):
+
+    @retry(
+        stop=stop_after_attempt(self.max_retries),
+        wait=wait_exponential(multiplier=1.5, min=2, max=10),
+        before_sleep=before_sleep_log(logger, logging.WARNING),
+        reraise=True,
+    )
+    def _execute_query():
+        try:
+            raw_gdf = ox.features_from_polygon(aoi_polygon, tags=tags)
+            return raw_gdf
+        except ox._errors.InsufficientResponseError:
+            logger.info(f"No OSM features matched tag criteria {tags}.")
+            return gpd.GeoDataFrame(...)  # ← Return empty, don't fail
+        except Exception as e:
+            if "No data elements in server response" in str(e):
+                return gpd.GeoDataFrame(...)
+            logger.error(f"Error querying Overpass for '{layer_name}': {e}")
+            raise  # ← Re-raise for tenacity to retry
+
+    try:
+        raw_gdf = _execute_query()
+        return self._sanitize_geodataframe(raw_gdf, layer_name)
+    except Exception as e:
+        logger.error(f"Failed after {self.max_retries} attempts: {e}")
+        return gpd.GeoDataFrame(...)  # ← Pipeline continues even if layer fails
+```
+
+**How `tenacity` works here:**
+- `stop_after_attempt(3)` — tries up to 3 times before giving up
+- `wait_exponential(multiplier=1.5, min=2, max=10)` — waits 2s, then 3s, then max 10s between retries (random jitter prevents thundering herd on rate limit)
+- `before_sleep_log(logger, WARNING)` — logs "Retrying in 3.0 seconds..." before each sleep
+- `reraise=True` — after all retries fail, re-raises the original exception (not a tenacity wrapper)
+
+**Why return empty GeoDataFrame instead of raising on `InsufficientResponseError`:**
+A rural 10km region might legitimately have no protected areas. That's not an error — the pipeline should continue. Returning an empty-but-schema-consistent GeoDataFrame lets Stage 5 export an empty GeoJSON file, which is valid.
+
+---
+
+### Block 5 — `fetch_all()`
+
+```python
+def fetch_all(self, aoi_polygon, layer_configs):
+    vector_layers = {}
+    for layer_name, cfg in layer_configs.items():
+        tags = cfg.tags if hasattr(cfg, "tags") else cfg.get("tags", {})
+        gdf = self.fetch_layer(layer_name=layer_name, aoi_polygon=aoi_polygon, tags=tags)
+        vector_layers[layer_name] = gdf
+    return vector_layers
+```
+
+Iterates over all configured layers (`highways`, `buildings`, `environmental_zones`) sequentially, calling `fetch_layer` for each. Returns a dictionary: `{"highways": GeoDataFrame, "buildings": GeoDataFrame, ...}`.
+
+---
+
+---
+
+# FILE 6 — `georoute/ingestion/stac_raster_ingestor.py`
+### Role: Satellite Imagery & DEM Discovery — "Find the Best Satellite Scene"
+
+**Libraries: `pystac-client`, `planetary-computer`, `tenacity`**
+
+---
+
+### Block 1 — Dataclass Containers
+
+```python
+@dataclass
+class OpticalSceneMetadata:
+    item_id: str
+    datetime: str
+    cloud_cover: float
+    band_urls: Dict[str, str]    # {"B04": "https://...B04.tif", "B03": "..."}
+    native_crs: Optional[str]
+
+@dataclass
+class DEMMetadata:
+    item_ids: List[str]
+    asset_urls: List[str]        # One URL per DEM tile
+    collection: str
+```
+
+**Why `@dataclass`?**
+Python `dataclass` auto-generates `__init__`, `__repr__`, and `__eq__` from the field annotations. These are simple data containers — no business logic. `@dataclass` is cleaner than a plain `dict` (typed, auto-documented) and lighter than a `pydantic.BaseModel` (no validation needed here since data comes from a trusted API response).
+
+---
+
+### Block 2 — `STACRasterIngestor.__init__()` and `_get_client()`
+
+```python
+def __init__(self, api_url, use_planetary_computer=True, max_retries=5):
+    self.api_url = api_url
+    self.use_planetary_computer = use_planetary_computer
+    self.max_retries = max_retries
+    self._client: Optional[pystac_client.Client] = None   # ← Lazy init
+
+def _get_client(self) -> pystac_client.Client:
+    if self._client is None:
+        modifier = planetary_computer.sign_inplace if self.use_planetary_computer else None
+        self._client = pystac_client.Client.open(self.api_url, modifier=modifier)
+    return self._client
+```
+
+**What STAC is:**
+STAC (SpatioTemporal Asset Catalog) is an open standard for indexing satellite datasets. Instead of different APIs for each satellite, STAC gives a unified search interface: "give me all Sentinel-2 scenes over bbox X, between dates Y and Z, with cloud cover < N%."
+
+**What `planetary_computer.sign_inplace` does:**
+Microsoft Planetary Computer stores data in Azure Blob Storage. URLs are **unsigned** in the catalog — you can't directly download them without a Shared Access Signature (SAS) token. `planetary_computer.sign_inplace` is a modifier function that pystac-client calls on every STAC item it fetches, automatically appending SAS tokens to all asset `href` URLs.
+
+**Why lazy init (`_get_client`)?**
+The HTTP connection to the STAC API is only made when first needed. This avoids connecting at pipeline startup before configuration validation is complete.
+
+---
+
+### Block 3 — `search_optical_scene()` — Sentinel-2 Discovery
+
+```python
+def search_optical_scene(self, bbox, date_range_str, bands, max_cloud_cover_percent, collection):
+    client = self._get_client()
+
+    @retry(stop=stop_after_attempt(self.max_retries), wait=wait_exponential(...), reraise=True)
+    def _execute_search(cloud_threshold):
+        search = client.search(
+            collections=[collection],
+            bbox=list(bbox),
+            datetime=date_range_str,
+            query={"eo:cloud_cover": {"lt": cloud_threshold}},
+        )
+        return list(search.items())
+
+    items = _execute_search(max_cloud_cover_percent)  # Try 5% first
+
+    if not items:
+        logger.warning("No scenes < 5%. Relaxing to 20%...")
+        items = _execute_search(20.0)
+
+    if not items:
+        raise RuntimeError("No Sentinel-2 scenes found.")
+
+    # Sort by cloud cover ascending → pick least cloudy
+    items_sorted = sorted(items, key=lambda it: it.properties.get("eo:cloud_cover", 100.0))
+    selected_item = items_sorted[0]
+
+    # Extract signed band URLs from item assets
+    band_urls = {}
+    for band in bands:
+        band_urls[band] = selected_item.assets[band].href
+
+    return OpticalSceneMetadata(
+        item_id=selected_item.id,
+        datetime=selected_item.datetime.isoformat(),
+        cloud_cover=selected_item.properties.get("eo:cloud_cover", 0.0),
+        band_urls=band_urls,
+        native_crs=f"EPSG:{selected_item.properties.get('proj:epsg')}",
+    )
+```
+
+**What `client.search(query={"eo:cloud_cover": {"lt": 5}})` does:**
+This is a **STAC Filter** using the `eo` (Earth Observation) extension. The Planetary Computer STAC API supports server-side filtering — the cloud cover check happens at the catalog server, not in Python. Only matching items are returned over the network.
+
+**Why sort and pick instead of just taking the first result?**
+The STAC API returns items in reverse-chronological order by default. The most recent scene isn't necessarily the least cloudy. Sorting by `eo:cloud_cover` ascending guarantees we get the clearest available scene for analysis.
+
+**Why `item.assets[band].href` and not a URL template?**
+Each STAC item has an `assets` dictionary where keys are band names and values have `href` (the actual URL) and `type` (MIME type). After `sign_inplace` runs, the `href` already contains the SAS token and is ready to stream directly.
+
+---
+
+### Block 4 — `search_dem()` — DEM Tile Discovery
+
+```python
+def search_dem(self, bbox, collection="cop-dem-glo-30", asset_name="data"):
+    @retry(...)
+    def _execute_dem_search():
+        search = client.search(collections=[collection], bbox=list(bbox))
+        return list(search.items())
+
+    dem_items = _execute_dem_search()
+    if not dem_items:
+        raise RuntimeError(f"No DEM tiles found covering bbox {bbox}.")
+
+    for item in dem_items:
+        asset_urls.append(item.assets[asset_name].href)
+
+    return DEMMetadata(item_ids=item_ids, asset_urls=asset_urls, collection=collection)
+```
+
+**Why multiple tiles?**
+Copernicus DEM tiles are distributed as 1°×1° geographic tiles. A 10km×10km bounding box often straddles a tile boundary. The search returns 1–4 overlapping tiles. The alignment module then **mosaics** them together by warping each tile into the target grid and merging.
+
+**Why no date filter for DEM?**
+DEMs are **static data** (terrain doesn't change). The `cop-dem-glo-30` collection has no temporal dimension — there's only one version of each tile.
+
+---
+
+---
+
+# FILE 7 — `georoute/processing/alignment.py`
+### Role: Spatial Registration — "Make Everything Perfectly Aligned"
+
+**Libraries: `rasterio`, `rasterio.warp`, `geopandas`, `numpy`, `pyproj`, `tenacity`**
+
+This is the most technically complex module. It takes raw data from two completely different coordinate systems (WGS84 imagery and DEM) and forces them onto a single shared pixel grid.
+
+---
+
+### Block 1 — `AlignedRasterData` Dataclass
+
+```python
+@dataclass
+class AlignedRasterData:
+    data: np.ndarray        # Shape (bands, height, width) — the actual pixel values
+    transform: Affine       # Affine georeferencing matrix
+    crs: pyproj.CRS         # Coordinate reference system
+    nodata: Optional[float] # Value representing "no data" (0.0 for optical, -9999.0 for DEM)
+    band_names: List[str]   # e.g. ["B04", "B03", "B02", "B08"] or ["elevation_m"]
+    dtype: np.dtype         # numpy dtype (np.float32)
+```
+
+This is the **universal output format** for any raster processed by this module. Both the optical imagery and the DEM return `AlignedRasterData` objects — the exporter just writes whatever it receives without knowing whether it's optical or elevation.
+
+---
+
+### Block 2 — `SpatialAligner.__init__()`
+
+```python
+def __init__(self, target_crs, target_transform, width, height):
+    self.target_crs = target_crs           # e.g. pyproj.CRS.from_epsg(32632)
+    self.target_transform = target_transform  # Affine from compute_target_raster_grid()
+    self.width = width                     # e.g. 1340
+    self.height = height                   # e.g. 910
+```
+
+This class is initialized **once** at pipeline startup with the master grid computed in `crs_utils.py`. Every raster warp call uses the same `target_transform`, `width`, and `height` — this is what guarantees pixel-perfect co-registration.
+
+---
+
+### Block 3 — `reproject_vectors()`
+
+```python
+def reproject_vectors(self, vector_layers):
+    reprojected_layers = {}
+    for name, gdf in vector_layers.items():
+        if gdf.empty:
+            reprojected_layers[name] = gdf.to_crs(self.target_crs)
+            continue
+
+        reprojected_gdf = gdf.to_crs(self.target_crs).copy()
+
+        geom_types = set(reprojected_gdf.geometry.geom_type)
+        if any("Line" in gt for gt in geom_types):
+            reprojected_gdf["length_m"] = reprojected_gdf.geometry.length
+        if any("Polygon" in gt for gt in geom_types):
+            reprojected_gdf["area_m2"] = reprojected_gdf.geometry.area
+
+        reprojected_layers[name] = reprojected_gdf
+    return reprojected_layers
+```
+
+**`gdf.to_crs(self.target_crs)`:**
+GeoPandas calls `pyproj.Transformer` under the hood to transform every geometry's coordinates from `EPSG:4326` (lon/lat degrees) to the target UTM (easting/northing meters).
+
+**Why compute `length_m` and `area_m2` HERE (in metric CRS)?**
+In WGS84 degrees, `gdf.geometry.length` returns degrees — meaningless for routing. After projecting to UTM meters, `geometry.length` returns **actual meters**. A road segment of `length_m = 1500.0` means it is exactly 1.5km long. This feeds directly into Part 2's cost-graph construction.
+
+---
+
+### Block 4 — `resample_and_align_optical()` — Band Warping
+
+```python
+def resample_and_align_optical(self, band_urls, resampling=Resampling.bilinear):
+    stacked_array = np.zeros((len(band_urls), self.height, self.width), dtype=np.float32)
+
+    gdal_env = {
+        "GDAL_DISABLE_READDIR_ON_OPEN": "EMPTY_DIR",
+        "CPL_VSIL_CURL_ALLOWED_EXTENSIONS": ".tif,.TIF,.vrt",
+        "GDAL_HTTP_MAX_RETRY": "5",
+        "GDAL_HTTP_RETRY_DELAY": "2",
+        "VSI_CACHE": "TRUE",
+    }
+
+    with rasterio.Env(**gdal_env):
+        for idx, (band_name, url) in enumerate(band_urls.items()):
+
+            @retry(stop=stop_after_attempt(5), wait=wait_exponential(...), reraise=True)
+            def _stream_and_warp(dst_band_array, _url=url):
+                with rasterio.open(_url) as src:
+                    reproject(
+                        source=rasterio.band(src, 1),
+                        destination=dst_band_array,
+                        src_transform=src.transform,
+                        src_crs=src.crs,
+                        dst_transform=self.target_transform,
+                        dst_crs=self.target_crs,
+                        dst_nodata=0.0,
+                        resampling=resampling,
+                    )
+            _stream_and_warp(stacked_array[idx])
+
+    return AlignedRasterData(data=stacked_array, ...)
+```
+
+**What GDAL environment variables do:**
+- `GDAL_DISABLE_READDIR_ON_OPEN=EMPTY_DIR` — prevents GDAL from issuing extra HTTP requests to list the directory when opening a remote file. Critical for performance.
+- `CPL_VSIL_CURL_ALLOWED_EXTENSIONS=.tif,.TIF,.vrt` — allows GDAL's `/vsicurl/` virtual filesystem to recognize the URL as a GeoTIFF for streaming.
+- `GDAL_HTTP_MAX_RETRY=5` — GDAL-level HTTP retry (separate from tenacity, defense-in-depth).
+- `VSI_CACHE=TRUE` — caches the remote file's metadata block in memory, so seeking within the file doesn't require extra HTTP range requests.
+
+**What `rasterio.warp.reproject()` does:**
+This is the core geometric operation. Given a source raster (Sentinel-2 band in its native UTM projection) and a destination array, it:
+1. Computes the inverse transformation: for each pixel in the destination, finds the corresponding coordinates in the source
+2. Samples the source pixel values using the chosen interpolation method
+3. Writes the sampled values into the destination array
+
+`resampling=Resampling.bilinear` — takes a weighted average of the 4 nearest source pixels. Smoother than nearest-neighbor, appropriate for continuous data like reflectance values.
+
+**`stacked_array[idx]`:**
+Each band is written into a slice of a pre-allocated 3D numpy array `(bands, height, width)`. This is more memory-efficient than creating 4 separate arrays and then stacking them.
+
+---
+
+### Block 5 — `resample_and_align_dem()` — DEM Mosaic and Warp
+
+```python
+def resample_and_align_dem(self, dem_urls, resampling_method_name="bilinear"):
+    method_map = {
+        "bilinear": Resampling.bilinear,
+        "cubic": Resampling.cubic,
+        "lanczos": Resampling.lanczos,
+        "nearest": Resampling.nearest,
+    }
+    resampling = method_map.get(resampling_method_name.lower(), Resampling.bilinear)
+
+    dem_array = np.full((1, self.height, self.width), fill_value=-9999.0, dtype=np.float32)
+
+    with rasterio.Env(**gdal_env):
+        for tile_idx, dem_url in enumerate(dem_urls):
+
+            @retry(...)
+            def _warp_dem_tile(target_slice, _url=dem_url):
+                with rasterio.open(_url) as src:
+                    tile_buffer = np.full((self.height, self.width), -9999.0, dtype=np.float32)
+                    reproject(
+                        source=rasterio.band(src, 1),
+                        destination=tile_buffer,
+                        ...
+                        resampling=resampling,
+                    )
+                    # Mosaic: fill valid (non-nodata) pixels from this tile
+                    valid_mask = tile_buffer != -9999.0
+                    target_slice[valid_mask] = tile_buffer[valid_mask]
+
+            _warp_dem_tile(dem_array[0])
+```
+
+**Why `np.full(fill_value=-9999.0)`:**
+The master array starts as all nodata. Each DEM tile is warped into a temporary `tile_buffer`. Then only the **valid (non-nodata)** pixels from that tile are merged into the master array. This is the **mosaic step** — multiple 1°×1° tiles are merged into one seamless array.
+
+**Why `valid_mask = tile_buffer != -9999.0` for mosaicking:**
+Different tiles cover different parts of the master grid. By only copying pixels where the tile has data, we avoid overwriting already-populated pixels from a previous tile with nodata from the new tile's edge.
+
+**Resampling methods for DEM:**
+- `bilinear` — smooth, good for gentle terrain. Default.
+- `cubic` — sharper, better for steep terrain. More computation.
+- `lanczos` — highest quality, anti-aliasing. Slowest.
+- `nearest` — pixelated, only for categorical data (not elevation).
+
+---
+
+### Block 6 — `verify_co_registration()` — Quality Audit
+
+```python
+@staticmethod
+def verify_co_registration(optical, dem, tolerance=1e-6):
+    # Check 1: Grid dimensions must match exactly
+    opt_shape = optical.data.shape[1:]   # (height, width) — ignore band axis
+    dem_shape = dem.data.shape[1:]
+    if opt_shape != dem_shape:
+        raise AssertionError(f"Shape mismatch: Optical {opt_shape} ≠ DEM {dem_shape}.")
+
+    # Check 2: CRS must be identical
+    if optical.crs != dem.crs:
+        raise AssertionError(f"CRS mismatch: {optical.crs} ≠ {dem.crs}.")
+
+    # Check 3: Affine transform coefficients must be equal within tolerance
+    opt_t = list(optical.transform)[:6]
+    dem_t = list(dem.transform)[:6]
+    diffs = [abs(a - b) for a, b in zip(opt_t, dem_t)]
+    if any(d > tolerance for d in diffs):
+        raise AssertionError(f"Transform mismatch: Opt={opt_t}, DEM={dem_t}")
+
+    logger.info("Co-registration PASSED.")
+    return True
+```
+
+**Why this explicit check is necessary:**
+Both arrays share the same `target_transform` object, so in theory they must match. But this check is a **safety net** for future changes — if someone modifies the pipeline to warp from different sources or adds a step that modifies the transform, this assertion will catch it immediately rather than producing silently misaligned outputs.
+
+An Affine transform has 6 values: `(a, b, c, d, e, f)` → `(x_scale, x_shear, x_origin, y_shear, y_scale, y_origin)`. For a pixel-aligned 10m north-up grid these should be approximately `(10.0, 0.0, 500000.0, 0.0, -10.0, 5332010.0)`.
+
+---
+
+---
+
+# FILE 8 — `georoute/processing/cog_exporter.py`
+### Role: File Export — "Write Everything to Disk in Cloud-Native Format"
+
+**Libraries: `rasterio`, `geopandas`**
+
+---
+
+### Block 1 — `GeoDataExporter.__init__()`
+
+```python
+def __init__(self, output_dir, block_size=256, compression="deflate", overview_levels=None):
+    self.output_dir = Path(output_dir)
+    self.output_dir.mkdir(parents=True, exist_ok=True)  # ← Creates all parent dirs
+    self.block_size = block_size
+    self.compression = compression
+    self.overview_levels = overview_levels or [2, 4, 8, 16]
+```
+
+`Path.mkdir(parents=True, exist_ok=True)` — creates `./data/processed/` and any intermediate directories. `exist_ok=True` means it won't error if the directory already exists (idempotent operation, safe to retry).
+
+---
+
+### Block 2 — `export_vector_layers()` — GeoJSON Export
+
+```python
+def export_vector_layers(self, vector_layers):
+    vector_dir = self.output_dir / "vectors"
+    vector_dir.mkdir(parents=True, exist_ok=True)
+
+    for layer_name, gdf in vector_layers.items():
+        dest_file = vector_dir / f"{layer_name}.geojson"
+        gdf.to_file(dest_file, driver="GeoJSON")
+        exported_paths[layer_name] = dest_file
+
+    return exported_paths
+```
+
+**`gdf.to_file(dest, driver="GeoJSON")`:**
+GeoPandas uses GDAL's OGR layer under the hood to write vector data. Specifying `driver="GeoJSON"` writes RFC 7946-compliant GeoJSON — the standard interchange format for web maps (used by Leaflet, Mapbox, Google Maps, QGIS).
+
+The GeoDataFrames are already in UTM CRS at this point (reprojected by `SpatialAligner`). GeoJSON technically requires WGS84 coordinates per the RFC 7946 spec, but many tools accept projected GeoJSON, and the UTM coordinates are what Part 2 needs for routing. The spec compliance note is documented in the README.
+
+---
+
+### Block 3 — `export_cog()` — Cloud Optimized GeoTIFF Export
+
+```python
+def export_cog(self, raster_data, filename, metadata_tags=None):
+    raster_dir = self.output_dir / "rasters"
+    dest_path = raster_dir / filename
+
+    count, height, width = raster_data.data.shape
+
+    # Check if native GDAL COG driver is available
+    with rasterio.Env() as env:
+        drivers = env.drivers()
+        use_native_cog = "COG" in drivers
+
+    if use_native_cog:
+        cog_profile = {
+            "driver": "COG",
+            "height": height, "width": width, "count": count,
+            "dtype": raster_data.dtype,
+            "crs": raster_data.crs,
+            "transform": raster_data.transform,
+            "nodata": raster_data.nodata,
+            "compress": self.compression,
+            "blocksize": self.block_size,
+            "overview_resampling": "average",
+        }
+        with rasterio.open(dest_path, "w", **cog_profile) as dst:
+            for b_idx in range(count):
+                dst.write(raster_data.data[b_idx], b_idx + 1)
+                dst.set_band_description(b_idx + 1, raster_data.band_names[b_idx])
+            if metadata_tags:
+                dst.update_tags(**metadata_tags)
+    else:
+        # Fallback: GTiff with manual internal overviews
+        with rasterio.open(dest_path, "w", **gtiff_profile) as dst:
+            for b_idx in range(count):
+                dst.write(raster_data.data[b_idx], b_idx + 1)
+            dst.build_overviews(self.overview_levels, Resampling.average)
+            dst.update_tags(ns="rio_overview", resampling="average")
+```
+
+**What a Cloud Optimized GeoTIFF (COG) is:**
+A COG is a regular GeoTIFF with a specific internal organization:
+1. **Metadata header first** — viewers read just the header to know the file's extent, CRS, and overview structure without downloading the whole file
+2. **Internal tiled layout** — data is stored in 256×256 (or 512×512) tiles instead of row-by-row strips. Viewers only download tiles in the current viewport.
+3. **Internal pyramid overviews** — pre-computed lower-resolution versions. Zoom level 1/4 reads the 4× overview, not the full-res data.
+
+**Why two code paths (native COG vs GTiff fallback)?**
+GDAL's native `COG` driver (GDAL >= 3.1) writes a perfectly optimized COG in one pass. Older GDAL versions don't have this driver — the fallback writes a tiled GTiff and then calls `build_overviews()` to add the pyramid levels manually. Both produce valid COGs, but the native driver is slightly more efficient.
+
+**`dst.set_band_description(b_idx + 1, band_name)`:**
+Embeds band names (e.g. `"B04"`, `"elevation_m"`) into the file's metadata. Tools like QGIS display these names in the layer properties instead of generic "Band 1", "Band 2".
+
+**`dst.update_tags(**metadata_tags)`:**
+Embeds custom key-value metadata (scene ID, acquisition date, cloud cover, resampling method) into the GeoTIFF's metadata block. Auditors can `gdalinfo file.tif` and see exactly which satellite scene was used.
+
+---
+
+---
+
+# FILE 9 — `georoute/pipeline.py`
+### Role: Master Orchestrator — "Run All 5 Stages in Order"
+
+This file **orchestrates** — it doesn't implement any algorithm itself. It wires together all the modules above.
+
+---
+
+### Block 1 — `GeoRoutePipeline.__init__()`
+
+```python
+def __init__(self, config, custom_logger=None):
+    self.config = config
+    self.logger = custom_logger or setup_logger(...)
+
+    # Step A: Compute UTM CRS from bbox centroid
+    self.target_utm_crs = get_utm_crs_for_bbox(*self.config.bbox.as_tuple)
+    self.utm_epsg = self.target_utm_crs.to_epsg()
+
+    # Step B: Compute the master 10m pixel grid
+    self.target_transform, self.grid_width, self.grid_height, self.snapped_bounds = \
+        compute_target_raster_grid(
+            bbox_4326=self.config.bbox.as_tuple,
+            target_crs=self.target_utm_crs,
+            pixel_size_meters=self.config.processing.target_pixel_size_meters,
+        )
+
+    # Step C: Instantiate all sub-modules (no I/O yet — just configuration)
+    self.vector_ingestor = OSMVectorIngestor(...)
+    self.stac_ingestor = STACRasterIngestor(...)
+    self.aligner = SpatialAligner(target_crs=self.target_utm_crs, target_transform=self.target_transform, ...)
+    self.exporter = GeoDataExporter(output_dir=self.config.export.output_dir, ...)
+```
+
+**Why compute UTM and the grid in `__init__` (not in `execute`):**
+The UTM CRS and pixel grid are **configuration** — they define the pipeline's target state. Computing them upfront means:
+1. Any errors (invalid bbox, math overflow) fail-fast before any API calls are made
+2. The same `target_transform` object is injected into `SpatialAligner` and later used by `GeoDataExporter` — shared by reference, guaranteed identical
+
+---
+
+### Block 2 — `execute()` — The 5-Stage Pipeline
+
+```python
+def execute(self) -> Dict[str, Any]:
+    start_time = time.time()
+
+    # ── Stage 1: Vector Ingestion ──────────────────────────────────────────────
+    raw_vector_layers = self.vector_ingestor.fetch_all(
+        aoi_polygon=self.config.bbox.as_polygon,
+        layer_configs=self.config.vector.layers,
+    )
+    # Returns: {"highways": GeoDataFrame, "buildings": GeoDataFrame, ...} in EPSG:4326
+
+    # ── Stage 2: Vector Reprojection to UTM ────────────────────────────────────
+    utm_vector_layers = self.aligner.reproject_vectors(raw_vector_layers)
+    # Returns: same dict, now in EPSG:32632 (or local UTM)
+
+    # ── Stage 3: STAC Search ───────────────────────────────────────────────────
+    optical_scene_meta = self.stac_ingestor.search_optical_scene(
+        bbox=self.config.bbox.as_tuple,
+        date_range_str=self.config.temporal.date_range_string,
+        bands=self.config.stac.optical.bands,
+        max_cloud_cover_percent=self.config.stac.optical.max_cloud_cover_percent,
+        collection=self.config.stac.optical.collection,
+    )
+    dem_meta = self.stac_ingestor.search_dem(
+        bbox=self.config.bbox.as_tuple,
+        collection=self.config.stac.elevation.collection,
+        asset_name=self.config.stac.elevation.asset_name,
+    )
+    # Returns: OpticalSceneMetadata and DEMMetadata (URLs only, no pixel data yet)
+
+    # ── Stage 4: Raster Warp & Co-Registration ─────────────────────────────────
+    aligned_optical = self.aligner.resample_and_align_optical(band_urls=optical_scene_meta.band_urls)
+    aligned_dem = self.aligner.resample_and_align_dem(
+        dem_urls=dem_meta.asset_urls,
+        resampling_method_name=self.config.processing.dem_resampling_method,
+    )
+    self.aligner.verify_co_registration(aligned_optical, aligned_dem)
+    # Returns: AlignedRasterData objects (numpy arrays in memory, UTM CRS)
+
+    # ── Stage 5: Export ────────────────────────────────────────────────────────
+    exported_vector_paths = self.exporter.export_vector_layers(utm_vector_layers)
+    optical_cog_path = self.exporter.export_cog(
+        raster_data=aligned_optical,
+        filename=f"optical_sentinel2_10m_{self.config.region_name}.tif",
+        metadata_tags={"SCENE_ID": optical_scene_meta.item_id, ...}
+    )
+    dem_cog_path = self.exporter.export_cog(
+        raster_data=aligned_dem,
+        filename=f"dem_copernicus_10m_{self.config.region_name}.tif",
+        metadata_tags={"RESAMPLING_METHOD": self.config.processing.dem_resampling_method, ...}
+    )
+
+    elapsed = time.time() - start_time
+
+    # ── Summary Statistics ──────────────────────────────────────────────────────
+    dem_valid = aligned_dem.data[0][aligned_dem.data[0] != -9999.0]
+    dem_stats = {
+        "min_elevation_m": float(dem_valid.min()),
+        "max_elevation_m": float(dem_valid.max()),
+        "mean_elevation_m": float(dem_valid.mean()),
+    }
+
+    return {
+        "status": "SUCCESS",
+        "region_name": self.config.region_name,
+        "elapsed_seconds": round(elapsed, 2),
+        "utm_epsg": self.utm_epsg,
+        "grid_dimensions": {"width": self.grid_width, "height": self.grid_height},
+        "optical_scene": {"id": ..., "cloud_cover_percent": ..., "datetime": ...},
+        "dem_stats": dem_stats,
+        "vector_feature_counts": {name: len(gdf) for name, gdf in utm_vector_layers.items()},
+        "artifacts": {"vectors": {...}, "optical_cog": str(optical_cog_path), "dem_cog": str(dem_cog_path)},
+    }
+```
+
+**Why `time.time()` for elapsed timing:**
+`time.time()` is a wall-clock timer. For a pipeline with significant I/O (HTTP downloads), it accurately reflects the total real-world time including network waits. `time.perf_counter()` would be more precise for CPU-bound benchmarks.
+
+**Why return a summary dict instead of just logging:**
+The dict is serialized to JSON in `main.py` and printed to stdout. This makes the pipeline **scriptable** — a CI/CD system can capture the JSON output (`python main.py | tail -n +N > result.json`) and programmatically check if the optical scene's cloud cover was acceptable or if all three vector layers had data.
+
+---
+
+---
+
+# FILE 10 — `config/config.yaml`
+### Role: Operator-Facing Configuration — "Tell the Pipeline Where and When to Look"
+
+```yaml
+region:
+  name: "rural_test_region_10x10km"
+  bbox:
+    min_lon: 11.4000   # Munich, Germany area
+    min_lat: 48.1000
+    max_lon: 11.5350
+    max_lat: 48.1900
+
+temporal:
+  start_date: "2023-06-01"
+  end_date:   "2023-09-30"
+
+stac:
+  api_url: "https://planetarycomputer.microsoft.com/api/stac/v1"
+  use_planetary_computer: true
+  optical:
+    collection: "sentinel-2-l2a"
+    max_cloud_cover_percent: 5.0
+    bands: ["B04", "B03", "B02", "B08"]   # Red, Green, Blue, NIR
+  elevation:
+    collection: "cop-dem-glo-30"
+    asset_name: "data"
+
+vector:
+  layers:
+    highways:
+      tags: { highway: true }
+    buildings:
+      tags: { building: true }
+    environmental_zones:
+      tags: { boundary: "protected_area", leisure: "nature_reserve" }
+  timeout_seconds: 60
+  max_retries: 3
+
+processing:
+  dem_resampling_method: "bilinear"
+  target_pixel_size_meters: 10.0
+
+export:
+  output_dir: "./data/processed"
+  cog:
+    block_size: 256
+    compression: "deflate"
+    overview_levels: [2, 4, 8, 16]
+```
+
+**The bbox used (Munich area, ~10km × ~10km):**
+- Longitude span: 11.535 − 11.400 = 0.135° ≈ ~10.3km at 48°N latitude
+- Latitude span: 48.190 − 48.100 = 0.090° ≈ ~10.0km
+
+This maps to UTM Zone 32N (EPSG:32632) — verified by `get_utm_crs_for_bbox(11.4, 48.1, 11.535, 48.19)`.
+
+---
+
+---
+
+# FILE 11 — `.env.example`
+### Role: Secret Management Template
+
+```bash
+# Microsoft Planetary Computer (STAC + signed URLs)
+# Get key at: https://planetarycomputer.microsoft.com/account/request
+PC_SDK_SUBSCRIPTION_KEY=
+
+# Copernicus Data Space Ecosystem / Sentinel Hub (alternative STAC)
+# Get at: https://dataspace.copernicus.eu/
+SENTINELHUB_CLIENT_ID=
+SENTINELHUB_CLIENT_SECRET=
+
+# OpenStreetMap Overpass API endpoint
+OVERPASS_ENDPOINT=https://overpass-api.de/api
+
+# Runtime settings
+LOG_LEVEL=INFO
+DATA_DIR=./data
+```
+
+**Why `.env` and not directly in `config.yaml`:**
+`config.yaml` is committed to Git. API keys in YAML would be exposed in the repository history. `.env` files are added to `.gitignore` — they exist only on the developer's local machine or in the CI/CD secrets vault. The pipeline reads them via `python-dotenv`'s `load_dotenv()`.
+
+---
+
+---
+
+# FILE 12 — `requirements.txt`
+### Role: Dependency Specification — Reproducible Environments
+
+```text
+osmnx>=1.9.0           # OSM vector ingestion via Overpass API
+geopandas>=0.14.0      # GeoDataFrame + CRS transformation
+shapely>=2.0.0         # Computational geometry (make_valid, Polygon.area, etc.)
+pyproj>=3.6.0          # CRS database + pyproj.Transformer
+pyogrio>=0.7.0         # Fast GDAL OGR I/O backend for geopandas
+
+rasterio>=1.3.8        # Raster I/O + warp + COG writing
+affine>=2.4.0,<3.0.0   # Affine transform math (dependency of rasterio)
+numpy>=1.24.0,<2.0.0   # N-dimensional arrays for pixel data
+
+pystac-client>=0.7.2   # STAC API client (search, filter, paginate)
+planetary-computer>=1.0.0  # SAS URL signer for Microsoft PC
+requests>=2.31.0       # HTTP client (used by pystac-client)
+
+tenacity>=8.2.3        # Retry with exponential backoff + logging hooks
+pyyaml>=6.0.1          # YAML config parser (safe_load)
+python-dotenv>=1.0.0   # .env file loader
+pydantic>=2.5.0        # Config schema validation
+rich>=13.7.0           # (Optional) rich terminal output
+tqdm>=4.66.0           # (Optional) progress bars
+```
+
+**Version constraints explained:**
+- `shapely>=2.0.0` — Shapely 2.x rewrote the C bindings, dramatically improving performance and adding `make_valid()`. Shapely 1.x would break `make_valid()` calls.
+- `numpy>=1.24.0,<2.0.0` — NumPy 2.0 introduced breaking API changes (`np.bool`, `np.int` were removed). Pinning below 2.0 avoids compatibility issues with rasterio and geopandas which may not have updated yet.
+- `pydantic>=2.5.0` — Pydantic v2 (Rust-powered) is 5-17× faster than v1. The `@field_validator` decorator syntax used here is v2-only.
+- `pyogrio>=0.7.0` — GeoPandas 0.14+ uses `pyogrio` as the default I/O backend instead of `fiona`. `pyogrio` is ~10× faster for reading/writing vector files.
+
+---
+
+---
+
+# 🔄 Complete Data Flow Summary
+
+```
+config/config.yaml + .env
+    │
+    ▼ PipelineConfig.from_yaml()  [pydantic validation]
+    │
+    ▼ get_utm_crs_for_bbox()      [pyproj → EPSG:32632]
+    │
+    ▼ compute_target_raster_grid() [rasterio.transform → Affine, 1340×910 px]
+    │
+    ├──► OSMVectorIngestor.fetch_all()
+    │       └── osmnx.features_from_polygon() → GeoDataFrame (EPSG:4326)
+    │       └── _sanitize_geodataframe() → clean geometries
+    │
+    ├──► STACRasterIngestor.search_optical_scene()
+    │       └── pystac_client.Client.search() → least-cloudy Sentinel-2 item
+    │       └── planetary_computer.sign_inplace() → signed band URLs
+    │
+    ├──► STACRasterIngestor.search_dem()
+    │       └── pystac_client.Client.search() → 1–4 DEM tile URLs
+    │
+    ├──► SpatialAligner.reproject_vectors()
+    │       └── GeoDataFrame.to_crs(EPSG:32632) → metric coordinates + length_m/area_m2
+    │
+    ├──► SpatialAligner.resample_and_align_optical()
+    │       └── rasterio.open(url) [VSICURL streaming]
+    │       └── rasterio.warp.reproject() × 4 bands → np.ndarray (4, H, W) float32
+    │
+    ├──► SpatialAligner.resample_and_align_dem()
+    │       └── rasterio.open(tile_url) [VSICURL streaming]
+    │       └── rasterio.warp.reproject() × N tiles → mosaic → np.ndarray (1, H, W) float32
+    │
+    ├──► SpatialAligner.verify_co_registration()  [3 assertions]
+    │
+    └──► GeoDataExporter
+            ├── export_vector_layers() → highways.geojson, buildings.geojson, environmental_zones.geojson
+            ├── export_cog(optical)   → optical_sentinel2_10m_*.tif [COG, 4-band, DEFLATE]
+            └── export_cog(dem)       → dem_copernicus_10m_*.tif    [COG, 1-band, DEFLATE]
+```
+
+---
+
+> **Next (Part 2):** The exported GeoJSON road network (`highways.geojson`) feeds into a graph construction step using `networkx`. The `length_m` attribute becomes the edge weight. The aligned DEM (`dem_copernicus_10m_*.tif`) becomes a slope cost raster. The routing algorithm (Dijkstra / A*) finds least-cost paths through the metric graph.

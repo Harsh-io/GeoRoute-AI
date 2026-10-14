@@ -1,0 +1,196 @@
+{
+  "schema_version": "4.0.0",
+  "generated_at": "2026-10-13T14:52:57.590204+00:00",
+  "region_name": "mandi_corridor_study_area",
+  "pipeline_status": "SUCCESS",
+  "elapsed_seconds": 0.384,
+  "source": {
+    "name": "Mandi Railway Station",
+    "original_coords": [
+      76.9322,
+      31.7084
+    ],
+    "original_crs": "EPSG:4326",
+    "projected_coords": [
+      683095.0,
+      3509735.0
+    ],
+    "projected_crs": "EPSG:32643",
+    "row": 244,
+    "col": 309,
+    "is_snapped": false,
+    "snap_distance_m": 0.0,
+    "snap_reason": null
+  },
+  "destination": {
+    "name": "Mandi Southwest Regional Boundary",
+    "original_coords": [
+      681505.0,
+      3507675.0
+    ],
+    "original_crs": "EPSG:32643",
+    "projected_coords": [
+      681505.0,
+      3507675.0
+    ],
+    "projected_crs": "EPSG:32643",
+    "row": 450,
+    "col": 150,
+    "is_snapped": false,
+    "snap_distance_m": 0.0,
+    "snap_reason": null
+  },
+  "spatial_reference": {
+    "crs": "EPSG:32643",
+    "resolution_meters": [
+      10.0,
+      10.0
+    ],
+    "grid_shape": {
+      "height": 565,
+      "width": 579
+    },
+    "bounds": {
+      "left": 680000.0,
+      "bottom": 3506530.0,
+      "right": 685790.0,
+      "top": 3512180.0
+    }
+  },
+  "num_routes": 3,
+  "routes": [
+    {
+      "route_id": "route_1_shortest_distance",
+      "objective": "shortest_distance",
+      "status": "preliminary_candidate_corridor",
+      "length_m": 2718.5995641732347,
+      "length_km": 2.7185995641732346,
+      "accumulated_cost": 2718.5995641732347,
+      "cost_units": "metres",
+      "num_nodes": 207,
+      "algorithm": "pyorps_cython",
+      "slope_profile": {
+        "mean_percent": 37.94,
+        "max_percent": 88.27,
+        "min_percent": 2.83,
+        "std_percent": 18.7,
+        "sampling_note": "Sampled at 10m raster cell centers along route path"
+      },
+      "landcover_distribution_percent": {
+        "Built-up / Urban": 25.120772946859905,
+        "Tree cover / Forest": 72.94685990338165,
+        "Grassland": 1.4492753623188406,
+        "Bare / sparse vegetation": 0.4830917874396135
+      },
+      "infrastructure_crossings": {
+        "water_crossings": 0,
+        "highway_crossings": 5,
+        "building_conflicts": 0
+      },
+      "validation": {
+        "is_valid": true,
+        "objective": "shortest_distance",
+        "cell_count": 207,
+        "reported_length_m": 2718.6,
+        "recomputed_length_m": 2718.6,
+        "length_difference_m": 0.0,
+        "reported_cost": 2718.6,
+        "recomputed_cost": 2718.6,
+        "cost_discrepancy_percent": 0.0,
+        "num_errors": 0,
+        "errors": [],
+        "warnings": []
+      }
+    },
+    {
+      "route_id": "route_2_lowest_construction_difficulty",
+      "objective": "lowest_construction_difficulty",
+      "status": "preliminary_candidate_corridor",
+      "length_m": 3728.0613254816067,
+      "length_km": 3.728061325481607,
+      "accumulated_cost": 22004.783514681272,
+      "cost_units": "dimensionless difficulty-weighted distance",
+      "num_nodes": 327,
+      "algorithm": "pyorps_cython",
+      "slope_profile": {
+        "mean_percent": 12.7,
+        "max_percent": 69.96,
+        "min_percent": 0.28,
+        "std_percent": 13.62,
+        "sampling_note": "Sampled at 10m raster cell centers along route path"
+      },
+      "landcover_distribution_percent": {
+        "Built-up / Urban": 18.34862385321101,
+        "Grassland": 12.232415902140673,
+        "Tree cover / Forest": 62.079510703363916,
+        "Cropland": 6.727828746177369,
+        "Bare / sparse vegetation": 0.6116207951070336
+      },
+      "infrastructure_crossings": {
+        "water_crossings": 1,
+        "highway_crossings": 13,
+        "building_conflicts": 0
+      },
+      "validation": {
+        "is_valid": true,
+        "objective": "lowest_construction_difficulty",
+        "cell_count": 327,
+        "reported_length_m": 3728.06,
+        "recomputed_length_m": 3728.06,
+        "length_difference_m": 0.0,
+        "reported_cost": 22004.78,
+        "recomputed_cost": 22004.78,
+        "cost_discrepancy_percent": 0.0,
+        "num_errors": 0,
+        "errors": [],
+        "warnings": []
+      }
+    },
+    {
+      "route_id": "route_3_lowest_environmental_impact",
+      "objective": "lowest_environmental_impact",
+      "status": "preliminary_candidate_corridor",
+      "length_m": 3157.350647362948,
+      "length_km": 3.1573506473629482,
+      "accumulated_cost": 6397.627627649546,
+      "cost_units": "dimensionless sensitivity-weighted distance",
+      "num_nodes": 272,
+      "algorithm": "pyorps_cython",
+      "slope_profile": {
+        "mean_percent": 34.61,
+        "max_percent": 104.11,
+        "min_percent": 2.19,
+        "std_percent": 18.76,
+        "sampling_note": "Sampled at 10m raster cell centers along route path"
+      },
+      "landcover_distribution_percent": {
+        "Built-up / Urban": 72.42647058823529,
+        "Bare / sparse vegetation": 3.308823529411765,
+        "Tree cover / Forest": 21.691176470588236,
+        "Grassland": 2.5735294117647056
+      },
+      "infrastructure_crossings": {
+        "water_crossings": 0,
+        "highway_crossings": 70,
+        "building_conflicts": 0
+      },
+      "validation": {
+        "is_valid": true,
+        "objective": "lowest_environmental_impact",
+        "cell_count": 272,
+        "reported_length_m": 3157.35,
+        "recomputed_length_m": 3157.35,
+        "length_difference_m": 0.0,
+        "reported_cost": 6397.63,
+        "recomputed_cost": 6397.63,
+        "cost_discrepancy_percent": 0.0,
+        "num_errors": 0,
+        "errors": [],
+        "warnings": []
+      }
+    }
+  ],
+  "engineering_disclaimer": "GeoRoute AI routes represent preliminary regional planning corridors only, not certified engineering-feasible railway alignments. They do not account for sub-surface geology, ruling railway gradients, transition curves, bridge/tunnel structural designs, or statutory environmental approvals.",
+  "warnings": [],
+  "errors": []
+}

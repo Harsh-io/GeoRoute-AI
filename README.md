@@ -210,3 +210,31 @@ data/processed/
     ├── buildings.geojson            # Reprojected buildings with 'area_m2'
     └── environmental_zones.geojson  # Reprojected protected zones with 'area_m2'
 ```
+
+---
+
+## Workflow
+
+The GeoRoute AI workflow moves from multi-modal geospatial inputs to aligned cost
+surfaces, objective-specific least-cost routing, and validated preliminary candidate
+corridors. The diagram below reflects the implemented repository modules and the
+Mandi study-area outputs currently checked into `data/`.
+
+![GeoRoute AI workflow diagram](docs/images/georoute-workflow.svg)
+
+### Workflow notes
+
+- **Implemented inputs and preprocessing** include Sentinel-2 and Copernicus data
+  ingestion, OSM/Overpass vector handling, UTM reprojection, raster
+  co-registration, and validity/hard-constraint masks.
+- **Cost-surface generation** produces separate physical-distance,
+  construction-difficulty, and environmental-sensitivity friction surfaces.
+- **Default route optimization** uses the PYORPS/Cython backend on an
+  8-connected grid. The route cost combines physical step distance with cell
+  friction; the NetworkX Dijkstra baseline and corridor A* fallback are also
+  implemented.
+- **Route refinement** is a bounded coarse-to-fine regional search, not a claim of
+  global full-resolution optimality.
+- The exported routes are **preliminary planning corridors**, not certified
+  engineering alignments. Detailed vertical alignment, curve design, geotechnical
+  studies, structures, and statutory approvals remain outside the current scope.

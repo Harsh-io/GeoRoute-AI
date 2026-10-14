@@ -31,6 +31,13 @@ stac:
     collection: "cop-dem-glo-30"
     asset_name: "data"
 
+  land_cover:
+    enabled: true
+    collection: "esa-worldcover"
+    asset_name: "map"
+    year: 2021
+    resampling_method: "nearest"
+
 vector:
   layers:
     railways:
@@ -53,16 +60,26 @@ vector:
       tags:
         bridge: true
       description: "Bridge infrastructure across rivers and valleys"
-    protected_areas:
+    waterways:
       tags:
-        boundary: "protected_area"
-        leisure: "nature_reserve"
-      description: "Protected zones to avoid or route carefully through"
+        waterway: true
+      description: "Major rivers and water bodies"
   timeout_seconds: 120
   max_retries: 3
 
+protected_areas:
+  enabled: true
+  authoritative_source_path: "./data/vector/protected_areas.geojson"
+  layer_name: "environmental_zones"
+  fallback_to_osm: true # Uses your GeoJSON first; falls back to OSM only if the file is missing
+
+  osm_tags:
+    boundary: "protected_area"
+    leisure: "nature_reserve"
+
 processing:
   dem_resampling_method: "bilinear"
+  land_cover_resampling_method: "nearest"
   target_pixel_size_meters: 30.0  # 30m for large corridor coverage
 
 export:

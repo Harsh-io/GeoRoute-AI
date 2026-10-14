@@ -1,0 +1,160 @@
+{
+  "timestamp": "2026-10-14T12:16:19Z",
+  "environment": "production",
+  "tests": {
+    "health_probe": {
+      "status": "PASSED",
+      "http_status": 200,
+      "payload": {
+        "status": "healthy",
+        "version": "1.0.0",
+        "environment": "production",
+        "timestamp": "2026-10-14T12:16:19.110889+00:00",
+        "uptime_seconds": 1.33
+      }
+    },
+    "readiness_probe": {
+      "status": "PASSED",
+      "http_status": 200,
+      "payload": {
+        "status": "ready",
+        "precomputed_mode_ready": true,
+        "full_pipeline_mode_ready": true,
+        "pyorps_engine_available": true,
+        "storage_ready": true,
+        "active_jobs": 0,
+        "queued_jobs": 1,
+        "details": {
+          "cost_rasters_dir": "data\\cost\\rasters",
+          "regional_rasters_dir": "data\\cost\\regional\\rasters",
+          "regional_ready": true,
+          "jobs_storage_dir": "data\\jobs",
+          "sqlite_db_path": "data\\jobs\\georoute_jobs.db"
+        }
+      }
+    },
+    "cors_verification": {
+      "status": "PASSED",
+      "allow_origin": "https://georoute-ai.vercel.app"
+    },
+    "capabilities_discovery": {
+      "status": "PASSED",
+      "payload": {
+        "app_version": "1.0.0",
+        "supported_objectives": [
+          "shortest_distance",
+          "lowest_construction_difficulty",
+          "lowest_environmental_impact"
+        ],
+        "routing_backend": "pyorps_cython",
+        "pyorps_version": "0.4.0",
+        "available_processing_modes": [
+          "precomputed",
+          "precomputed_regional",
+          "full_pipeline"
+        ],
+        "current_dataset_coverage": {
+          "region_name": "mandi_terminal_5x5km",
+          "coverage_type": "local_test_corridor",
+          "grid_dimensions": {
+            "width": 579,
+            "height": 565,
+            "resolution_meters": 10.0
+          },
+          "bounds_utm43n": {
+            "crs": "EPSG:32643",
+            "left": 680000.0,
+            "bottom": 3506530.0,
+            "right": 685790.0,
+            "top": 3512180.0
+          },
+          "approximate_wgs84_bounds": {
+            "min_lon": 76.9,
+            "min_lat": 31.68,
+            "max_lon": 76.96,
+            "max_lat": 31.73
+          },
+          "geographic_limitation": "The current local precomputed dataset covers the Mandi 5.79km x 5.65km test area. New Delhi Railway Station is 340.97km south and lies outside the local raster extent. Requests with New Delhi destination under 'precomputed' mode will be rejected with an out-of-coverage error. Use 'precomputed_regional' or 'full_pipeline' mode for Mandi-to-Delhi regional corridor planning.",
+          "regional_coverage": {
+            "region_name": "mandi_delhi_regional_corridor",
+            "coverage_type": "regional_corridor_study_area",
+            "grid_dimensions": {
+              "fine_width": 3450,
+              "fine_height": 13728,
+              "fine_resolution_meters": 30.0,
+              "coarse_width": 1035,
+              "coarse_height": 4114,
+              "coarse_resolution_meters": 100.0
+            },
+            "bounds_utm43n": {
+              "crs": "EPSG:32643",
+              "left": 641670.0,
+              "bottom": 3131340.0,
+              "right": 745170.0,
+              "top": 3543180.0
+            },
+            "approximate_wgs84_bounds": {
+              "min_lon": 76.38,
+              "min_lat": 28.28,
+              "max_lon": 77.58,
+              "max_lat": 32.01
+            },
+            "dataset_readiness": "ready",
+            "coverage_span_km": "411.8 km North-South x 103.5 km East-West",
+            "terminals_covered": [
+              "Mandi Railway Station (HP)",
+              "New Delhi Railway Station (Delhi NCT)"
+            ]
+          }
+        },
+        "engineering_disclaimer": "GeoRoute AI routes represent preliminary regional planning corridors only, not certified engineering-feasible railway alignments. They do not account for sub-surface geology, ruling railway gradients, transition curves, bridge/tunnel structural designs, or statutory environmental approvals."
+      }
+    },
+    "in_coverage_optimization": {
+      "status": "PASSED",
+      "job_id": "job_25f18ce64ec9",
+      "route_count": 3,
+      "objectives": [
+        "shortest_distance",
+        "lowest_construction_difficulty",
+        "lowest_environmental_impact"
+      ],
+      "metrics_summary": {
+        "shortest_distance": {
+          "length_km": 3.02,
+          "mean_slope_percent": 40.04,
+          "accumulated_cost": 3020.44
+        },
+        "lowest_construction_difficulty": {
+          "length_km": 3.739,
+          "mean_slope_percent": 26.08,
+          "accumulated_cost": 29957.87
+        },
+        "lowest_environmental_impact": {
+          "length_km": 4.142,
+          "mean_slope_percent": 40.36,
+          "accumulated_cost": 7087.51
+        }
+      }
+    },
+    "out_of_coverage_rejection": {
+      "status": "PASSED",
+      "http_status": 422,
+      "error_code": "OUT_OF_COVERAGE",
+      "rejection_message": "Endpoint 'Destination' at (716947.3, 3170449.0) EPSG:32643 (row=34173, col=3694) lies out of bounds (lies outside raster grid bounds) [0..565-1, 0..579-1]."
+    },
+    "persistence_verification": {
+      "status": "PASSED",
+      "db_exists": true,
+      "db_size_bytes": 708608,
+      "artifact_path": "routes.geojson",
+      "artifact_size_bytes": 42018
+    },
+    "security_audit": {
+      "status": "PASSED",
+      "no_secrets_leaked": true,
+      "error_envelope_sanitized": true
+    }
+  },
+  "overall_status": "PASSED"
+}

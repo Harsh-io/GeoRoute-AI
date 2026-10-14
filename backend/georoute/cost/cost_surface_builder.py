@@ -81,7 +81,7 @@ class CostSurfaceBuilder:
             raise FileNotFoundError(f"Required Part 2 feature raster missing: {path}")
 
         with rasterio.open(path) as src:
-            arr = src.read(1)
+            arr = np.array(src.read(1), copy=True)
             meta = {
                 "transform": src.transform,
                 "crs": src.crs,

@@ -1,0 +1,805 @@
+{
+  "schema_version": "2.0.0",
+  "manifest_id": "MANIFEST_PART2_MANDI_TERMINAL_5X5KM_1791928583",
+  "generated_at": "2026-10-13T21:56:23.104082+00:00",
+  "region_name": "mandi_terminal_5x5km",
+  "pipeline_status": "SUCCESS",
+  "elapsed_seconds": 1.98,
+  "spatial_reference": {
+    "target_crs": "EPSG:32643",
+    "resolution_meters": 10.0,
+    "bounds_projected": {
+      "min_x": 680000.0,
+      "min_y": 3506530.0,
+      "max_x": 685790.0,
+      "max_y": 3512180.0
+    }
+  },
+  "target_grid": {
+    "width": 579,
+    "height": 565,
+    "resolution_meters": 10.0,
+    "transform": [
+      10.0,
+      0.0,
+      680000.0,
+      0.0,
+      -10.0,
+      3512180.0
+    ]
+  },
+  "deliverables": {
+    "slope_in_degrees_and_percent": {
+      "deliverable": "Slope in degrees and percent",
+      "why_it_matters": "Supplies terrain measurements for later cost modeling",
+      "artifacts": [
+        "features/rasters/slope_degrees.tif",
+        "features/rasters/slope_percent.tif"
+      ],
+      "status": "VALIDATED"
+    },
+    "cleaned_building_and_waterway_vectors": {
+      "deliverable": "Cleaned building and waterway vectors",
+      "why_it_matters": "Provides mapped physical-feature information",
+      "artifacts": [
+        "features/vectors/physical_obstacles.geojson"
+      ],
+      "status": "VALIDATED"
+    },
+    "aligned_obstacle_masks": {
+      "deliverable": "Aligned obstacle masks",
+      "why_it_matters": "Makes features usable in the same raster grid",
+      "artifacts": [
+        "features/rasters/building_mask.tif",
+        "features/rasters/water_mask.tif",
+        "features/rasters/railway_mask.tif",
+        "features/rasters/highway_mask.tif",
+        "features/rasters/combined_obstacle_mask.tif"
+      ],
+      "status": "VALIDATED"
+    },
+    "classified_land_cover_raster": {
+      "deliverable": "Classified land-cover raster",
+      "why_it_matters": "Distinguishes land-cover types without inventing cost weights",
+      "artifacts": [
+        "features/rasters/classified_landcover.tif",
+        "features/landcover_summary.json",
+        "features/landcover_class_mapping.json"
+      ],
+      "status": "VALIDATED"
+    },
+    "environmental_layers": {
+      "deliverable": "Environmental layers",
+      "why_it_matters": "Supplies available forest, wetland, and protected-area information",
+      "artifacts": [
+        "features/rasters/forest_mask.tif",
+        "features/rasters/wetland_mask.tif",
+        "features/rasters/protected_area_mask.tif",
+        "features/vectors/environmental_zones.geojson"
+      ],
+      "status": "VALIDATED"
+    },
+    "manifest_and_validation_report": {
+      "deliverable": "Manifest and validation report",
+      "why_it_matters": "Lets Part 3 consume the outputs without guessing",
+      "artifacts": [
+        "features/features_manifest.json"
+      ],
+      "status": "VALIDATED"
+    }
+  },
+  "rasters": {
+    "slope_degrees": {
+      "layer_name": "slope_degrees",
+      "file_path": "features\\rasters\\slope_degrees.tif",
+      "crs": "EPSG:32643",
+      "width": 579,
+      "height": 565,
+      "bands": 1,
+      "band_names": [
+        "slope_degrees"
+      ],
+      "dtype": "float32",
+      "nodata": -9999.0,
+      "resolution_meters": 10.0,
+      "transform": [
+        10.0,
+        0.0,
+        680000.0,
+        0.0,
+        -10.0,
+        3512180.0
+      ],
+      "bounds_projected": {
+        "min_x": 680000.0,
+        "min_y": 3506530.0,
+        "max_x": 685790.0,
+        "max_y": 3512180.0
+      },
+      "sha256": "de95e16c3157d63571b7ba09834646497f0b03d44c27f005184e0f512578cd47",
+      "spatial_alignment_verified": true,
+      "min_value": 0.0,
+      "max_value": 59.428714752197266,
+      "mean_value": 23.02982521057129,
+      "foreground_pixels": null,
+      "foreground_percentage": null
+    },
+    "slope_percent": {
+      "layer_name": "slope_percent",
+      "file_path": "features\\rasters\\slope_percent.tif",
+      "crs": "EPSG:32643",
+      "width": 579,
+      "height": 565,
+      "bands": 1,
+      "band_names": [
+        "slope_percent"
+      ],
+      "dtype": "float32",
+      "nodata": -9999.0,
+      "resolution_meters": 10.0,
+      "transform": [
+        10.0,
+        0.0,
+        680000.0,
+        0.0,
+        -10.0,
+        3512180.0
+      ],
+      "bounds_projected": {
+        "min_x": 680000.0,
+        "min_y": 3506530.0,
+        "max_x": 685790.0,
+        "max_y": 3512180.0
+      },
+      "sha256": "084ffd0aaa9c1957f85aa27f5d30fd41811b61312935a9d92345f3227c82089a",
+      "spatial_alignment_verified": true,
+      "min_value": 0.0,
+      "max_value": 169.2843780517578,
+      "mean_value": 44.199974060058594,
+      "foreground_pixels": null,
+      "foreground_percentage": null
+    },
+    "ndvi": {
+      "layer_name": "ndvi",
+      "file_path": "features\\rasters\\ndvi.tif",
+      "crs": "EPSG:32643",
+      "width": 579,
+      "height": 565,
+      "bands": 1,
+      "band_names": [
+        "ndvi"
+      ],
+      "dtype": "float32",
+      "nodata": -9999.0,
+      "resolution_meters": 10.0,
+      "transform": [
+        10.0,
+        0.0,
+        680000.0,
+        0.0,
+        -10.0,
+        3512180.0
+      ],
+      "bounds_projected": {
+        "min_x": 680000.0,
+        "min_y": 3506530.0,
+        "max_x": 685790.0,
+        "max_y": 3512180.0
+      },
+      "sha256": "52cb692ab055b386998ec380e3aaa006e8d78ee5b8e64761fbdb9c32f6bb24af",
+      "spatial_alignment_verified": true,
+      "min_value": -0.1756066381931305,
+      "max_value": 0.6814814805984497,
+      "mean_value": 0.34508201479911804,
+      "foreground_pixels": null,
+      "foreground_percentage": null
+    },
+    "classified_landcover": {
+      "layer_name": "classified_landcover",
+      "file_path": "features\\rasters\\classified_landcover.tif",
+      "crs": "EPSG:32643",
+      "width": 579,
+      "height": 565,
+      "bands": 1,
+      "band_names": [
+        "classified_landcover"
+      ],
+      "dtype": "uint8",
+      "nodata": 0.0,
+      "resolution_meters": 10.0,
+      "transform": [
+        10.0,
+        0.0,
+        680000.0,
+        0.0,
+        -10.0,
+        3512180.0
+      ],
+      "bounds_projected": {
+        "min_x": 680000.0,
+        "min_y": 3506530.0,
+        "max_x": 685790.0,
+        "max_y": 3512180.0
+      },
+      "sha256": "f3ed246bbcb1c43e91f478d13d599aa31ab87e1f18f4eb7b82cc6a35cc4d6115",
+      "spatial_alignment_verified": true,
+      "min_value": 10.0,
+      "max_value": 80.0,
+      "mean_value": 18.10185397465878,
+      "foreground_pixels": 0,
+      "foreground_percentage": 0.0
+    },
+    "forest_mask": {
+      "layer_name": "forest_mask",
+      "file_path": "features\\rasters\\forest_mask.tif",
+      "crs": "EPSG:32643",
+      "width": 579,
+      "height": 565,
+      "bands": 1,
+      "band_names": [
+        "forest_mask"
+      ],
+      "dtype": "uint8",
+      "nodata": 255.0,
+      "resolution_meters": 10.0,
+      "transform": [
+        10.0,
+        0.0,
+        680000.0,
+        0.0,
+        -10.0,
+        3512180.0
+      ],
+      "bounds_projected": {
+        "min_x": 680000.0,
+        "min_y": 3506530.0,
+        "max_x": 685790.0,
+        "max_y": 3512180.0
+      },
+      "sha256": "e826de69dfecf8ab3b0f3432a5e8ad02ca5506acbd0d636e70b0abcb2e775cc1",
+      "spatial_alignment_verified": true,
+      "min_value": 0.0,
+      "max_value": 1.0,
+      "mean_value": 0.7575190670518288,
+      "foreground_pixels": 247811,
+      "foreground_percentage": 75.7519
+    },
+    "wetland_mask": {
+      "layer_name": "wetland_mask",
+      "file_path": "features\\rasters\\wetland_mask.tif",
+      "crs": "EPSG:32643",
+      "width": 579,
+      "height": 565,
+      "bands": 1,
+      "band_names": [
+        "wetland_mask"
+      ],
+      "dtype": "uint8",
+      "nodata": 255.0,
+      "resolution_meters": 10.0,
+      "transform": [
+        10.0,
+        0.0,
+        680000.0,
+        0.0,
+        -10.0,
+        3512180.0
+      ],
+      "bounds_projected": {
+        "min_x": 680000.0,
+        "min_y": 3506530.0,
+        "max_x": 685790.0,
+        "max_y": 3512180.0
+      },
+      "sha256": "3b9144876897408d6f55452654358db071d47c09645d433c8f0014349a04c361",
+      "spatial_alignment_verified": true,
+      "min_value": 0.0,
+      "max_value": 0.0,
+      "mean_value": 0.0,
+      "foreground_pixels": 0,
+      "foreground_percentage": 0.0
+    },
+    "cropland_mask": {
+      "layer_name": "cropland_mask",
+      "file_path": "features\\rasters\\cropland_mask.tif",
+      "crs": "EPSG:32643",
+      "width": 579,
+      "height": 565,
+      "bands": 1,
+      "band_names": [
+        "cropland_mask"
+      ],
+      "dtype": "uint8",
+      "nodata": 255.0,
+      "resolution_meters": 10.0,
+      "transform": [
+        10.0,
+        0.0,
+        680000.0,
+        0.0,
+        -10.0,
+        3512180.0
+      ],
+      "bounds_projected": {
+        "min_x": 680000.0,
+        "min_y": 3506530.0,
+        "max_x": 685790.0,
+        "max_y": 3512180.0
+      },
+      "sha256": "91eb9ca8edb9c9cdc05c4875ff20b65aad376d562ff3ac9f7e354d1f46ebbb7e",
+      "spatial_alignment_verified": true,
+      "min_value": 0.0,
+      "max_value": 1.0,
+      "mean_value": 0.01931312760786831,
+      "foreground_pixels": 6318,
+      "foreground_percentage": 1.9313
+    },
+    "builtup_mask": {
+      "layer_name": "builtup_mask",
+      "file_path": "features\\rasters\\builtup_mask.tif",
+      "crs": "EPSG:32643",
+      "width": 579,
+      "height": 565,
+      "bands": 1,
+      "band_names": [
+        "builtup_mask"
+      ],
+      "dtype": "uint8",
+      "nodata": 255.0,
+      "resolution_meters": 10.0,
+      "transform": [
+        10.0,
+        0.0,
+        680000.0,
+        0.0,
+        -10.0,
+        3512180.0
+      ],
+      "bounds_projected": {
+        "min_x": 680000.0,
+        "min_y": 3506530.0,
+        "max_x": 685790.0,
+        "max_y": 3512180.0
+      },
+      "sha256": "1a2fc39faa5c977ba2da454769c9484a4268a3f1b6e323d2a3b3b2e181856b00",
+      "spatial_alignment_verified": true,
+      "min_value": 0.0,
+      "max_value": 1.0,
+      "mean_value": 0.0666972350864322,
+      "foreground_pixels": 21819,
+      "foreground_percentage": 6.6697
+    },
+    "building_mask": {
+      "layer_name": "building_mask",
+      "file_path": "features\\rasters\\building_mask.tif",
+      "crs": "EPSG:32643",
+      "width": 579,
+      "height": 565,
+      "bands": 1,
+      "band_names": [
+        "building_mask"
+      ],
+      "dtype": "uint8",
+      "nodata": 255.0,
+      "resolution_meters": 10.0,
+      "transform": [
+        10.0,
+        0.0,
+        680000.0,
+        0.0,
+        -10.0,
+        3512180.0
+      ],
+      "bounds_projected": {
+        "min_x": 680000.0,
+        "min_y": 3506530.0,
+        "max_x": 685790.0,
+        "max_y": 3512180.0
+      },
+      "sha256": "25944c9a10a046634bacc1a77fc9795396541b61e204e9c0ea553f71aa3402bd",
+      "spatial_alignment_verified": true,
+      "min_value": 0.0,
+      "max_value": 1.0,
+      "mean_value": 0.0005899705014749262,
+      "foreground_pixels": 193,
+      "foreground_percentage": 0.059
+    },
+    "water_mask": {
+      "layer_name": "water_mask",
+      "file_path": "features\\rasters\\water_mask.tif",
+      "crs": "EPSG:32643",
+      "width": 579,
+      "height": 565,
+      "bands": 1,
+      "band_names": [
+        "water_mask"
+      ],
+      "dtype": "uint8",
+      "nodata": 255.0,
+      "resolution_meters": 10.0,
+      "transform": [
+        10.0,
+        0.0,
+        680000.0,
+        0.0,
+        -10.0,
+        3512180.0
+      ],
+      "bounds_projected": {
+        "min_x": 680000.0,
+        "min_y": 3506530.0,
+        "max_x": 685790.0,
+        "max_y": 3512180.0
+      },
+      "sha256": "a4adc53f81564488d61791d2b6a3b83a0b63cc769b7950ebb0d50481e6bd6877",
+      "spatial_alignment_verified": true,
+      "min_value": 0.0,
+      "max_value": 1.0,
+      "mean_value": 0.01773885398994299,
+      "foreground_pixels": 5803,
+      "foreground_percentage": 1.7739
+    },
+    "railway_mask": {
+      "layer_name": "railway_mask",
+      "file_path": "features\\rasters\\railway_mask.tif",
+      "crs": "EPSG:32643",
+      "width": 579,
+      "height": 565,
+      "bands": 1,
+      "band_names": [
+        "railway_mask"
+      ],
+      "dtype": "uint8",
+      "nodata": 255.0,
+      "resolution_meters": 10.0,
+      "transform": [
+        10.0,
+        0.0,
+        680000.0,
+        0.0,
+        -10.0,
+        3512180.0
+      ],
+      "bounds_projected": {
+        "min_x": 680000.0,
+        "min_y": 3506530.0,
+        "max_x": 685790.0,
+        "max_y": 3512180.0
+      },
+      "sha256": "1124c6d63ca6e3eaf06a6e63479e0ef7bdc58a417526046f8d7bbd9536effe0f",
+      "spatial_alignment_verified": true,
+      "min_value": 0.0,
+      "max_value": 0.0,
+      "mean_value": 0.0,
+      "foreground_pixels": 0,
+      "foreground_percentage": 0.0
+    },
+    "highway_mask": {
+      "layer_name": "highway_mask",
+      "file_path": "features\\rasters\\highway_mask.tif",
+      "crs": "EPSG:32643",
+      "width": 579,
+      "height": 565,
+      "bands": 1,
+      "band_names": [
+        "highway_mask"
+      ],
+      "dtype": "uint8",
+      "nodata": 255.0,
+      "resolution_meters": 10.0,
+      "transform": [
+        10.0,
+        0.0,
+        680000.0,
+        0.0,
+        -10.0,
+        3512180.0
+      ],
+      "bounds_projected": {
+        "min_x": 680000.0,
+        "min_y": 3506530.0,
+        "max_x": 685790.0,
+        "max_y": 3512180.0
+      },
+      "sha256": "13eb7808fa564c85f765f5d6782a14e19ea674386c0688eb400b6d60c54382dc",
+      "spatial_alignment_verified": true,
+      "min_value": 0.0,
+      "max_value": 1.0,
+      "mean_value": 0.04048481513748147,
+      "foreground_pixels": 13244,
+      "foreground_percentage": 4.0485
+    },
+    "combined_obstacle_mask": {
+      "layer_name": "combined_obstacle_mask",
+      "file_path": "features\\rasters\\combined_obstacle_mask.tif",
+      "crs": "EPSG:32643",
+      "width": 579,
+      "height": 565,
+      "bands": 1,
+      "band_names": [
+        "combined_obstacle_mask"
+      ],
+      "dtype": "uint8",
+      "nodata": 255.0,
+      "resolution_meters": 10.0,
+      "transform": [
+        10.0,
+        0.0,
+        680000.0,
+        0.0,
+        -10.0,
+        3512180.0
+      ],
+      "bounds_projected": {
+        "min_x": 680000.0,
+        "min_y": 3506530.0,
+        "max_x": 685790.0,
+        "max_y": 3512180.0
+      },
+      "sha256": "727a1173801fc2b173c3e371a57fc2146c75b149eec354d0804d6badf7800f40",
+      "spatial_alignment_verified": true,
+      "min_value": 0.0,
+      "max_value": 1.0,
+      "mean_value": 0.058541580692986074,
+      "foreground_pixels": 19151,
+      "foreground_percentage": 5.8542
+    },
+    "protected_area_mask": {
+      "layer_name": "protected_area_mask",
+      "file_path": "features\\rasters\\protected_area_mask.tif",
+      "crs": "EPSG:32643",
+      "width": 579,
+      "height": 565,
+      "bands": 1,
+      "band_names": [
+        "protected_area_mask"
+      ],
+      "dtype": "uint8",
+      "nodata": 255.0,
+      "resolution_meters": 10.0,
+      "transform": [
+        10.0,
+        0.0,
+        680000.0,
+        0.0,
+        -10.0,
+        3512180.0
+      ],
+      "bounds_projected": {
+        "min_x": 680000.0,
+        "min_y": 3506530.0,
+        "max_x": 685790.0,
+        "max_y": 3512180.0
+      },
+      "sha256": "f51e9c635d7e4899bfe27c0026b0c422b098b42c7fa3656a0f5a134af4732bdf",
+      "spatial_alignment_verified": true,
+      "min_value": 0.0,
+      "max_value": 0.0,
+      "mean_value": 0.0,
+      "foreground_pixels": 0,
+      "foreground_percentage": 0.0
+    }
+  },
+  "vectors": {
+    "physical_obstacles": {
+      "layer_name": "physical_obstacles",
+      "file_path": "features\\vectors\\physical_obstacles.geojson",
+      "feature_count": 252,
+      "crs": "EPSG:32643",
+      "bounds_projected": {
+        "min_x": 676140.3187610002,
+        "min_y": 3491699.3525774926,
+        "max_x": 693699.3402911498,
+        "max_y": 3517234.3138518236
+      },
+      "geometry_types": [
+        "Point",
+        "Polygon",
+        "LineString"
+      ],
+      "attributes": [
+        "obstacle_id",
+        "obstacle_type",
+        "source",
+        "name",
+        "geometry"
+      ],
+      "sha256": "5cf17d104d370f2f55035dd5b849ef8a6f37b3065cad5188d76ede1bf53ff635"
+    },
+    "environmental_zones": {
+      "layer_name": "environmental_zones",
+      "file_path": "features\\vectors\\environmental_zones.geojson",
+      "feature_count": 0,
+      "crs": "EPSG:32643",
+      "bounds_projected": {
+        "min_x": 680000.0,
+        "min_y": 3506530.0,
+        "max_x": 685790.0,
+        "max_y": 3512180.0
+      },
+      "geometry_types": [],
+      "attributes": [
+        "geometry"
+      ],
+      "sha256": "87175a30eb6b0e851c04c8d077d65851fefa8d928d8921a64bfd11d8386726f3"
+    }
+  },
+  "landcover_summary": {
+    "total_pixels": 327135,
+    "valid_pixels": 327135,
+    "nodata_pixels": 0,
+    "pixel_resolution_m": [
+      10.0,
+      10.0
+    ],
+    "total_area_km2": 32.7135,
+    "classes": {
+      "10": {
+        "class_id": 10,
+        "name": "Tree cover",
+        "category": "forest",
+        "pixel_count": 247811,
+        "percentage": 75.7519,
+        "area_km2": 24.7811,
+        "description": "Tree canopy cover >= 10%, tree height >= 5m",
+        "part3_implication": "High clearing and compensatory afforestation cost; moderate terrain and environmental sensitivity"
+      },
+      "20": {
+        "class_id": 20,
+        "name": "Shrubland",
+        "category": "vegetation",
+        "pixel_count": 58,
+        "percentage": 0.0177,
+        "area_km2": 0.0058,
+        "description": "Woody perennial plants with persistent woody stems, height < 5m",
+        "part3_implication": "Low clearing cost; standard construction difficulty"
+      },
+      "30": {
+        "class_id": 30,
+        "name": "Grassland",
+        "category": "vegetation",
+        "pixel_count": 35691,
+        "percentage": 10.9102,
+        "area_km2": 3.5691,
+        "description": "Natural herbaceous vegetation without substantial tree or shrub cover",
+        "part3_implication": "Minimal clearing cost; favorable for earthwork"
+      },
+      "40": {
+        "class_id": 40,
+        "name": "Cropland",
+        "category": "agriculture",
+        "pixel_count": 6318,
+        "percentage": 1.9313,
+        "area_km2": 0.6318,
+        "description": "Cultivated agricultural land and harvested fields",
+        "part3_implication": "Moderate to high agricultural land acquisition compensation"
+      },
+      "50": {
+        "class_id": 50,
+        "name": "Built-up",
+        "category": "urban",
+        "pixel_count": 21819,
+        "percentage": 6.6697,
+        "area_km2": 2.1819,
+        "description": "Urban and built-up land, residential and commercial structures",
+        "part3_implication": "Very high property acquisition and resettlement cost; strict corridor avoidance preferred"
+      },
+      "60": {
+        "class_id": 60,
+        "name": "Bare / sparse vegetation",
+        "category": "bare",
+        "pixel_count": 10348,
+        "percentage": 3.1632,
+        "area_km2": 1.0348,
+        "description": "Lands with exposed soil, sand, rocks with vegetative cover < 10%",
+        "part3_implication": "Zero land acquisition friction; potential geotechnical/slope stability review"
+      },
+      "70": {
+        "class_id": 70,
+        "name": "Snow and ice",
+        "category": "cryosphere",
+        "pixel_count": 0,
+        "percentage": 0.0,
+        "area_km2": 0.0,
+        "description": "Perennial snowfields and glaciers",
+        "part3_implication": "Extreme engineering hazard and maintenance burden; high routing friction"
+      },
+      "80": {
+        "class_id": 80,
+        "name": "Permanent water bodies",
+        "category": "water",
+        "pixel_count": 5090,
+        "percentage": 1.5559,
+        "area_km2": 0.509,
+        "description": "Lakes, reservoirs, wide rivers, and coastal waters",
+        "part3_implication": "Severe engineering constraint requiring major bridge or causeway infrastructure"
+      },
+      "90": {
+        "class_id": 90,
+        "name": "Herbaceous wetland",
+        "category": "wetland",
+        "pixel_count": 0,
+        "percentage": 0.0,
+        "area_km2": 0.0,
+        "description": "Inundated or saturated marshlands and swamps",
+        "part3_implication": "Strict ecological sensitivity and poor foundation soil bearing capacity"
+      },
+      "95": {
+        "class_id": 95,
+        "name": "Mangroves",
+        "category": "wetland",
+        "pixel_count": 0,
+        "percentage": 0.0,
+        "area_km2": 0.0,
+        "description": "Tidal mangrove formations along estuaries",
+        "part3_implication": "Statutory coastal regulation exclusion and high bridge foundation cost"
+      },
+      "100": {
+        "class_id": 100,
+        "name": "Moss and lichen",
+        "category": "tundra",
+        "pixel_count": 0,
+        "percentage": 0.0,
+        "area_km2": 0.0,
+        "description": "High altitude or polar moss and lichen cover",
+        "part3_implication": "Alpine fragile ecosystem friction"
+      }
+    }
+  },
+  "optical_validation": {
+    "forest_ndvi": {
+      "pixel_count": 247811,
+      "mean": 0.3923,
+      "std": 0.1034,
+      "min": -0.107,
+      "max": 0.6815
+    },
+    "water_ndvi": {
+      "pixel_count": 5090,
+      "mean": -0.0461,
+      "std": 0.0834,
+      "min": -0.1585,
+      "max": 0.52
+    },
+    "builtup_ndvi": {
+      "pixel_count": 21819,
+      "mean": 0.1272,
+      "std": 0.0991
+    },
+    "plausibility_passed": true
+  },
+  "environmental_metrics": {
+    "protected_zones_count": 0,
+    "protected_pixel_count": 0,
+    "protected_area_percentage": 0.0,
+    "protected_area_km2": 0.0,
+    "forest_breakdown": {
+      "total_forest_pixels": 247811,
+      "total_forest_km2": 24.7811,
+      "hard_exclusion_forest_pixels": 0,
+      "hard_exclusion_forest_km2": 0.0,
+      "soft_friction_forest_pixels": 247811,
+      "soft_friction_forest_km2": 24.7811,
+      "statutory_forest_ratio": 0.0
+    }
+  },
+  "slope_metrics": {
+    "slope_degrees": {
+      "min": 0.0,
+      "max": 59.43,
+      "mean": 23.03,
+      "std": 10.25
+    },
+    "slope_percent": {
+      "min": 0.0,
+      "max": 169.28,
+      "mean": 44.2,
+      "std": 21.98,
+      "percentage_gt_10": 94.81,
+      "percentage_gt_20": 85.32,
+      "percentage_gt_30": 71.4
+    }
+  },
+  "warnings": [],
+  "errors": []
+}

@@ -1,0 +1,447 @@
+{
+  "schema_version": "2.0.0",
+  "corridor_id": "mandi_to_new_delhi",
+  "generated_at": "2026-10-13T20:14:50.332873+00:00",
+  "study_area": {
+    "min_lon": 76.5,
+    "min_lat": 28.3,
+    "max_lon": 77.5,
+    "max_lat": 32.0,
+    "width_km": 96.1,
+    "height_km": 411.18,
+    "total_area_km2": 39512.69
+  },
+  "endpoints": {
+    "source": {
+      "name": "Mandi Railway Station",
+      "lon": 76.9322,
+      "lat": 31.7084
+    },
+    "destination": {
+      "name": "New Delhi Railway Station",
+      "lon": 77.2195,
+      "lat": 28.643
+    }
+  },
+  "layers": {
+    "corridor_protected_areas": {
+      "layer_id": "corridor_protected_areas",
+      "layer_type": "vector",
+      "source_name": "National Wildlife Database / WDPA India",
+      "provider": "Wildlife Institute of India / Open Government Data India",
+      "license": "Government Open Data License - India (GODL)",
+      "temporal_range": "2023-2024",
+      "nominal_resolution": "vector (boundary polygons)",
+      "local_paths": [
+        "data\\raw\\vectors\\corridor_protected_areas.geojson"
+      ],
+      "source_urls": [
+        "data\\vector\\protected_areas.geojson"
+      ],
+      "crs": "EPSG:4326",
+      "bounds_wgs84": {
+        "min_lon": 76.3711684379507,
+        "min_lat": 28.412195479855644,
+        "max_lon": 77.85553568866747,
+        "max_lat": 32.06344599816896
+      },
+      "feature_or_tile_count": 34,
+      "size_bytes": 171396,
+      "sha256_hashes": {
+        "corridor_protected_areas.geojson": "df1c3dd026b37db5614d91040354c017c9ddf3c66c9248a6cf718d0cae022ed8"
+      },
+      "validation_status": "VALID",
+      "endpoint_coverage": {
+        "mandi_covered": true,
+        "delhi_covered": true,
+        "details": "Regional bounds encompass both endpoints. Neither terminal station falls inside an exclusion zone."
+      },
+      "coverage_notes": "Complete corridor coverage with 34 designated National Parks and Sanctuaries.",
+      "known_limitations_and_gaps": [],
+      "metadata_attributes": {
+        "statutory_distinction": "Legally protected statutory exclusion zones (National Parks & Wildlife Sanctuaries; Section 35/38 Wildlife Protection Act 1972) are strictly distinguished from ordinary forest canopy cover (WorldCover Class 10). Protected areas enforce absolute avoidance constraints, whereas forest canopy incurs environmental friction costs.",
+        "legal_basis": "Wildlife (Protection) Act, 1972 (53 of 1972)",
+        "designation_types": [
+          "National Park",
+          "Wildlife Sanctuary"
+        ],
+        "authority": "Wildlife Institute of India (WII) / MoEFCC",
+        "licensing_attribution": "Government Open Data License - India (GODL)"
+      }
+    },
+    "copernicus_dem_30m": {
+      "layer_id": "copernicus_dem_30m",
+      "layer_type": "raster",
+      "source_name": "Copernicus Global DEM (GLO-30)",
+      "provider": "European Space Agency (ESA) / Microsoft Planetary Computer",
+      "license": "Copernicus Open Access Policy (Free and open)",
+      "temporal_range": "2021-2022 release",
+      "nominal_resolution": "30m",
+      "local_paths": [
+        "data\\raw\\dem\\copernicus_dem_tiles.json",
+        "data\\raw\\dem\\mandi_dem_30m.tif",
+        "data\\raw\\dem\\delhi_dem_30m.tif"
+      ],
+      "source_urls": [
+        "https://elevationeuwest.blob.core.windows.net/copernicus-dem/COP30_hh/Copernicus_DSM_COG_10_N31_00_E077_00_DEM.tif?st=2026-10-12T20%3A09%3A50Z&se=2026-10-13T20%3A54%3A50Z&sp=rl&sv=2025-07-05&sr=c&skoid=9c8ff44a-6a2c-4dfb-b298-1c9212f64d9a&sktid=72f988bf-86f1-41af-91ab-2d7cd011db47&skt=2026-10-13T18%3A12%3A34Z&ske=2026-10-20T18%3A12%3A34Z&sks=b&skv=2025-07-05&sig=wB6eBC8nd7m%2BI4H3zZS9Op2Ml6Hl3ti0bNbdln3YN3Q%3D",
+        "https://elevationeuwest.blob.core.windows.net/copernicus-dem/COP30_hh/Copernicus_DSM_COG_10_N31_00_E076_00_DEM.tif?st=2026-10-12T20%3A09%3A50Z&se=2026-10-13T20%3A54%3A50Z&sp=rl&sv=2025-07-05&sr=c&skoid=9c8ff44a-6a2c-4dfb-b298-1c9212f64d9a&sktid=72f988bf-86f1-41af-91ab-2d7cd011db47&skt=2026-10-13T18%3A12%3A34Z&ske=2026-10-20T18%3A12%3A34Z&sks=b&skv=2025-07-05&sig=wB6eBC8nd7m%2BI4H3zZS9Op2Ml6Hl3ti0bNbdln3YN3Q%3D",
+        "https://elevationeuwest.blob.core.windows.net/copernicus-dem/COP30_hh/Copernicus_DSM_COG_10_N30_00_E077_00_DEM.tif?st=2026-10-12T20%3A09%3A50Z&se=2026-10-13T20%3A54%3A50Z&sp=rl&sv=2025-07-05&sr=c&skoid=9c8ff44a-6a2c-4dfb-b298-1c9212f64d9a&sktid=72f988bf-86f1-41af-91ab-2d7cd011db47&skt=2026-10-13T18%3A12%3A34Z&ske=2026-10-20T18%3A12%3A34Z&sks=b&skv=2025-07-05&sig=wB6eBC8nd7m%2BI4H3zZS9Op2Ml6Hl3ti0bNbdln3YN3Q%3D",
+        "https://elevationeuwest.blob.core.windows.net/copernicus-dem/COP30_hh/Copernicus_DSM_COG_10_N30_00_E076_00_DEM.tif?st=2026-10-12T20%3A09%3A50Z&se=2026-10-13T20%3A54%3A50Z&sp=rl&sv=2025-07-05&sr=c&skoid=9c8ff44a-6a2c-4dfb-b298-1c9212f64d9a&sktid=72f988bf-86f1-41af-91ab-2d7cd011db47&skt=2026-10-13T18%3A12%3A34Z&ske=2026-10-20T18%3A12%3A34Z&sks=b&skv=2025-07-05&sig=wB6eBC8nd7m%2BI4H3zZS9Op2Ml6Hl3ti0bNbdln3YN3Q%3D",
+        "https://elevationeuwest.blob.core.windows.net/copernicus-dem/COP30_hh/Copernicus_DSM_COG_10_N29_00_E077_00_DEM.tif?st=2026-10-12T20%3A09%3A50Z&se=2026-10-13T20%3A54%3A50Z&sp=rl&sv=2025-07-05&sr=c&skoid=9c8ff44a-6a2c-4dfb-b298-1c9212f64d9a&sktid=72f988bf-86f1-41af-91ab-2d7cd011db47&skt=2026-10-13T18%3A12%3A34Z&ske=2026-10-20T18%3A12%3A34Z&sks=b&skv=2025-07-05&sig=wB6eBC8nd7m%2BI4H3zZS9Op2Ml6Hl3ti0bNbdln3YN3Q%3D",
+        "https://elevationeuwest.blob.core.windows.net/copernicus-dem/COP30_hh/Copernicus_DSM_COG_10_N29_00_E076_00_DEM.tif?st=2026-10-12T20%3A09%3A50Z&se=2026-10-13T20%3A54%3A50Z&sp=rl&sv=2025-07-05&sr=c&skoid=9c8ff44a-6a2c-4dfb-b298-1c9212f64d9a&sktid=72f988bf-86f1-41af-91ab-2d7cd011db47&skt=2026-10-13T18%3A12%3A34Z&ske=2026-10-20T18%3A12%3A34Z&sks=b&skv=2025-07-05&sig=wB6eBC8nd7m%2BI4H3zZS9Op2Ml6Hl3ti0bNbdln3YN3Q%3D",
+        "https://elevationeuwest.blob.core.windows.net/copernicus-dem/COP30_hh/Copernicus_DSM_COG_10_N28_00_E077_00_DEM.tif?st=2026-10-12T20%3A09%3A50Z&se=2026-10-13T20%3A54%3A50Z&sp=rl&sv=2025-07-05&sr=c&skoid=9c8ff44a-6a2c-4dfb-b298-1c9212f64d9a&sktid=72f988bf-86f1-41af-91ab-2d7cd011db47&skt=2026-10-13T18%3A12%3A34Z&ske=2026-10-20T18%3A12%3A34Z&sks=b&skv=2025-07-05&sig=wB6eBC8nd7m%2BI4H3zZS9Op2Ml6Hl3ti0bNbdln3YN3Q%3D",
+        "https://elevationeuwest.blob.core.windows.net/copernicus-dem/COP30_hh/Copernicus_DSM_COG_10_N28_00_E076_00_DEM.tif?st=2026-10-12T20%3A09%3A50Z&se=2026-10-13T20%3A54%3A50Z&sp=rl&sv=2025-07-05&sr=c&skoid=9c8ff44a-6a2c-4dfb-b298-1c9212f64d9a&sktid=72f988bf-86f1-41af-91ab-2d7cd011db47&skt=2026-10-13T18%3A12%3A34Z&ske=2026-10-20T18%3A12%3A34Z&sks=b&skv=2025-07-05&sig=wB6eBC8nd7m%2BI4H3zZS9Op2Ml6Hl3ti0bNbdln3YN3Q%3D"
+      ],
+      "crs": "EPSG:4326",
+      "bounds_wgs84": {
+        "min_lon": 76.0,
+        "min_lat": 28.0,
+        "max_lon": 78.0,
+        "max_lat": 32.0
+      },
+      "feature_or_tile_count": 8,
+      "size_bytes": 363891,
+      "sha256_hashes": {
+        "copernicus_dem_tiles.json": "b6f655a7b993a70878ca39bfcfe8f57c48210917a7036983854a3852cf44c83b",
+        "mandi_dem_30m.tif": "5a13fc9d5ff1852038b2f5da23e7cfbc3182f4f7bea53eb491152419f6fa6b5e",
+        "delhi_dem_30m.tif": "86be36ae9fd6bb970ac1185ef753f6cbd7d45dae465895638e27c76b657fa637"
+      },
+      "validation_status": "VALID",
+      "endpoint_coverage": {
+        "mandi_covered": true,
+        "delhi_covered": true,
+        "details": "8 contiguous 1x1 degree tiles form a gapless elevation raster covering all latitudes from 28N to 32N."
+      },
+      "coverage_notes": "Complete corridor coverage across 8 STAC DEM tiles.",
+      "known_limitations_and_gaps": [],
+      "metadata_attributes": {
+        "elevation_units": "meters (orthometric height above EGM2008 geoid)",
+        "vertical_datum": "EGM2008",
+        "native_resolution": "30m (1 arc-second, approx 0.0002778 degrees)",
+        "source": "Copernicus Global DEM (GLO-30 DSM)",
+        "version": "2021-2022 release",
+        "crs": "EPSG:4326 (WGS84)",
+        "nodata_value": -9999.0,
+        "instrument": "TanDEM-X radar interferometry",
+        "collection_id": "copernicus-dem-glo-30",
+        "licensing_attribution": "Copernicus Open Access Policy; Free and open access for all users"
+      }
+    },
+    "esa_worldcover_2021": {
+      "layer_id": "esa_worldcover_2021",
+      "layer_type": "raster",
+      "source_name": "ESA WorldCover 2021 v200",
+      "provider": "European Space Agency (ESA) / VITO / Microsoft Planetary Computer",
+      "license": "Creative Commons Attribution 4.0 International (CC BY 4.0)",
+      "temporal_range": "2021",
+      "nominal_resolution": "10m",
+      "local_paths": [
+        "data\\raw\\landcover\\esa_worldcover_tiles.json"
+      ],
+      "source_urls": [
+        "https://ai4edataeuwest.blob.core.windows.net/esa-worldcover/v200/2021/map/ESA_WorldCover_10m_2021_v200_N30E075_Map.tif?st=2026-10-12T20%3A09%3A51Z&se=2026-10-13T20%3A54%3A51Z&sp=rl&sv=2025-07-05&sr=c&skoid=9c8ff44a-6a2c-4dfb-b298-1c9212f64d9a&sktid=72f988bf-86f1-41af-91ab-2d7cd011db47&skt=2026-10-13T19%3A05%3A25Z&ske=2026-10-20T19%3A05%3A25Z&sks=b&skv=2025-07-05&sig=ECsZyjuyxw%2BDe/8QdV0/BpPdKjER7qzKaxBMcksHmZs%3D",
+        "https://ai4edataeuwest.blob.core.windows.net/esa-worldcover/v200/2021/map/ESA_WorldCover_10m_2021_v200_N27E075_Map.tif?st=2026-10-12T20%3A09%3A51Z&se=2026-10-13T20%3A54%3A51Z&sp=rl&sv=2025-07-05&sr=c&skoid=9c8ff44a-6a2c-4dfb-b298-1c9212f64d9a&sktid=72f988bf-86f1-41af-91ab-2d7cd011db47&skt=2026-10-13T19%3A05%3A25Z&ske=2026-10-20T19%3A05%3A25Z&sks=b&skv=2025-07-05&sig=ECsZyjuyxw%2BDe/8QdV0/BpPdKjER7qzKaxBMcksHmZs%3D"
+      ],
+      "crs": "EPSG:4326",
+      "bounds_wgs84": {
+        "min_lon": 75.0,
+        "min_lat": 27.0,
+        "max_lon": 78.0,
+        "max_lat": 33.0
+      },
+      "feature_or_tile_count": 2,
+      "size_bytes": 1195,
+      "sha256_hashes": {
+        "esa_worldcover_tiles.json": "c496d180871926ada49a3851eb4a2113390b21062610cfecb8e5246825882c48"
+      },
+      "validation_status": "VALID",
+      "endpoint_coverage": {
+        "mandi_covered": true,
+        "delhi_covered": true,
+        "details": "2 contiguous 3x3 degree tiles provide 100% discrete 11-class land-cover coverage across the corridor."
+      },
+      "coverage_notes": "Complete corridor land-cover coverage across 2 ESA WorldCover tiles.",
+      "known_limitations_and_gaps": [],
+      "metadata_attributes": {
+        "native_resolution": "10m",
+        "version": "2021 v200",
+        "crs": "EPSG:4326",
+        "classification_legend": {
+          "10": "Tree cover",
+          "20": "Shrubland",
+          "30": "Grassland",
+          "40": "Cropland",
+          "50": "Built-up",
+          "60": "Bare / sparse vegetation",
+          "70": "Snow and ice",
+          "80": "Permanent water bodies",
+          "90": "Herbaceous wetland",
+          "95": "Mangroves",
+          "100": "Moss and lichen"
+        },
+        "vegetation_classes": [
+          10,
+          20,
+          30,
+          40,
+          90
+        ],
+        "vegetation_indicators": "Tree cover (10), Shrubland (20), Grassland (30), Cropland (40), and Herbaceous wetland (90) serve as calibrated vegetation density and ecological friction indicators.",
+        "licensing_attribution": "CC BY 4.0; Contains modified Copernicus Sentinel data (2021) processed by ESA WorldCover consortium"
+      }
+    },
+    "corridor_railways": {
+      "layer_id": "corridor_railways",
+      "layer_type": "vector",
+      "source_name": "OpenStreetMap Railway Network",
+      "provider": "OpenStreetMap Contributors / Overpass API",
+      "license": "Open Database License (ODbL) 1.0",
+      "temporal_range": "2025-2026",
+      "nominal_resolution": "vector (track centerlines)",
+      "local_paths": [
+        "data\\raw\\vectors\\corridor_railways.geojson"
+      ],
+      "source_urls": [
+        "https://overpass-api.de/api/interpreter"
+      ],
+      "crs": "EPSG:4326",
+      "bounds_wgs84": {
+        "min_lon": 77.2158531,
+        "min_lat": 28.6260343,
+        "max_lon": 77.2407423,
+        "max_lat": 28.662655
+      },
+      "feature_or_tile_count": 238,
+      "size_bytes": 203433,
+      "sha256_hashes": {
+        "corridor_railways.geojson": "9d7b53e1f1827020731f2f8acdce635d7d78802fe4ae6af3f27626361d268f7c"
+      },
+      "validation_status": "VALID",
+      "endpoint_coverage": {
+        "mandi_covered": false,
+        "delhi_covered": true,
+        "details": "New Delhi Station has direct broad-gauge rail connectivity. Mandi currently lacks broad-gauge trackage; rail line ends in Anandpur/Kiratpur Sahib foothills."
+      },
+      "coverage_notes": "Retrieved 238 operational rail lines across the Delhi-Ambala-Chandigarh-Kiratpur corridor.",
+      "known_limitations_and_gaps": [
+        "Mandi currently lacks broad-gauge trackage; rail line ends in Anandpur/Kiratpur Sahib foothills."
+      ],
+      "metadata_attributes": {
+        "source": "OpenStreetMap",
+        "gauge_standard": "1676 mm (Indian Broad Gauge)",
+        "railway_classes": [
+          "main",
+          "branch"
+        ],
+        "licensing_attribution": "Open Database License (ODbL) 1.0; OpenStreetMap contributors",
+        "network_coverage": "Operational Delhi-Ambala-Chandigarh-Kiratpur broad-gauge corridor.",
+        "endpoint_status": "New Delhi terminus is an active electrified terminal; Mandi HP lacks broad-gauge connectivity (terminates in Anandpur/Kiratpur foothills)."
+      }
+    },
+    "corridor_stations": {
+      "layer_id": "corridor_stations",
+      "layer_type": "vector",
+      "source_name": "OpenStreetMap Railway Stations",
+      "provider": "OpenStreetMap Contributors / Overpass API",
+      "license": "Open Database License (ODbL) 1.0",
+      "temporal_range": "2025-2026",
+      "nominal_resolution": "vector (station points)",
+      "local_paths": [
+        "data\\raw\\vectors\\corridor_stations.geojson"
+      ],
+      "source_urls": [
+        "https://overpass-api.de/api/interpreter"
+      ],
+      "crs": "EPSG:4326",
+      "bounds_wgs84": {
+        "min_lon": 76.5005778,
+        "min_lat": 28.3200927,
+        "max_lon": 77.4990077,
+        "max_lat": 31.9891581
+      },
+      "feature_or_tile_count": 462,
+      "size_bytes": 163529,
+      "sha256_hashes": {
+        "corridor_stations.geojson": "6e91e4897626415ba7046de34e046076c60b7d206230d0027a4663c638a1051d"
+      },
+      "validation_status": "VALID",
+      "endpoint_coverage": {
+        "mandi_covered": true,
+        "delhi_covered": true,
+        "details": "New Delhi Station point is precisely captured. Mandi station captured in regional network."
+      },
+      "coverage_notes": "Retrieved 462 operational railway stations across the corridor.",
+      "known_limitations_and_gaps": [],
+      "metadata_attributes": {
+        "source": "OpenStreetMap",
+        "feature_type": "Railway Passenger Stations",
+        "licensing_attribution": "Open Database License (ODbL) 1.0; OpenStreetMap contributors",
+        "primary_operator": "Indian Railways (Northern Railway Zone)"
+      }
+    },
+    "corridor_waterways": {
+      "layer_id": "corridor_waterways",
+      "layer_type": "vector",
+      "source_name": "OpenStreetMap Waterways",
+      "provider": "OpenStreetMap Contributors / Overpass API",
+      "license": "Open Database License (ODbL) 1.0",
+      "temporal_range": "2025-2026",
+      "nominal_resolution": "vector (river/canal centerlines)",
+      "local_paths": [
+        "data\\raw\\vectors\\corridor_waterways.geojson"
+      ],
+      "source_urls": [
+        "https://overpass-api.de/api/interpreter"
+      ],
+      "crs": "EPSG:4326",
+      "bounds_wgs84": {
+        "min_lon": 76.1664191,
+        "min_lat": 28.0814087,
+        "max_lon": 77.7258253,
+        "max_lat": 32.2204653
+      },
+      "feature_or_tile_count": 873,
+      "size_bytes": 6337479,
+      "sha256_hashes": {
+        "corridor_waterways.geojson": "e9043fa3d6920574bdeea4e915651b6e20dcb4e6ba063c6c5d743f697c9f16d2"
+      },
+      "validation_status": "VALID",
+      "endpoint_coverage": {
+        "mandi_covered": true,
+        "delhi_covered": true,
+        "details": "Captures major river obstacles: Beas River at Mandi, Sutlej at Bilaspur, Yamuna at Delhi."
+      },
+      "coverage_notes": "Retrieved 873 major waterways across the corridor.",
+      "known_limitations_and_gaps": [],
+      "metadata_attributes": {
+        "source": "OpenStreetMap",
+        "waterway_types": [
+          "river",
+          "canal"
+        ],
+        "major_crossings": [
+          "Beas River (Mandi)",
+          "Sutlej River (Bilaspur)",
+          "Ghaggar River (Ambala/Panchkula)",
+          "Yamuna River (Delhi)"
+        ],
+        "licensing_attribution": "Open Database License (ODbL) 1.0; OpenStreetMap contributors"
+      }
+    },
+    "corridor_highways": {
+      "layer_id": "corridor_highways",
+      "layer_type": "vector",
+      "source_name": "OpenStreetMap Highway Corridors",
+      "provider": "OpenStreetMap Contributors / Overpass API",
+      "license": "Open Database License (ODbL) 1.0",
+      "temporal_range": "2025-2026",
+      "nominal_resolution": "vector (highway centerlines)",
+      "local_paths": [
+        "data\\raw\\vectors\\corridor_highways.geojson"
+      ],
+      "source_urls": [
+        "https://overpass-api.de/api/interpreter"
+      ],
+      "crs": "EPSG:4326",
+      "bounds_wgs84": {
+        "min_lon": 76.8597181,
+        "min_lat": 31.6409228,
+        "max_lon": 76.9975004,
+        "max_lat": 31.7765513
+      },
+      "feature_or_tile_count": 197,
+      "size_bytes": 426449,
+      "sha256_hashes": {
+        "corridor_highways.geojson": "c2a9bf5744694659294d788cc4bf319adc09d5456f23cc7084f0f7dabfd3ec4a"
+      },
+      "validation_status": "VALID",
+      "endpoint_coverage": {
+        "mandi_covered": true,
+        "delhi_covered": true,
+        "details": "Captures major road corridors: NH-21 (Chandigarh-Manali) and NH-44 (Grand Trunk Road)."
+      },
+      "coverage_notes": "Retrieved 197 major highway corridor segments.",
+      "known_limitations_and_gaps": [],
+      "metadata_attributes": {
+        "source": "OpenStreetMap",
+        "highway_classes": [
+          "motorway",
+          "trunk",
+          "primary"
+        ],
+        "key_corridors": [
+          "NH-21 / NH-154 (Chandigarh-Mandi-Manali)",
+          "NH-44 (Grand Trunk Road Delhi-Ambala)"
+        ],
+        "licensing_attribution": "Open Database License (ODbL) 1.0; OpenStreetMap contributors"
+      }
+    },
+    "terminal_buildings": {
+      "layer_id": "terminal_buildings",
+      "layer_type": "vector",
+      "source_name": "OpenStreetMap Building Footprints",
+      "provider": "OpenStreetMap Contributors / Overpass API",
+      "license": "Open Database License (ODbL) 1.0",
+      "temporal_range": "2025-2026",
+      "nominal_resolution": "vector (building footprints)",
+      "local_paths": [
+        "data\\raw\\vectors\\terminal_buildings.geojson"
+      ],
+      "source_urls": [
+        "https://overpass-api.de/api/interpreter"
+      ],
+      "crs": "EPSG:4326",
+      "bounds_wgs84": {
+        "min_lon": 76.9212814,
+        "min_lat": 31.6981437,
+        "max_lon": 76.9487837,
+        "max_lat": 31.7123299
+      },
+      "feature_or_tile_count": 47,
+      "size_bytes": 28292,
+      "sha256_hashes": {
+        "terminal_buildings.geojson": "1070782c811a5f9977dba78b96c3f302a9875d80f0d9a458fe9a1e0e1d960eae"
+      },
+      "validation_status": "VALID",
+      "endpoint_coverage": {
+        "mandi_covered": true,
+        "delhi_covered": true,
+        "details": "Captures precise building footprint obstacles at Mandi terminal and New Delhi station platforms."
+      },
+      "coverage_notes": "Retrieved 47 terminal building footprint obstacles.",
+      "known_limitations_and_gaps": [],
+      "metadata_attributes": {
+        "source": "OpenStreetMap",
+        "terminals": [
+          "Mandi Station Area Obstacles",
+          "New Delhi Railway Station Concourse & Platforms"
+        ],
+        "obstacle_type": "Static building footprints and terminal structural envelopes",
+        "licensing_attribution": "Open Database License (ODbL) 1.0; OpenStreetMap contributors"
+      }
+    }
+  },
+  "reused_local_datasets": [
+    "data/vector/protected_areas.geojson",
+    "data/dem/mandi_dem_30m.tif",
+    "data/dem/delhi_dem_30m.tif",
+    "data/vector/delhi_railways.geojson",
+    "data/vector/delhi_stations.geojson"
+  ],
+  "validation_summary": {
+    "all_layers_valid": true,
+    "crs_standardized": true,
+    "both_endpoints_covered_by_dem": true,
+    "both_endpoints_covered_by_landcover": true,
+    "protected_areas_active": true
+  },
+  "storage_summary": {
+    "total_raw_bytes": 7695664,
+    "total_raw_megabytes": 7.34,
+    "storage_directory": "data\\raw",
+    "layers_count": 8
+  },
+  "missing_tiles_and_gaps": [
+    "[corridor_railways] Mandi endpoint not covered by layer features."
+  ]
+}

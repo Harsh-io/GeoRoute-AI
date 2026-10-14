@@ -1,0 +1,122 @@
+{
+  "total_pixels": 327135,
+  "valid_pixels": 327135,
+  "nodata_pixels": 0,
+  "pixel_resolution_m": [
+    10.0,
+    10.0
+  ],
+  "total_area_km2": 32.7135,
+  "classes": {
+    "10": {
+      "class_id": 10,
+      "name": "Tree cover",
+      "category": "forest",
+      "pixel_count": 247811,
+      "percentage": 75.7519,
+      "area_km2": 24.7811,
+      "description": "Tree canopy cover >= 10%, tree height >= 5m",
+      "part3_implication": "High clearing and compensatory afforestation cost; moderate terrain and environmental sensitivity"
+    },
+    "20": {
+      "class_id": 20,
+      "name": "Shrubland",
+      "category": "vegetation",
+      "pixel_count": 58,
+      "percentage": 0.0177,
+      "area_km2": 0.0058,
+      "description": "Woody perennial plants with persistent woody stems, height < 5m",
+      "part3_implication": "Low clearing cost; standard construction difficulty"
+    },
+    "30": {
+      "class_id": 30,
+      "name": "Grassland",
+      "category": "vegetation",
+      "pixel_count": 35691,
+      "percentage": 10.9102,
+      "area_km2": 3.5691,
+      "description": "Natural herbaceous vegetation without substantial tree or shrub cover",
+      "part3_implication": "Minimal clearing cost; favorable for earthwork"
+    },
+    "40": {
+      "class_id": 40,
+      "name": "Cropland",
+      "category": "agriculture",
+      "pixel_count": 6318,
+      "percentage": 1.9313,
+      "area_km2": 0.6318,
+      "description": "Cultivated agricultural land and harvested fields",
+      "part3_implication": "Moderate to high agricultural land acquisition compensation"
+    },
+    "50": {
+      "class_id": 50,
+      "name": "Built-up",
+      "category": "urban",
+      "pixel_count": 21819,
+      "percentage": 6.6697,
+      "area_km2": 2.1819,
+      "description": "Urban and built-up land, residential and commercial structures",
+      "part3_implication": "Very high property acquisition and resettlement cost; strict corridor avoidance preferred"
+    },
+    "60": {
+      "class_id": 60,
+      "name": "Bare / sparse vegetation",
+      "category": "bare",
+      "pixel_count": 10348,
+      "percentage": 3.1632,
+      "area_km2": 1.0348,
+      "description": "Lands with exposed soil, sand, rocks with vegetative cover < 10%",
+      "part3_implication": "Zero land acquisition friction; potential geotechnical/slope stability review"
+    },
+    "70": {
+      "class_id": 70,
+      "name": "Snow and ice",
+      "category": "cryosphere",
+      "pixel_count": 0,
+      "percentage": 0.0,
+      "area_km2": 0.0,
+      "description": "Perennial snowfields and glaciers",
+      "part3_implication": "Extreme engineering hazard and maintenance burden; high routing friction"
+    },
+    "80": {
+      "class_id": 80,
+      "name": "Permanent water bodies",
+      "category": "water",
+      "pixel_count": 5090,
+      "percentage": 1.5559,
+      "area_km2": 0.509,
+      "description": "Lakes, reservoirs, wide rivers, and coastal waters",
+      "part3_implication": "Severe engineering constraint requiring major bridge or causeway infrastructure"
+    },
+    "90": {
+      "class_id": 90,
+      "name": "Herbaceous wetland",
+      "category": "wetland",
+      "pixel_count": 0,
+      "percentage": 0.0,
+      "area_km2": 0.0,
+      "description": "Inundated or saturated marshlands and swamps",
+      "part3_implication": "Strict ecological sensitivity and poor foundation soil bearing capacity"
+    },
+    "95": {
+      "class_id": 95,
+      "name": "Mangroves",
+      "category": "wetland",
+      "pixel_count": 0,
+      "percentage": 0.0,
+      "area_km2": 0.0,
+      "description": "Tidal mangrove formations along estuaries",
+      "part3_implication": "Statutory coastal regulation exclusion and high bridge foundation cost"
+    },
+    "100": {
+      "class_id": 100,
+      "name": "Moss and lichen",
+      "category": "tundra",
+      "pixel_count": 0,
+      "percentage": 0.0,
+      "area_km2": 0.0,
+      "description": "High altitude or polar moss and lichen cover",
+      "part3_implication": "Alpine fragile ecosystem friction"
+    }
+  }
+}

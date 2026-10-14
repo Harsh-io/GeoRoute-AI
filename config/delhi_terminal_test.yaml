@@ -1,0 +1,81 @@
+# GeoRoute AI: New Delhi Railway Station (NDLS) Terminal Area
+# Small 5km x 5km test AOI around New Delhi Railway Station platforms and urban network
+# Validated Destination Coordinates: NDLS Centroid (28.6428° N, 77.2191° E)
+# All coordinates are in WGS84 (EPSG:4326)
+
+region:
+  name: "delhi_terminal_5x5km"
+  description: "New Delhi Railway Station terminal area (urban infrastructure test)"
+  bbox:
+    min_lon: 77.1950
+    min_lat: 28.6200
+    max_lon: 77.2450
+    max_lat: 28.6650
+
+temporal:
+  start_date: "2024-04-01"
+  end_date: "2024-06-30"
+
+stac:
+  api_url: "https://planetarycomputer.microsoft.com/api/stac/v1"
+  use_planetary_computer: true
+
+  optical:
+    collection: "sentinel-2-l2a"
+    max_cloud_cover_percent: 15.0
+    target_resolution_meters: 10.0
+    bands: ["B04", "B03", "B02", "B08"]
+
+  elevation:
+    collection: "cop-dem-glo-30"
+    asset_name: "data"
+
+  land_cover:
+    enabled: true
+    collection: "esa-worldcover"
+    asset_name: "map"
+    year: 2021
+    resampling_method: "nearest"
+
+vector:
+  layers:
+    highways:
+      tags:
+        highway: true
+      description: "Urban road network"
+    buildings:
+      tags:
+        building: true
+      description: "Dense urban building footprints"
+    railways:
+      tags:
+        railway: true
+      description: "NDLS railway tracks, junctions, and sidings"
+    railway_stations:
+      tags:
+        railway: "station"
+      description: "NDLS station platforms and facilities"
+  timeout_seconds: 60
+  max_retries: 3
+
+protected_areas:
+  enabled: true
+  authoritative_source_path: "./data/vector/protected_areas.geojson"
+  layer_name: "environmental_zones"
+  fallback_to_osm: true
+  osm_tags:
+    boundary: "protected_area"
+    leisure: "nature_reserve"
+
+processing:
+  dem_resampling_method: "bilinear"
+  land_cover_resampling_method: "nearest"
+  target_pixel_size_meters: 10.0
+
+export:
+  output_dir: "./data/processed/delhi_terminal"
+  vector_format: "geojson"
+  cog:
+    block_size: 256
+    compression: "deflate"
+    overview_levels: [2, 4, 8, 16]

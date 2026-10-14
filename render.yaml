@@ -1,0 +1,35 @@
+# Render Blueprint Specification for GeoRoute AI Backend Service
+# Docs: https://render.com/docs/blueprint-spec
+
+services:
+  - type: web
+    name: georoute-ai-api
+    runtime: docker
+    dockerfilePath: Dockerfile
+    plan: starter
+    healthCheckPath: /api/v1/health
+    envVars:
+      - key: GEOROUTE_ENV
+        value: production
+      - key: GEOROUTE_HOST
+        value: 0.0.0.0
+      - key: GEOROUTE_CORS_ORIGINS
+        value: "https://georoute-ai.vercel.app,https://georoute-frontend.vercel.app,http://localhost:5173"
+      - key: GEOROUTE_DATA_DIR
+        value: /app/data
+      - key: GEOROUTE_COST_DIR
+        value: /app/data/cost
+      - key: GEOROUTE_JOBS_DIR
+        value: /app/data/jobs
+      - key: GEOROUTE_DB_PATH
+        value: /app/data/jobs/georoute_jobs.db
+      - key: GEOROUTE_MAX_ACTIVE_JOBS
+        value: "2"
+      - key: GEOROUTE_MAX_QUEUED_JOBS
+        value: "10"
+      - key: GEOROUTE_JOB_TIMEOUT
+        value: "600.0"
+    disk:
+      name: georoute-jobs-disk
+      mountPath: /app/data/jobs
+      sizeGB: 1
