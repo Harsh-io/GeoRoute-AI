@@ -1,10 +1,10 @@
 {
   "schema_version": "2.0.0",
-  "manifest_id": "MANIFEST_PART2_MANDI_TERMINAL_5X5KM_1791928583",
-  "generated_at": "2026-10-13T21:56:23.104082+00:00",
+  "manifest_id": "MANIFEST_PART2_MANDI_TERMINAL_5X5KM_1792060640",
+  "generated_at": "2026-10-15T10:37:20.349325+00:00",
   "region_name": "mandi_terminal_5x5km",
   "pipeline_status": "SUCCESS",
-  "elapsed_seconds": 1.98,
+  "elapsed_seconds": 1.92,
   "spatial_reference": {
     "target_crs": "EPSG:32643",
     "resolution_meters": 10.0,
