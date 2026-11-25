@@ -6,7 +6,7 @@ services:
     name: georoute-ai-api
     runtime: docker
     dockerfilePath: Dockerfile
-    plan: starter
+    plan: free
     healthCheckPath: /api/v1/health
     envVars:
       - key: GEOROUTE_ENV
@@ -29,7 +29,3 @@ services:
         value: "10"
       - key: GEOROUTE_JOB_TIMEOUT
         value: "600.0"
-    disk:
-      name: georoute-jobs-disk
-      mountPath: /app/data/jobs
-      sizeGB: 1
