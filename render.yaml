@@ -14,7 +14,7 @@ services:
       - key: GEOROUTE_HOST
         value: 0.0.0.0
       - key: GEOROUTE_CORS_ORIGINS
-        value: "https://georoute-ai.vercel.app,https://georoute-frontend.vercel.app,http://localhost:5173"
+        value: "https://geo-route-omega.vercel.app,https://georoute-ai.vercel.app,https://georoute-frontend.vercel.app,http://localhost:5173"
       - key: GEOROUTE_DATA_DIR
         value: /app/data
       - key: GEOROUTE_COST_DIR

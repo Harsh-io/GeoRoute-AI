@@ -24,7 +24,7 @@ backend/data/
 *.tif
 !data/dem/mandi_dem_30m.tif
 !data/dem/delhi_dem_30m.tif
-
+!data/dem/mumbai_dem_30m.tif
 # Frontend
 frontend/node_modules/
 frontend/dist/
