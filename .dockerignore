@@ -35,3 +35,6 @@ agents/
 .env
 .env.*
 *.log
+
+!data/cost/rasters/
+!data/cost/rasters/*.tif
